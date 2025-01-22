@@ -15,7 +15,12 @@
 			}
 		}
 	],
-	"plugins": ["prettier-plugin-astro", "prettier-plugin-tailwindcss", "prettier-plugin-sort-json"],
+	"plugins": [
+		"prettier-plugin-astro",
+		"prettier-plugin-tailwindcss",
+		"prettier-plugin-organize-imports",
+		"prettier-plugin-sort-json"
+	],
 	"printWidth": 120,
 	"proseWrap": "preserve",
 	"quoteProps": "consistent",
@@ -24,6 +29,7 @@
 	"singleAttributePerLine": true,
 	"singleQuote": true,
 	"tabWidth": 2,
+	"tailwindFunctions": ["clsx", "tw", "tv", "cn", "twMerge", "tm", "cx"],
 	"trailingComma": "es5",
 	"useTabs": true,
 	"vueIndentScriptAndStyle": true

@@ -1,7 +1,12 @@
 {
 	"compilerOptions": {
+		"baseUrl": ".",
 		"jsx": "react-jsx",
-		"jsxImportSource": "react"
+		"jsxImportSource": "react",
+		"paths": {
+			"@/*": ["src/*"],
+			"ui": ["src/components/ui/index.ts"]
+		}
 	},
 	"exclude": ["dist"],
 	"extends": "astro/tsconfigs/strict",
