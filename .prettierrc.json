@@ -1,0 +1,30 @@
+{
+	"arrowParens": "always",
+	"bracketSameLine": false,
+	"bracketSpacing": true,
+	"embeddedLanguageFormatting": "auto",
+	"htmlWhitespaceSensitivity": "css",
+	"insertPragma": false,
+	"jsonRecursiveSort": true,
+	"jsxSingleQuote": true,
+	"overrides": [
+		{
+			"files": "*.astro",
+			"options": {
+				"parser": "astro"
+			}
+		}
+	],
+	"plugins": ["prettier-plugin-astro", "prettier-plugin-tailwindcss", "prettier-plugin-sort-json"],
+	"printWidth": 120,
+	"proseWrap": "preserve",
+	"quoteProps": "consistent",
+	"requirePragma": false,
+	"semi": false,
+	"singleAttributePerLine": true,
+	"singleQuote": true,
+	"tabWidth": 2,
+	"trailingComma": "es5",
+	"useTabs": true,
+	"vueIndentScriptAndStyle": true
+}
