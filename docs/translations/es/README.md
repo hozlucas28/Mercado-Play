@@ -103,7 +103,16 @@ Dado que la empresa utiliza [React](https://es.react.dev/) y probablemente tiene
 
 Dado que la UX actual de [Mercado Play](https://play.mercadolibre.com.ar/) tiene problemas, rediseñé la disposición de los componentes, creando una interfaz de baja fidelidad para web y mobile.
 
-![Interfaz de baja fidelidad del rediseño de Mercado Play (web y mobile)](../../statics/low-fidelity-ui.png) <!-- TODO -->
+> [!TIP]
+> Los componentes con fondo verde son interactivos..
+
+#### Inicio
+
+![UI de baja fidelidad de la página de inicio (web y móvil)](../../statics/low-fidelity-ui-home.png) <!-- TODO -->
+
+#### Información de la película/serie
+
+![UI de baja fidelidad de la página con la información de la película o serie (web y móvil)](../../statics/low-fidelity-ui-film-serie.png) <!-- TODO -->
 
 ### Desarrollar el diseño
 

@@ -103,7 +103,16 @@ As the company uses [React](https://es.react.dev/) and likely has many developer
 
 Since the current UX of [Mercado Play](https://play.mercadolibre.com.ar/) has issues, I redesigned its component layout, creating a low-fidelity UI for web and mobile designs.
 
-![Low-fidelity UI of Mercado Play redesign (web and mobile)](./docs/statics/low-fidelity-ui.png) <!-- TODO -->
+> [!TIP]
+> Components with a green background are interactive.
+
+#### Home
+
+![Low-fidelity UI home page (web and mobile)](./docs/statics/low-fidelity-ui-home.png) <!-- TODO -->
+
+#### Film/Serie information
+
+![Low-fidelity UI of film or serie information page (web and mobile)](./docs/statics/low-fidelity-ui-film-serie.png) <!-- TODO -->
 
 ### Develop the design
 
