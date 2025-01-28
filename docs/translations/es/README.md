@@ -108,11 +108,15 @@ Dado que la UX actual de [Mercado Play](https://play.mercadolibre.com.ar/) tiene
 
 #### Inicio
 
-![UI de baja fidelidad de la página de inicio (web y móvil)](../../statics/low-fidelity-ui-home.png) <!-- TODO -->
+![UI de baja fidelidad de la página de inicio (web y móvil)](../../statics/low-fidelity-ui-home.png)
 
-#### Información de la película/serie
+#### Información de la película
 
-![UI de baja fidelidad de la página con la información de la película o serie (web y móvil)](../../statics/low-fidelity-ui-film-serie.png) <!-- TODO -->
+![UI de baja fidelidad de la página con la información de la película (web y móvil)](../../statics/low-fidelity-ui-film.png) <!-- TODO -->
+
+#### Información de la serie
+
+![UI de baja fidelidad de la página con la información de la serie (web y móvil)](../../statics/low-fidelity-ui-serie.png) <!-- TODO -->
 
 ### Desarrollar el diseño
 

@@ -108,11 +108,15 @@ Since the current UX of [Mercado Play](https://play.mercadolibre.com.ar/) has is
 
 #### Home
 
-![Low-fidelity UI home page (web and mobile)](./docs/statics/low-fidelity-ui-home.png) <!-- TODO -->
+![Low-fidelity UI home page (web and mobile)](./docs/statics/low-fidelity-ui-home.png)
 
-#### Film/Serie information
+#### Film information
 
-![Low-fidelity UI of film or serie information page (web and mobile)](./docs/statics/low-fidelity-ui-film-serie.png) <!-- TODO -->
+![Low-fidelity UI of film information page (web and mobile)](./docs/statics/low-fidelity-ui-film.png) <!-- TODO -->
+
+#### Serie information
+
+![Low-fidelity UI of serie information page (web and mobile)](./docs/statics/low-fidelity-ui-serie.png) <!-- TODO -->
 
 ### Develop the design
 
