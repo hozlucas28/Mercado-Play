@@ -417,7 +417,7 @@
 				"w": 1765.6647072523251,
 				"h": 828.3077346650875,
 				"geo": "x-box",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -431,7 +431,7 @@
 				"scale": 1
 			},
 			"parentId": "page:page",
-			"index": "b1r1Nl",
+			"index": "a03or",
 			"typeName": "shape"
 		},
 		{
@@ -650,7 +650,7 @@
 				"w": 183.522500535815,
 				"h": 9.338034007492752,
 				"geo": "oval",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -1066,7 +1066,7 @@
 				"w": 261.31318665491034,
 				"h": 9.338034007492752,
 				"geo": "oval",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -1140,7 +1140,7 @@
 				"w": 261.31318665491034,
 				"h": 9.338034007492752,
 				"geo": "oval",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -1184,7 +1184,7 @@
 				"w": 261.31318665491034,
 				"h": 9.338034007492752,
 				"geo": "rectangle",
-				"color": "grey",
+				"color": "black",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -1214,7 +1214,7 @@
 				"w": 207.3177539468869,
 				"h": 9.338034007492752,
 				"geo": "oval",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -1680,7 +1680,7 @@
 				"w": 13.211728171398656,
 				"h": 13.211728171398656,
 				"geo": "star",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -1710,7 +1710,7 @@
 				"w": 13.211728171398656,
 				"h": 13.211728171398656,
 				"geo": "star",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -1740,7 +1740,7 @@
 				"w": 13.211728171398656,
 				"h": 13.211728171398656,
 				"geo": "star",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -1770,7 +1770,7 @@
 				"w": 13.211728171398656,
 				"h": 13.211728171398656,
 				"geo": "star",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -2141,7 +2141,7 @@
 				"w": 13.211728171398656,
 				"h": 13.211728171398656,
 				"geo": "star",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -2171,7 +2171,7 @@
 				"w": 13.211728171398656,
 				"h": 13.211728171398656,
 				"geo": "star",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -2201,7 +2201,7 @@
 				"w": 13.211728171398656,
 				"h": 13.211728171398656,
 				"geo": "star",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -2231,7 +2231,7 @@
 				"w": 13.211728171398656,
 				"h": 13.211728171398656,
 				"geo": "star",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -2261,7 +2261,7 @@
 				"w": 13.211728171398656,
 				"h": 13.211728171398656,
 				"geo": "star",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -2514,7 +2514,7 @@
 				"w": 13.211728171398656,
 				"h": 13.211728171398656,
 				"geo": "star",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -2544,7 +2544,7 @@
 				"w": 13.211728171398656,
 				"h": 13.211728171398656,
 				"geo": "star",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -2807,7 +2807,7 @@
 				"w": 13.211728171398656,
 				"h": 13.211728171398656,
 				"geo": "star",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -2837,7 +2837,7 @@
 				"w": 13.211728171398656,
 				"h": 13.211728171398656,
 				"geo": "star",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -2867,7 +2867,7 @@
 				"w": 13.211728171398656,
 				"h": 13.211728171398656,
 				"geo": "star",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -2897,7 +2897,7 @@
 				"w": 13.211728171398656,
 				"h": 13.211728171398656,
 				"geo": "star",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -3203,7 +3203,7 @@
 				"w": 13.211728171398656,
 				"h": 13.211728171398656,
 				"geo": "star",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -3233,7 +3233,7 @@
 				"w": 13.211728171398656,
 				"h": 13.211728171398656,
 				"geo": "star",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -3263,7 +3263,7 @@
 				"w": 13.211728171398656,
 				"h": 13.211728171398656,
 				"geo": "star",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -3293,7 +3293,7 @@
 				"w": 13.211728171398656,
 				"h": 13.211728171398656,
 				"geo": "star",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -3496,7 +3496,7 @@
 				"w": 13.211728171398656,
 				"h": 13.211728171398656,
 				"geo": "star",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -3526,7 +3526,7 @@
 				"w": 13.211728171398656,
 				"h": 13.211728171398656,
 				"geo": "star",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -3556,7 +3556,7 @@
 				"w": 13.211728171398656,
 				"h": 13.211728171398656,
 				"geo": "star",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -3789,7 +3789,7 @@
 				"w": 13.211728171398656,
 				"h": 13.211728171398656,
 				"geo": "star",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -3819,7 +3819,7 @@
 				"w": 13.211728171398656,
 				"h": 13.211728171398656,
 				"geo": "star",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -3849,7 +3849,7 @@
 				"w": 13.211728171398656,
 				"h": 13.211728171398656,
 				"geo": "star",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -3879,7 +3879,7 @@
 				"w": 13.211728171398656,
 				"h": 13.211728171398656,
 				"geo": "star",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -3985,9 +3985,9 @@
 				"w": 110.26326382902148,
 				"h": 20.393329498433648,
 				"geo": "rectangle",
-				"color": "black",
+				"color": "light-green",
 				"labelColor": "black",
-				"fill": "none",
+				"fill": "solid",
 				"dash": "solid",
 				"size": "s",
 				"font": "draw",
@@ -4038,9 +4038,9 @@
 				"w": 20.393329498433626,
 				"h": 20.393329498433626,
 				"geo": "rectangle",
-				"color": "black",
+				"color": "light-green",
 				"labelColor": "black",
-				"fill": "none",
+				"fill": "solid",
 				"dash": "solid",
 				"size": "s",
 				"font": "draw",
@@ -4065,7 +4065,7 @@
 			"id": "shape:mygFq-7FTLzf49jCHT1qm",
 			"type": "text",
 			"props": {
-				"color": "black",
+				"color": "light-green",
 				"size": "s",
 				"w": 16,
 				"text": "▼",
@@ -4920,7 +4920,7 @@
 				"w": 110.26326382902147,
 				"h": 20.39332949843356,
 				"geo": "oval",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -4987,7 +4987,7 @@
 				"w": 110.26326382902147,
 				"h": 20.39332949843356,
 				"geo": "oval",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -5457,7 +5457,7 @@
 				"w": 149.4781551864647,
 				"h": 149.4781551864647,
 				"geo": "ellipse",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -5486,7 +5486,7 @@
 			"props": {
 				"dash": "solid",
 				"size": "m",
-				"color": "black",
+				"color": "grey",
 				"spline": "line",
 				"points": {
 					"a1": {
@@ -5520,7 +5520,7 @@
 			"props": {
 				"dash": "solid",
 				"size": "m",
-				"color": "black",
+				"color": "grey",
 				"spline": "line",
 				"points": {
 					"a1": {
@@ -5592,7 +5592,7 @@
 				"w": 149.4781551864647,
 				"h": 149.4781551864647,
 				"geo": "ellipse",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -5621,7 +5621,7 @@
 			"props": {
 				"dash": "solid",
 				"size": "m",
-				"color": "black",
+				"color": "grey",
 				"spline": "line",
 				"points": {
 					"a1": {
@@ -5655,7 +5655,7 @@
 			"props": {
 				"dash": "solid",
 				"size": "m",
-				"color": "black",
+				"color": "grey",
 				"spline": "line",
 				"points": {
 					"a1": {
@@ -5727,7 +5727,7 @@
 				"w": 149.4781551864647,
 				"h": 149.4781551864647,
 				"geo": "ellipse",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -5756,7 +5756,7 @@
 			"props": {
 				"dash": "solid",
 				"size": "m",
-				"color": "black",
+				"color": "grey",
 				"spline": "line",
 				"points": {
 					"a1": {
@@ -5790,7 +5790,7 @@
 			"props": {
 				"dash": "solid",
 				"size": "m",
-				"color": "black",
+				"color": "grey",
 				"spline": "line",
 				"points": {
 					"a1": {
@@ -5862,7 +5862,7 @@
 				"w": 149.4781551864647,
 				"h": 149.4781551864647,
 				"geo": "ellipse",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -5891,7 +5891,7 @@
 			"props": {
 				"dash": "solid",
 				"size": "m",
-				"color": "black",
+				"color": "grey",
 				"spline": "line",
 				"points": {
 					"a1": {
@@ -5925,7 +5925,7 @@
 			"props": {
 				"dash": "solid",
 				"size": "m",
-				"color": "black",
+				"color": "grey",
 				"spline": "line",
 				"points": {
 					"a1": {
@@ -5997,7 +5997,7 @@
 				"w": 149.4781551864647,
 				"h": 149.4781551864647,
 				"geo": "ellipse",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -6026,7 +6026,7 @@
 			"props": {
 				"dash": "solid",
 				"size": "m",
-				"color": "black",
+				"color": "grey",
 				"spline": "line",
 				"points": {
 					"a1": {
@@ -6060,7 +6060,7 @@
 			"props": {
 				"dash": "solid",
 				"size": "m",
-				"color": "black",
+				"color": "grey",
 				"spline": "line",
 				"points": {
 					"a1": {
@@ -6132,7 +6132,7 @@
 				"w": 149.4781551864647,
 				"h": 149.4781551864647,
 				"geo": "ellipse",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -6161,7 +6161,7 @@
 			"props": {
 				"dash": "solid",
 				"size": "m",
-				"color": "black",
+				"color": "grey",
 				"spline": "line",
 				"points": {
 					"a1": {
@@ -6195,7 +6195,7 @@
 			"props": {
 				"dash": "solid",
 				"size": "m",
-				"color": "black",
+				"color": "grey",
 				"spline": "line",
 				"points": {
 					"a1": {
@@ -6267,7 +6267,7 @@
 				"w": 149.4781551864647,
 				"h": 149.4781551864647,
 				"geo": "ellipse",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -6296,7 +6296,7 @@
 			"props": {
 				"dash": "solid",
 				"size": "m",
-				"color": "black",
+				"color": "grey",
 				"spline": "line",
 				"points": {
 					"a1": {
@@ -6330,7 +6330,7 @@
 			"props": {
 				"dash": "solid",
 				"size": "m",
-				"color": "black",
+				"color": "grey",
 				"spline": "line",
 				"points": {
 					"a1": {
@@ -6402,7 +6402,7 @@
 				"w": 149.4781551864647,
 				"h": 149.4781551864647,
 				"geo": "ellipse",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -6431,7 +6431,7 @@
 			"props": {
 				"dash": "solid",
 				"size": "m",
-				"color": "black",
+				"color": "grey",
 				"spline": "line",
 				"points": {
 					"a1": {
@@ -6465,7 +6465,7 @@
 			"props": {
 				"dash": "solid",
 				"size": "m",
-				"color": "black",
+				"color": "grey",
 				"spline": "line",
 				"points": {
 					"a1": {
@@ -6537,7 +6537,7 @@
 				"w": 149.4781551864647,
 				"h": 149.4781551864647,
 				"geo": "ellipse",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -6566,7 +6566,7 @@
 			"props": {
 				"dash": "solid",
 				"size": "m",
-				"color": "black",
+				"color": "grey",
 				"spline": "line",
 				"points": {
 					"a1": {
@@ -6600,7 +6600,7 @@
 			"props": {
 				"dash": "solid",
 				"size": "m",
-				"color": "black",
+				"color": "grey",
 				"spline": "line",
 				"points": {
 					"a1": {
@@ -6658,7 +6658,7 @@
 				"w": 881.4574961449881,
 				"h": 413.5088948861662,
 				"geo": "x-box",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -6672,7 +6672,7 @@
 				"scale": 1
 			},
 			"parentId": "page:page",
-			"index": "b4RB5a",
+			"index": "Zz5FH",
 			"typeName": "shape"
 		},
 		{
@@ -7163,7 +7163,7 @@
 				"w": 126.4821636982141,
 				"h": 6.435694492538227,
 				"geo": "oval",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -7715,7 +7715,7 @@
 				"w": 13.211728171398656,
 				"h": 13.211728171398656,
 				"geo": "star",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -7745,7 +7745,7 @@
 				"w": 13.211728171398656,
 				"h": 13.211728171398656,
 				"geo": "star",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -7775,7 +7775,7 @@
 				"w": 13.211728171398656,
 				"h": 13.211728171398656,
 				"geo": "star",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -7805,7 +7805,7 @@
 				"w": 13.211728171398656,
 				"h": 13.211728171398656,
 				"geo": "star",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -8169,7 +8169,7 @@
 				"w": 13.211728171398656,
 				"h": 13.211728171398656,
 				"geo": "star",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -8199,7 +8199,7 @@
 				"w": 13.211728171398656,
 				"h": 13.211728171398656,
 				"geo": "star",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -8229,7 +8229,7 @@
 				"w": 13.211728171398656,
 				"h": 13.211728171398656,
 				"geo": "star",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -8259,7 +8259,7 @@
 				"w": 13.211728171398656,
 				"h": 13.211728171398656,
 				"geo": "star",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -8289,7 +8289,7 @@
 				"w": 13.211728171398656,
 				"h": 13.211728171398656,
 				"geo": "star",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -8579,7 +8579,7 @@
 				"w": 13.211728171398656,
 				"h": 13.211728171398656,
 				"geo": "star",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -8609,7 +8609,7 @@
 				"w": 13.211728171398656,
 				"h": 13.211728171398656,
 				"geo": "star",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -8877,20 +8877,6 @@
 		},
 		{
 			"x": 0,
-			"y": 167.3555272099834,
-			"rotation": 0,
-			"isLocked": false,
-			"opacity": 1,
-			"meta": {},
-			"id": "shape:629ASJtUteMoDyNzUypI7",
-			"type": "group",
-			"parentId": "shape:cW4VDi378ruspUH0_1NdG",
-			"index": "a2CDJ",
-			"props": {},
-			"typeName": "shape"
-		},
-		{
-			"x": 0,
 			"y": 0,
 			"rotation": 0,
 			"isLocked": false,
@@ -8932,7 +8918,7 @@
 				"w": 261.31318665491034,
 				"h": 9.338034007492752,
 				"geo": "oval",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -9006,7 +8992,7 @@
 				"w": 261.31318665491034,
 				"h": 9.338034007492752,
 				"geo": "oval",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -9050,7 +9036,7 @@
 				"w": 261.31318665491034,
 				"h": 9.338034007492752,
 				"geo": "rectangle",
-				"color": "grey",
+				"color": "black",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -9080,7 +9066,7 @@
 				"w": 207.3177539468869,
 				"h": 9.338034007492752,
 				"geo": "oval",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -9318,9 +9304,9 @@
 				"w": 110.26326382902148,
 				"h": 20.393329498433648,
 				"geo": "rectangle",
-				"color": "black",
+				"color": "light-green",
 				"labelColor": "black",
-				"fill": "none",
+				"fill": "solid",
 				"dash": "solid",
 				"size": "s",
 				"font": "draw",
@@ -9385,9 +9371,9 @@
 				"w": 20.393329498433626,
 				"h": 20.393329498433626,
 				"geo": "rectangle",
-				"color": "black",
+				"color": "light-green",
 				"labelColor": "black",
-				"fill": "none",
+				"fill": "solid",
 				"dash": "solid",
 				"size": "s",
 				"font": "draw",
@@ -9412,7 +9398,7 @@
 			"id": "shape:MxqRdX5MHRcjtNuCYutcU",
 			"type": "text",
 			"props": {
-				"color": "black",
+				"color": "light-green",
 				"size": "s",
 				"w": 16,
 				"text": "▼",
@@ -9824,7 +9810,7 @@
 				"w": 149.4781551864647,
 				"h": 149.4781551864647,
 				"geo": "ellipse",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -9853,7 +9839,7 @@
 			"props": {
 				"dash": "solid",
 				"size": "m",
-				"color": "black",
+				"color": "grey",
 				"spline": "line",
 				"points": {
 					"a1": {
@@ -9887,7 +9873,7 @@
 			"props": {
 				"dash": "solid",
 				"size": "m",
-				"color": "black",
+				"color": "grey",
 				"spline": "line",
 				"points": {
 					"a1": {
@@ -9973,7 +9959,7 @@
 				"w": 149.4781551864647,
 				"h": 149.4781551864647,
 				"geo": "ellipse",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -10002,7 +9988,7 @@
 			"props": {
 				"dash": "solid",
 				"size": "m",
-				"color": "black",
+				"color": "grey",
 				"spline": "line",
 				"points": {
 					"a1": {
@@ -10036,7 +10022,7 @@
 			"props": {
 				"dash": "solid",
 				"size": "m",
-				"color": "black",
+				"color": "grey",
 				"spline": "line",
 				"points": {
 					"a1": {
@@ -10122,7 +10108,7 @@
 				"w": 149.4781551864647,
 				"h": 149.4781551864647,
 				"geo": "ellipse",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -10151,7 +10137,7 @@
 			"props": {
 				"dash": "solid",
 				"size": "m",
-				"color": "black",
+				"color": "grey",
 				"spline": "line",
 				"points": {
 					"a1": {
@@ -10185,7 +10171,7 @@
 			"props": {
 				"dash": "solid",
 				"size": "m",
-				"color": "black",
+				"color": "grey",
 				"spline": "line",
 				"points": {
 					"a1": {
@@ -10271,7 +10257,7 @@
 				"w": 149.4781551864647,
 				"h": 149.4781551864647,
 				"geo": "ellipse",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -10300,7 +10286,7 @@
 			"props": {
 				"dash": "solid",
 				"size": "m",
-				"color": "black",
+				"color": "grey",
 				"spline": "line",
 				"points": {
 					"a1": {
@@ -10334,7 +10320,7 @@
 			"props": {
 				"dash": "solid",
 				"size": "m",
-				"color": "black",
+				"color": "grey",
 				"spline": "line",
 				"points": {
 					"a1": {
@@ -10620,7 +10606,7 @@
 				"w": 110.26326382902147,
 				"h": 20.39332949843356,
 				"geo": "oval",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -10754,7 +10740,7 @@
 				"w": 110.26326382902147,
 				"h": 20.39332949843356,
 				"geo": "oval",
-				"color": "black",
+				"color": "grey",
 				"labelColor": "black",
 				"fill": "solid",
 				"dash": "solid",
@@ -11038,11 +11024,25 @@
 			"typeName": "shape"
 		},
 		{
+			"x": 0,
+			"y": 167.3555272099834,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:629ASJtUteMoDyNzUypI7",
+			"type": "group",
+			"parentId": "shape:cW4VDi378ruspUH0_1NdG",
+			"index": "a2CDJ",
+			"props": {},
+			"typeName": "shape"
+		},
+		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": 480.8521707579296,
-			"y": 995.2629529682856,
-			"lastActivityTimestamp": 1738041467818,
+			"x": 3617.169062691939,
+			"y": 332.0483270906119,
+			"lastActivityTimestamp": 1738043856218,
 			"meta": {}
 		},
 		{
@@ -11091,24 +11091,24 @@
 			"typeName": "instance"
 		},
 		{
-			"editingShapeId": "shape:HtTZcqZpdriWlI9l6mIMP",
+			"editingShapeId": null,
 			"croppingShapeId": null,
 			"selectedShapeIds": [
-				"shape:HtTZcqZpdriWlI9l6mIMP"
+				"shape:2sCdWjiPZiQHT4XcV11Wy"
 			],
-			"hoveredShapeId": "shape:HtTZcqZpdriWlI9l6mIMP",
+			"hoveredShapeId": null,
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
-			"focusedGroupId": "shape:uw-x6jBpZzxKhO574GKqM",
+			"focusedGroupId": null,
 			"meta": {},
 			"id": "instance_page_state:page:page",
 			"pageId": "page:page",
 			"typeName": "instance_page_state"
 		},
 		{
-			"x": -174.2302616490942,
-			"y": -641.7960299678225,
-			"z": 1.4089012792841937,
+			"x": 913.5088079435745,
+			"y": 136.9866066535932,
+			"z": 0.30061726719250376,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
