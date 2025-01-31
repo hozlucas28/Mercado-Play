@@ -22,12 +22,7 @@ const card = tv({
 const { root, header, title, description, content, footer } = card()
 
 const Card = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
-	return (
-		<div
-			className={root({ className })}
-			{...props}
-		/>
-	)
+	return <div className={root({ className })} {...props} />
 }
 
 interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -37,10 +32,7 @@ interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const Header = ({ withoutPadding = false, className, title, description, children, ...props }: HeaderProps) => (
-	<div
-		className={header({ className: cn(className, withoutPadding && 'px-0 pt-0') })}
-		{...props}
-	>
+	<div className={header({ className: cn(className, withoutPadding && 'px-0 pt-0') })} {...props}>
 		{title && <Title>{title}</Title>}
 		{description && <Description>{description}</Description>}
 		{!title && typeof children === 'string' ? <Title>{children}</Title> : children}
@@ -48,42 +40,19 @@ const Header = ({ withoutPadding = false, className, title, description, childre
 )
 
 const Title = ({ className, level = 3, ...props }: React.ComponentProps<typeof Heading>) => {
-	return (
-		<Heading
-			level={level}
-			className={title({ className })}
-			{...props}
-		/>
-	)
+	return <Heading level={level} className={title({ className })} {...props} />
 }
 
 const Description = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
-	return (
-		<div
-			{...props}
-			slot='description'
-			className={description({ className })}
-			{...props}
-		/>
-	)
+	return <div {...props} slot='description' className={description({ className })} {...props} />
 }
 
 const Content = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
-	return (
-		<div
-			className={content({ className })}
-			{...props}
-		/>
-	)
+	return <div className={content({ className })} {...props} />
 }
 
 const Footer = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
-	return (
-		<div
-			className={footer({ className })}
-			{...props}
-		/>
-	)
+	return <div className={footer({ className })} {...props} />
 }
 
 Card.Content = Content
