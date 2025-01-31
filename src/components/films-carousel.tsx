@@ -31,10 +31,7 @@ export function FilmsCarousel() {
 	}
 
 	return (
-		<Carousel
-			setApi={setApi}
-			className='w-full max-w-sm'
-		>
+		<Carousel setApi={setApi} className='w-full max-w-sm'>
 			<Carousel.Content items={Array.from({ length: 10 }, (_, id) => ({ id: id + 1 }))}>
 				{({ id }) => (
 					<Carousel.Item id={id}>
