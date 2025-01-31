@@ -9,6 +9,7 @@
 		"preview": "astro preview",
 		"format": "prettier --write .",
 		"astro": "astro",
+		"generate:pwa-assets": "sh ./scripts/generate/pwa-assets.sh",
 		"prepare": "husky"
 	},
 	"lint-staged": {
@@ -22,7 +23,9 @@
 		"clsx": "2.1.1",
 		"embla-carousel-react": "8.5.2",
 		"justd-icons": "1.10.21",
+		"motion": "12.0.6",
 		"react": "19.0.0",
+		"react-aria": "3.37.0",
 		"react-aria-components": "1.6.0",
 		"react-dom": "19.0.0",
 		"tailwindcss": "3.4.17"
@@ -32,11 +35,13 @@
 		"@types/react-dom": "19.0.3",
 		"husky": "9.1.7",
 		"lint-staged": "15.4.1",
+		"pngquant-bin": "^9.0.0",
 		"prettier": "3.4.2",
 		"prettier-plugin-astro": "0.14.1",
 		"prettier-plugin-organize-imports": "4.1.0",
 		"prettier-plugin-sort-json": "4.1.1",
 		"prettier-plugin-tailwindcss": "0.6.10",
+		"pwa-asset-generator": "6.4.0",
 		"tailwind-merge": "2.6.0",
 		"tailwind-variants": "0.3.1",
 		"tailwindcss-animate": "1.0.7",
