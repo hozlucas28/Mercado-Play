@@ -35,7 +35,7 @@
 		"@types/react-dom": "19.0.3",
 		"husky": "9.1.7",
 		"lint-staged": "15.4.1",
-		"pngquant-bin": "^9.0.0",
+		"pngquant-bin": "9.0.0",
 		"prettier": "3.4.2",
 		"prettier-plugin-astro": "0.14.1",
 		"prettier-plugin-organize-imports": "4.1.0",
