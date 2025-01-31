@@ -26,7 +26,7 @@
 	"quoteProps": "consistent",
 	"requirePragma": false,
 	"semi": false,
-	"singleAttributePerLine": true,
+	"singleAttributePerLine": false,
 	"singleQuote": true,
 	"tabWidth": 2,
 	"tailwindFunctions": ["clsx", "tw", "tv", "cn", "twMerge", "tm", "cx"],
