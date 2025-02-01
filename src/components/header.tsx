@@ -1,7 +1,9 @@
 import BrandLogo from '@/components/brand-logo'
 import ThemeSwitcher from '@/components/theme-switcher'
 import type { Page } from '@/types'
-import { Avatar, Navbar, SearchField, Separator } from 'ui'
+import { useEffect } from 'react'
+import { toast } from 'sonner'
+import { Avatar, Link, Navbar, SearchField, Separator, Toast } from 'ui'
 
 interface AvatarProps {
 	src: string
@@ -42,63 +44,86 @@ function Header({ avatar, currentPage }: HeaderProps) {
 		size: 'large',
 	}
 
+	useEffect(() => {
+		toast('Web no oficial', {
+			description: () => (
+				<span>
+					Rediseño de{' '}
+					<Link intent='primary' href='https://play.mercadolibre.com.ar/' target='_blank' rel='noopener noreferrer'>
+						Mercado Play
+					</Link>
+					, desarrollado por{' '}
+					<Link intent='primary' href='https://github.com/hozlucas28' target='_blank' rel='noopener noreferrer'>
+						@hozlucas28
+					</Link>
+					.
+				</span>
+			),
+			duration: Infinity,
+		})
+	}, [])
+
 	return (
-		<Navbar className='min-h-fit'>
-			<Navbar.Nav>
-				<Navbar.Section className='h-full'>
-					{/* Desktop and mobile */}
-					<Navbar.Logo className='p-0 my-3 max-w-fit sm:my-0' {...navbarLogoProps}>
-						<BrandLogo className='h-10 sm:h-8' />
+		<>
+			<Navbar className='min-h-fit'>
+				<Navbar.Nav>
+					<Navbar.Section className='h-full'>
+						{/* Desktop and mobile */}
+						<Navbar.Logo className='p-0 my-3 max-w-fit sm:my-0' {...navbarLogoProps}>
+							<BrandLogo className='h-10 sm:h-8' />
+						</Navbar.Logo>
+
+						{/* Only mobile */}
+						<SearchField className='sm:hidden' {...searchFieldProps} />
+
+						{/* Desktop and mobile */}
+						<Navbar.Item href='/' isCurrent={currentPage === '/'} rel='home'>
+							Inicio
+						</Navbar.Item>
+						<Navbar.Item href='/series' isCurrent={currentPage === '/series'}>
+							Series
+						</Navbar.Item>
+						<Navbar.Item href='/films' isCurrent={currentPage === '/films'}>
+							Películas
+						</Navbar.Item>
+						<Navbar.Item href='/latest-releases' isCurrent={currentPage === '/latest-releases'}>
+							Últimos lanzamientos
+						</Navbar.Item>
+						<Navbar.Item href='/my-list' isCurrent={currentPage === '/my-list'}>
+							Mi lista
+						</Navbar.Item>
+
+						{/* Only mobile */}
+						<ThemeSwitcher className='mt-auto mb-3 size-[2.75rem] sm:hidden' />
+					</Navbar.Section>
+
+					{/* Only desktop */}
+					<Navbar.Section className='hidden sm:flex sm:ml-auto'>
+						<Navbar.Flex>
+							<SearchField {...searchFieldProps} />
+							<ThemeSwitcher className='size-[2.5rem]' />
+							<Separator {...separatorProps} />
+							<Avatar {...avatarProps} />
+						</Navbar.Flex>
+					</Navbar.Section>
+				</Navbar.Nav>
+
+				{/* Only mobile */}
+				<Navbar.Compact>
+					<Navbar.Logo className='my-3 p-0' {...navbarLogoProps}>
+						<BrandLogo className='h-full' />
 					</Navbar.Logo>
 
-					{/* Only mobile */}
-					<SearchField className='sm:hidden' {...searchFieldProps} />
-
-					{/* Desktop and mobile */}
-					<Navbar.Item href='/' isCurrent={currentPage === '/'} rel='home'>
-						Inicio
-					</Navbar.Item>
-					<Navbar.Item href='/series' isCurrent={currentPage === '/series'}>
-						Series
-					</Navbar.Item>
-					<Navbar.Item href='/films' isCurrent={currentPage === '/films'}>
-						Películas
-					</Navbar.Item>
-					<Navbar.Item href='/latest-releases' isCurrent={currentPage === '/latest-releases'}>
-						Últimos lanzamientos
-					</Navbar.Item>
-					<Navbar.Item href='/my-list' isCurrent={currentPage === '/my-list'}>
-						Mi lista
-					</Navbar.Item>
-
-					{/* Only mobile */}
-					<ThemeSwitcher className='mt-auto mb-3 size-[2.75rem] sm:hidden' />
-				</Navbar.Section>
-
-				{/* Only desktop */}
-				<Navbar.Section className='hidden sm:flex sm:ml-auto'>
 					<Navbar.Flex>
-						<SearchField {...searchFieldProps} />
-						<ThemeSwitcher className='size-[2.5rem]' />
+						<Navbar.Trigger />
 						<Separator {...separatorProps} />
 						<Avatar {...avatarProps} />
 					</Navbar.Flex>
-				</Navbar.Section>
-			</Navbar.Nav>
+				</Navbar.Compact>
+			</Navbar>
 
-			{/* Only mobile */}
-			<Navbar.Compact>
-				<Navbar.Logo className='my-3 p-0' {...navbarLogoProps}>
-					<BrandLogo className='h-full' />
-				</Navbar.Logo>
-
-				<Navbar.Flex>
-					<Navbar.Trigger />
-					<Separator {...separatorProps} />
-					<Avatar {...avatarProps} />
-				</Navbar.Flex>
-			</Navbar.Compact>
-		</Navbar>
+			<Toast />
+		</>
 	)
 }
 
