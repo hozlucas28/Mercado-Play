@@ -1,11 +1,11 @@
 'use client'
 
+import { DEFAULT_THEME, DEFAULT_THEME_STORAGE_KEY } from '@/constants'
 import type { Theme } from '@/types'
 import { IconMoon, IconSun } from 'justd-icons'
 import { useEffect, useState, type ComponentProps } from 'react'
 import { Button, cn } from 'ui'
 
-const _defaultTheme: Theme = 'dark'
 const _defaultStorageKey: string = 'ui-theme'
 
 interface ThemeSwitcherProps extends ComponentProps<typeof Button> {
@@ -14,8 +14,8 @@ interface ThemeSwitcherProps extends ComponentProps<typeof Button> {
 }
 
 function ThemeSwitcher({
-	defaultTheme = _defaultTheme,
-	storageKey = _defaultStorageKey,
+	defaultTheme = DEFAULT_THEME,
+	storageKey = DEFAULT_THEME_STORAGE_KEY,
 	...props
 }: ThemeSwitcherProps) {
 	const [currentTheme, setCurrentTheme] = useState<Theme>(defaultTheme)
@@ -59,5 +59,3 @@ function ThemeSwitcher({
 export type { ThemeSwitcherProps }
 
 export default ThemeSwitcher
-
-export { _defaultStorageKey as 'defaultStorageKey', _defaultTheme as 'defaultTheme' }
