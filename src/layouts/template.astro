@@ -18,6 +18,7 @@ const { title, description, keywords, locale, pageURL } = Astro.props
 	<head>
 		<meta charset='UTF-8' />
 		<meta name='robots' content='index, follow' />
+		<meta name='mobile-web-app-capable' content='yes' />
 		<meta name='viewport' content='width=device-width, initial-scale=1.0' />
 		<meta http-equiv='X-UA-Compatible' content='IE=edge' />
 
@@ -38,7 +39,6 @@ const { title, description, keywords, locale, pageURL } = Astro.props
 		<link rel='manifest' href='/manifest.json' />
 
 		<meta name='apple-mobile-web-app-title' content={BRAND_NAME} />
-		<meta name='apple-mobile-web-app-capable' content='yes' />
 		<meta name='apple-mobile-web-app-status-bar-style' content='default' />
 		<link rel='apple-touch-icon' href='/icons/apple-icon-180.png' />
 		<link
@@ -268,20 +268,19 @@ const { title, description, keywords, locale, pageURL } = Astro.props
 		</main>
 		<slot name='footer' />
 	</body>
+	<script>
+		import { DEFAULT_THEME, DEFAULT_THEME_STORAGE_KEY } from '@/constants'
+		import type { Theme } from '@/types'
 
-	<script is:inline>
-		const defaultTheme = 'dark'
-		const defaultStorageKey = 'ui-theme'
+		const darkTheme: Theme = 'dark'
+		const lightTheme: Theme = 'light'
 
-		const darkTheme = 'dark'
-		const lightTheme = 'light'
-
-		const themePreference = localStorage.getItem(defaultStorageKey) ?? defaultTheme
+		const themePreference: Theme = (localStorage.getItem(DEFAULT_THEME_STORAGE_KEY) as Theme) ?? DEFAULT_THEME
 		document.documentElement.classList[themePreference === darkTheme ? 'add' : 'remove'](darkTheme)
 
 		const observer = new MutationObserver(() => {
-			const isDark = document.documentElement.classList.contains(darkTheme)
-			localStorage.setItem(defaultStorageKey, isDark ? darkTheme : lightTheme)
+			const isDark: boolean = document.documentElement.classList.contains(darkTheme)
+			localStorage.setItem(DEFAULT_THEME_STORAGE_KEY, isDark ? darkTheme : lightTheme)
 		})
 
 		observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
