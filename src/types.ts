@@ -4,4 +4,8 @@ type Page = `/${'' | 'series' | 'films' | 'latest-releases' | 'my-list'}`
 
 type Theme = 'light' | 'dark'
 
-export type { Locale, Page, Theme }
+type ToastsStorage = {
+	displayed: string[]
+}
+
+export type { Locale, Page, Theme, ToastsStorage }

@@ -1,8 +1,9 @@
 import BrandLogo from '@/components/brand-logo'
 import ThemeSwitcher from '@/components/theme-switcher'
+import { TOASTS_IDS } from '@/constants'
 import type { Page } from '@/types'
+import showToast from '@/utils/show-toast'
 import { useEffect } from 'react'
-import { toast } from 'sonner'
 import { Avatar, Link, Navbar, SearchField, Separator, Toast } from 'ui'
 
 interface AvatarProps {
@@ -45,22 +46,23 @@ function Header({ avatar, currentPage }: HeaderProps) {
 	}
 
 	useEffect(() => {
-		toast('Web no oficial', {
-			description: () => (
-				<span>
-					Rediseño de{' '}
-					<Link intent='primary' href='https://play.mercadolibre.com.ar/' target='_blank' rel='noopener noreferrer'>
-						Mercado Play
-					</Link>
-					, desarrollado por{' '}
-					<Link intent='primary' href='https://github.com/hozlucas28' target='_blank' rel='noopener noreferrer'>
-						@hozlucas28
-					</Link>
-					.
-				</span>
-			),
-			duration: Infinity,
-		})
+		const title: string = 'Web no oficial'
+
+		const description: () => React.ReactNode = () => (
+			<span>
+				Rediseño de{' '}
+				<Link intent='primary' href='https://play.mercadolibre.com.ar/' target='_blank' rel='noopener noreferrer'>
+					Mercado Play
+				</Link>
+				, desarrollado por{' '}
+				<Link intent='primary' href='https://github.com/hozlucas28' target='_blank' rel='noopener noreferrer'>
+					@hozlucas28
+				</Link>
+				.
+			</span>
+		)
+
+		showToast(title, { description, id: TOASTS_IDS.UNOFFICIAL_WEB }, { oneTime: true, untilManualClose: true })
 	}, [])
 
 	return (
