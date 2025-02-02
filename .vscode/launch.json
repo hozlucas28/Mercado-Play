@@ -5,6 +5,18 @@
 			"name": "Development server",
 			"request": "launch",
 			"type": "node-terminal"
+		},
+		{
+			"name": "Launch Chrome against localhost",
+			"request": "launch",
+			"runtimeArgs": ["--incognito"],
+			"skipFiles": ["**/node_modules/**"],
+			"sourceMapPathOverrides": {
+				"vite:///src/*": "${webRoot}/*"
+			},
+			"type": "chrome",
+			"url": "http://localhost:4321/",
+			"webRoot": "${workspaceFolder}/src"
 		}
 	],
 	"version": "0.2.0"
