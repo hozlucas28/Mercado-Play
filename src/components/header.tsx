@@ -71,12 +71,12 @@ function Header({ avatar, currentPage }: HeaderProps) {
 				<Navbar.Nav>
 					<Navbar.Section className='h-full'>
 						{/* Desktop and mobile */}
-						<Navbar.Logo className='p-0 my-3 max-w-fit sm:my-0' {...navbarLogoProps}>
-							<BrandLogo className='h-10 sm:h-8' />
+						<Navbar.Logo className='p-0 my-3 max-w-fit lg:my-0' {...navbarLogoProps}>
+							<BrandLogo className='h-10 lg:h-8' />
 						</Navbar.Logo>
 
 						{/* Only mobile */}
-						<SearchField className='sm:hidden' {...searchFieldProps} />
+						<SearchField className='lg:hidden' {...searchFieldProps} />
 
 						{/* Desktop and mobile */}
 						<Navbar.Item href='/' isCurrent={currentPage === '/'} rel='home'>
@@ -96,11 +96,11 @@ function Header({ avatar, currentPage }: HeaderProps) {
 						</Navbar.Item>
 
 						{/* Only mobile */}
-						<ThemeSwitcher className='mt-auto mb-3 size-[2.75rem] sm:hidden' />
+						<ThemeSwitcher className='mt-auto mb-3 size-[2.75rem] lg:hidden' />
 					</Navbar.Section>
 
 					{/* Only desktop */}
-					<Navbar.Section className='hidden sm:flex sm:ml-auto'>
+					<Navbar.Section className='hidden lg:flex lg:ml-auto'>
 						<Navbar.Flex>
 							<SearchField {...searchFieldProps} />
 							<ThemeSwitcher className='size-[2.5rem]' />
