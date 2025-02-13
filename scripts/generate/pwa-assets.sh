@@ -25,4 +25,3 @@ pngquant \
     32 \
     -- \
     ./public/icons/*.png
-
