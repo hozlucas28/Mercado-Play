@@ -3,14 +3,15 @@
 	"type": "module",
 	"version": "0.0.1",
 	"scripts": {
-		"dev": "astro dev",
-		"dev:host": "astro dev --host",
+		"astro": "astro",
 		"build": "astro check && astro build",
 		"preview": "astro preview",
-		"astro": "astro",
+		"dev": "astro dev",
+		"dev:host": "astro dev --host",
 		"format": "prettier --write .",
 		"prepare": "husky",
-		"optimize:statics": "node ./scripts/optimize/statics.js",
+		"compress:statics": "node ./scripts/compress/statics.js",
+		"compress:statics-force": "node ./scripts/compress/statics.js --force",
 		"generate:pwa-assets": "sh ./scripts/generate/pwa-assets.sh"
 	},
 	"lint-staged": {
@@ -35,14 +36,13 @@
 	"devDependencies": {
 		"@types/glob": "8.1.0",
 		"@types/imagemin": "9.0.1",
-		"@types/imagemin-pngquant": "8.0.0",
 		"@types/imagemin-webp": "7.0.3",
 		"@types/react": "19.0.7",
 		"@types/react-dom": "19.0.3",
 		"glob": "11.0.1",
 		"husky": "9.1.7",
+		"image-size": "2.0.0",
 		"imagemin": "9.0.0",
-		"imagemin-pngquant": "10.0.0",
 		"imagemin-webp": "8.0.0",
 		"lint-staged": "15.4.1",
 		"pngquant-bin": "9.0.0",
@@ -61,6 +61,7 @@
 	"pnpm": {
 		"onlyBuiltDependencies": [
 			"cwebp-bin",
+			"handbrake-js",
 			"pngquant-bin"
 		]
 	}

@@ -57,9 +57,6 @@ importers:
       '@types/imagemin':
         specifier: 9.0.1
         version: 9.0.1
-      '@types/imagemin-pngquant':
-        specifier: 8.0.0
-        version: 8.0.0
       '@types/imagemin-webp':
         specifier: 7.0.3
         version: 7.0.3
@@ -75,12 +72,12 @@ importers:
       husky:
         specifier: 9.1.7
         version: 9.1.7
+      image-size:
+        specifier: 2.0.0
+        version: 2.0.0
       imagemin:
         specifier: 9.0.0
         version: 9.0.0
-      imagemin-pngquant:
-        specifier: 10.0.0
-        version: 10.0.0
       imagemin-webp:
         specifier: 8.0.0
         version: 8.0.0
@@ -88,7 +85,7 @@ importers:
         specifier: 15.4.1
         version: 15.4.1
       pngquant-bin:
-        specifier: 9.0.0
+        specifier: ^9.0.0
         version: 9.0.0
       prettier:
         specifier: 3.4.2
@@ -1325,10 +1322,6 @@ packages:
   '@types/hast@3.0.4':
     resolution: {integrity: sha512-WPs+bbQw5aCj+x6laNGWLH3wviHtoCv/P3+otBhbOhJgG8qtpdAMlTCxLtsTWA7LH1Oh/bFCHsBn0TPS5m30EQ==}
 
-  '@types/imagemin-pngquant@8.0.0':
-    resolution: {integrity: sha512-uFncUV7JWfBZj/oCrvD4M0RexrBq0h7Bfm5QBZkGhIxFxw0+ghant31hzKPk/DLd/WLhdgp76ay67fM/oZWNMQ==}
-    deprecated: This is a stub types definition. imagemin-pngquant provides its own type definitions, so you do not need this installed.
-
   '@types/imagemin-webp@7.0.3':
     resolution: {integrity: sha512-C2/EMohS4bzsvY5VJvdzHFdcfmnZoui54DmM/9bFtK57/CgGmKkc+p6n49euPGmMFDDvwm4yVl60nwxcZOmH5A==}
 
@@ -2390,9 +2383,10 @@ packages:
     resolution: {integrity: sha512-bAH5jbK/F3T3Jls4I0SO1hmPR0dKU0a7+SY6n1yzRtG54FLO8d6w/nxLFX2Nb7dBu6cCWXPaAME6cYqFUMmuCA==}
     engines: {node: '>= 4'}
 
-  imagemin-pngquant@10.0.0:
-    resolution: {integrity: sha512-kt0LFxyv7sBxUbZyvt+JXoU0HvSnmTJkEW32rZPQ9d7AQJPVh0vkz9mGkvbX0yntY2zW/3N20Yw69PBSt1UQzw==}
-    engines: {node: '>=18'}
+  image-size@2.0.0:
+    resolution: {integrity: sha512-HP07n1SpdIXGUL4VotUIOQz66MQOq8g7VN+Yj02YTVowqZScQ5i/JYU0+lkNr2pwt5j4hOpk94/UBV1ZCbS2fA==}
+    engines: {node: '>=16.x'}
+    hasBin: true
 
   imagemin-webp@8.0.0:
     resolution: {integrity: sha512-yN6kNKir6T/U3AtP3uLHrLn9XYafk2m49EbUqLCQ3GPRRLRs+4pUQxxaHz+lnTDM+LQpkSjGQaFVcSgYqvW3dQ==}
@@ -2512,10 +2506,6 @@ packages:
 
   is-plain-obj@4.1.0:
     resolution: {integrity: sha512-+Pgi+vMuUNkJyExiMBt5IlFoMyKnr5zhJ4Uspz58WOhBF5QoIZkFyNHIbBAtHwzVAgk5RtndVNsDRN61/mmDqg==}
-    engines: {node: '>=12'}
-
-  is-png@3.0.1:
-    resolution: {integrity: sha512-8TqC8+bdsm3YkpI2aECCDycFDl1hTB0HMVRnP3xRRa3Tqx2oVE7sBi1G6CuO9IqEyWSzbBZr1mGqdb3it9h/pg==}
     engines: {node: '>=12'}
 
   is-retry-allowed@1.2.0:
@@ -5917,10 +5907,6 @@ snapshots:
     dependencies:
       '@types/unist': 3.0.3
 
-  '@types/imagemin-pngquant@8.0.0':
-    dependencies:
-      imagemin-pngquant: 10.0.0
-
   '@types/imagemin-webp@7.0.3':
     dependencies:
       '@types/imagemin': 9.0.1
@@ -7238,14 +7224,7 @@ snapshots:
 
   ignore@7.0.3: {}
 
-  imagemin-pngquant@10.0.0:
-    dependencies:
-      environment: 1.1.0
-      execa: 8.0.1
-      is-png: 3.0.1
-      ow: 2.0.0
-      pngquant-bin: 9.0.0
-      uint8array-extras: 1.4.0
+  image-size@2.0.0: {}
 
   imagemin-webp@8.0.0:
     dependencies:
@@ -7351,8 +7330,6 @@ snapshots:
   is-plain-obj@1.1.0: {}
 
   is-plain-obj@4.1.0: {}
-
-  is-png@3.0.1: {}
 
   is-retry-allowed@1.2.0: {}
 

@@ -15,7 +15,7 @@ pwa-asset-generator \
     --maskable \
     --log &&
 
-# Optimize PNG images
+# Compress PNG images
 pngquant \
     --force \
     --skip-if-larger \
