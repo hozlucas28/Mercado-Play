@@ -17,9 +17,9 @@
 	],
 	"plugins": [
 		"prettier-plugin-astro",
-		"prettier-plugin-tailwindcss",
+		"prettier-plugin-sort-json",
 		"prettier-plugin-organize-imports",
-		"prettier-plugin-sort-json"
+		"prettier-plugin-tailwindcss"
 	],
 	"printWidth": 120,
 	"proseWrap": "preserve",
