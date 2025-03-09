@@ -2,6 +2,7 @@
 	"name": "mercado-play",
 	"type": "module",
 	"version": "0.0.1",
+	"packageManager": "pnpm@10.6.1",
 	"scripts": {
 		"astro": "astro",
 		"build": "astro check && astro build",

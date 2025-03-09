@@ -10,6 +10,11 @@ jobs:
   format:
     name: Compress statics
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [22]
+
     steps:
       - name: Generate a token
         id: generate_token
@@ -19,17 +24,21 @@ jobs:
           private-key: ${{ secrets.CONTINUOUS_INTEGRATION_BOT_KEY }}
 
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.2.2
         with:
           token: ${{ steps.generate_token.outputs.token }}
 
-      - name: Install Node.js
-        uses: actions/setup-node@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4.1.0
+
+      - name: Install Node.js v${{ matrix.node-version }}
+        uses: actions/setup-node@v4.2.0
         with:
-          node-version: '22.x'
+          cache: 'pnpm'
+          node-version: ${{ matrix.node-version }}
 
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install
 
       - name: Compress statics
         run: node --run compress:statics
