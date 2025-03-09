@@ -69,8 +69,10 @@
 	"pnpm": {
 		"onlyBuiltDependencies": [
 			"cwebp-bin",
+			"esbuild",
 			"handbrake-js",
-			"pngquant-bin"
+			"pngquant-bin",
+			"sharp"
 		]
 	}
 }
