@@ -1,8 +1,11 @@
-import { Separator as SeparatorPrimitive, type SeparatorProps } from 'react-aria-components'
+import {
+	Separator as SeparatorPrimitive,
+	type SeparatorProps,
+} from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
 const separatorStyles = tv({
-	base: 'bg-border shrink-0 forced-colors:bg-[ButtonBorder]',
+	base: 'shrink-0 bg-border forced-colors:bg-[ButtonBorder]',
 	variants: {
 		orientation: {
 			horizontal: 'h-px w-full',

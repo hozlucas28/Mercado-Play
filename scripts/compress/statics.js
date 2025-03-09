@@ -28,7 +28,9 @@ const breakpoints = ['2xl', 'xl', 'lg', 'md', 'sm']
 
 async function rmCompressedFiles() {
 	/** @type {string[]} */
-	const rawFilePaths = await glob(`./src/**/static?(s)/**/${rawFileFlag}*.+(${[...imgExts, ...videoExts].join('|')})`)
+	const rawFilePaths = await glob(
+		`./src/**/static?(s)/**/${rawFileFlag}*.+(${[...imgExts, ...videoExts].join('|')})`
+	)
 
 	for (const rawFilePath of rawFilePaths) {
 		/** @type {string} */
@@ -47,12 +49,15 @@ async function rmCompressedFiles() {
 		`./src/**/static?(s)/**/*@(${sep})+(${breakpoints.join('|')}).+(${imgExts.join('|')})`
 	)
 
-	for (const compressedImgPath of compressedImgPaths) await fs.rm(compressedImgPath)
+	for (const compressedImgPath of compressedImgPaths)
+		await fs.rm(compressedImgPath)
 
 	// Remove compressed videos
 
 	/** @type {string[]} */
-	const presetPaths = await glob(`./scripts/compress/handbrake-presets/[^${sep}]*${sep}*.json`)
+	const presetPaths = await glob(
+		`./scripts/compress/handbrake-presets/[^${sep}]*${sep}*.json`
+	)
 	const presetCategories = presetPaths.map((preset) => preset.split(sep)[0])
 
 	/** @type {string[]} */
@@ -60,7 +65,8 @@ async function rmCompressedFiles() {
 		`./src/**/static?(s)/**/*@(${sep})+(${presetCategories.join('|')}).+(${videoExts.join('|')})`
 	)
 
-	for (const compressedVideoPath of compressedVideoPaths) await fs.rm(compressedVideoPath)
+	for (const compressedVideoPath of compressedVideoPaths)
+		await fs.rm(compressedVideoPath)
 }
 
 /** @type {Record<imgExts[number] | 'undefined', (filePath: string) => Promise<void>>} */
@@ -137,7 +143,10 @@ const imgCompressionActions = {
 			}
 
 			/** @type {string} */
-			const newDest = nodePath.join(parsedImgPath.dir, parsedImgPath.name + sep + breakpoint + '.webp')
+			const newDest = nodePath.join(
+				parsedImgPath.dir,
+				parsedImgPath.name + sep + breakpoint + '.webp'
+			)
 
 			await fs.rename(webps[0].destinationPath, newDest)
 
@@ -151,7 +160,10 @@ const imgCompressionActions = {
 		}
 
 		/** @type {string} */
-		const newImgPath = nodePath.join(nodePath.dirname(imgPath), rawFileFlag + nodePath.basename(imgPath))
+		const newImgPath = nodePath.join(
+			nodePath.dirname(imgPath),
+			rawFileFlag + nodePath.basename(imgPath)
+		)
 
 		await fs.rename(imgPath, newImgPath)
 	},
@@ -160,7 +172,13 @@ const imgCompressionActions = {
 
 	undefined: async (filePath) => {
 		console.error(
-			styleText('red', format('> Error! An error occurred on compress "%s".', nodePath.join(cwd(), filePath)))
+			styleText(
+				'red',
+				format(
+					'> Error! An error occurred on compress "%s".',
+					nodePath.join(cwd(), filePath)
+				)
+			)
 		)
 	},
 }
@@ -174,7 +192,9 @@ const imgCompressionActions = {
 	// Compress images
 
 	/** @type {string[]} */
-	const imgPaths = await glob(`./src/**/static?(s)/**/!(${rawFileFlag})*.+(${imgExts.join('|')})`)
+	const imgPaths = await glob(
+		`./src/**/static?(s)/**/!(${rawFileFlag})*.+(${imgExts.join('|')})`
+	)
 
 	for (let i = 0; i < imgPaths.length; i++) {
 		/** @type {string} */
@@ -189,7 +209,11 @@ const imgCompressionActions = {
 		img.close()
 
 		if (i) console.log()
-		console.log('> Optimizing "%s" [~%f kb]...\n', nodePath.join(cwd(), imgPath), imgSize.toExponential(3))
+		console.log(
+			'> Optimizing "%s" [~%f kb]...\n',
+			nodePath.join(cwd(), imgPath),
+			imgSize.toExponential(3)
+		)
 
 		/** @type {imgExts[number]} */
 		const imgExt = nodePath.extname(imgPath).slice(1)
@@ -202,10 +226,14 @@ const imgCompressionActions = {
 	// Compress videos
 
 	/** @type {string[]} */
-	const videoPaths = await glob(`./src/**/static?(s)/**/!(${rawFileFlag})*.+(${videoExts.join('|')})`)
+	const videoPaths = await glob(
+		`./src/**/static?(s)/**/!(${rawFileFlag})*.+(${videoExts.join('|')})`
+	)
 
 	/** @type {string[]} */
-	const presetPaths = await glob(`./scripts/compress/handbrake-presets/[^${sep}]*${sep}*.json`)
+	const presetPaths = await glob(
+		`./scripts/compress/handbrake-presets/[^${sep}]*${sep}*.json`
+	)
 
 	if (imgPaths.length) console.log()
 
@@ -213,7 +241,9 @@ const imgCompressionActions = {
 		console.error(styleText('red', '> Missing handbrake preset/s for:\n'))
 
 		for (const videoPath of videoPaths) {
-			console.error(styleText('red', format('> "%s"', nodePath.join(cwd(), videoPath))))
+			console.error(
+				styleText('red', format('> "%s"', nodePath.join(cwd(), videoPath)))
+			)
 		}
 
 		return
@@ -227,12 +257,18 @@ const imgCompressionActions = {
 		const parsedVideoPath = nodePath.parse(videoPath)
 
 		/** @type {string} */
-		const newVideoPath = nodePath.join(parsedVideoPath.dir, `${rawFileFlag}${parsedVideoPath.base}`)
+		const newVideoPath = nodePath.join(
+			parsedVideoPath.dir,
+			`${rawFileFlag}${parsedVideoPath.base}`
+		)
 
 		await fs.rename(videoPath, newVideoPath)
 
 		if (i) console.log()
-		console.log('> Manually compress "%s"...\n', nodePath.join(cwd(), newVideoPath))
+		console.log(
+			'> Manually compress "%s"...\n',
+			nodePath.join(cwd(), newVideoPath)
+		)
 
 		for (let j = 0; j < presetPaths.length; j++) {
 			/** @type {string} */
@@ -256,7 +292,10 @@ const imgCompressionActions = {
 		console.info(
 			styleText(
 				'blue',
-				format('\n> Handbrake presets are inside "%s".', nodePath.join(cwd(), nodePath.dirname(presetPaths[0])))
+				format(
+					'\n> Handbrake presets are inside "%s".',
+					nodePath.join(cwd(), nodePath.dirname(presetPaths[0]))
+				)
 			)
 		)
 	}

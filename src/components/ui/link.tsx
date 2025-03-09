@@ -1,18 +1,25 @@
-import { composeRenderProps, Link as LinkPrimitive, type LinkProps as LinkPrimitiveProps } from 'react-aria-components'
+import {
+	composeRenderProps,
+	Link as LinkPrimitive,
+	type LinkProps as LinkPrimitiveProps,
+} from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
 const linkStyles = tv({
 	base: [
-		'relative focus-visible:outline-2 outline-offset-2 outline-0 focus:outline-none outline-primary transition-colors',
-		'forced-colors:outline-[Highlight] forced-colors:disabled:text-[GrayText] disabled:focus-visible:outline-0',
+		'relative outline-0 outline-offset-2 outline-primary transition-colors focus:outline-none focus-visible:outline-2',
+		'disabled:focus-visible:outline-0 forced-colors:outline-[Highlight] forced-colors:disabled:text-[GrayText]',
 		'disabled:cursor-default disabled:opacity-60',
 	],
 	variants: {
 		intent: {
 			'unstyled': 'text-current',
-			'primary': 'text-primary hover:text-primary/80 forced-colors:disabled:text-[GrayText]',
-			'danger': 'text-danger hover:text-danger/80 forced-colors:disabled:text-[GrayText]',
-			'lad/primary': 'text-fg hover:text-primary dark:hover:text-primary/80 forced-colors:disabled:text-[GrayText]',
+			'primary':
+				'text-primary hover:text-primary/80 forced-colors:disabled:text-[GrayText]',
+			'danger':
+				'text-danger hover:text-danger/80 forced-colors:disabled:text-[GrayText]',
+			'lad/primary':
+				'text-fg hover:text-primary dark:hover:text-primary/80 forced-colors:disabled:text-[GrayText]',
 			'secondary': 'text-secondary-fg hover:text-secondary-fg/80',
 		},
 	},
@@ -33,7 +40,13 @@ const Link = ({ className, ...props }: LinkProps) => {
 				linkStyles({ ...renderProps, intent: props.intent, className })
 			)}
 		>
-			{(values) => <>{typeof props.children === 'function' ? props.children(values) : props.children}</>}
+			{(values) => (
+				<>
+					{typeof props.children === 'function'
+						? props.children(values)
+						: props.children}
+				</>
+			)}
 		</LinkPrimitive>
 	)
 }

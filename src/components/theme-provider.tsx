@@ -26,7 +26,9 @@ export function ThemeProvider({
 	storageKey = DEFAULT_THEME_STORAGE_KEY,
 	...props
 }: ThemeProviderProps) {
-	const [theme, setTheme] = useState(() => (localStorage.getItem(storageKey) as Theme) || DEFAULT_THEME)
+	const [theme, setTheme] = useState(
+		() => (localStorage.getItem(storageKey) as Theme) || DEFAULT_THEME
+	)
 
 	useEffect(() => {
 		const darkTheme: Theme = 'dark'
@@ -44,7 +46,10 @@ export function ThemeProvider({
 	}
 
 	return (
-		<ThemeProviderContext.Provider {...props} value={value}>
+		<ThemeProviderContext.Provider
+			{...props}
+			value={value}
+		>
 			{children}
 		</ThemeProviderContext.Provider>
 	)
@@ -52,7 +57,8 @@ export function ThemeProvider({
 
 export const useTheme = () => {
 	const context = useContext(ThemeProviderContext)
-	if (context === undefined) throw new Error('useTheme must be used within a ThemeProvider')
+	if (context === undefined)
+		throw new Error('useTheme must be used within a ThemeProvider')
 
 	return context
 }

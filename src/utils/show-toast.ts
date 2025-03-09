@@ -13,7 +13,10 @@ type Options =
 
 function showToast(message: Parameters<typeof toast>[0]): void
 
-function showToast(message: Parameters<typeof toast>[0], data: NonNullable<Parameters<typeof toast>[1]>): void
+function showToast(
+	message: Parameters<typeof toast>[0],
+	data: NonNullable<Parameters<typeof toast>[1]>
+): void
 
 function showToast(
 	message: Parameters<typeof toast>[0],
@@ -38,7 +41,10 @@ function showToast(
 		return
 	}
 
-	const toastsStorage: ToastsStorage = Object.assign<ToastsStorage, ToastsStorage>(
+	const toastsStorage: ToastsStorage = Object.assign<
+		ToastsStorage,
+		ToastsStorage
+	>(
 		{ displayed: [] },
 		JSON.parse(localStorage.getItem(DEFAULT_TOASTS_STORAGE_KEY) ?? '{}')
 	)
@@ -48,13 +54,19 @@ function showToast(
 	'untilManualClose' in options && (data.duration = Infinity)
 
 	const onClose = () => {
-		const toastsStorage: ToastsStorage = Object.assign<ToastsStorage, ToastsStorage>(
+		const toastsStorage: ToastsStorage = Object.assign<
+			ToastsStorage,
+			ToastsStorage
+		>(
 			{ displayed: [] },
 			JSON.parse(localStorage.getItem(DEFAULT_TOASTS_STORAGE_KEY) ?? '{}')
 		)
 
 		toastsStorage.displayed.push(data.id)
-		localStorage.setItem(DEFAULT_TOASTS_STORAGE_KEY, JSON.stringify(toastsStorage))
+		localStorage.setItem(
+			DEFAULT_TOASTS_STORAGE_KEY,
+			JSON.stringify(toastsStorage)
+		)
 	}
 
 	const _onAutoClose = data.onAutoClose

@@ -1,7 +1,9 @@
 import * as React from 'react'
 
 import { cn } from '@/utils/classes'
-import useEmblaCarousel, { type UseEmblaCarouselType } from 'embla-carousel-react'
+import useEmblaCarousel, {
+	type UseEmblaCarouselType,
+} from 'embla-carousel-react'
 import { IconChevronLgLeft, IconChevronLgRight } from 'justd-icons'
 import type { ListBoxItemProps, SectionProps } from 'react-aria-components'
 import { ListBox, ListBoxItem, ListBoxSection } from 'react-aria-components'
@@ -42,7 +44,9 @@ interface CarouselRootProps {
 	CarouselButton?: typeof CarouselButton
 }
 
-interface CarouselProps extends React.HTMLAttributes<HTMLDivElement>, CarouselRootProps {
+interface CarouselProps
+	extends React.HTMLAttributes<HTMLDivElement>,
+		CarouselRootProps {
 	opts?: CarouselOptions
 	plugins?: CarouselPlugin
 	orientation?: 'horizontal' | 'vertical'
@@ -126,7 +130,8 @@ const Carousel = ({
 				carouselRef,
 				api: api,
 				opts,
-				orientation: orientation || (opts?.axis === 'y' ? 'vertical' : 'horizontal'),
+				orientation:
+					orientation || (opts?.axis === 'y' ? 'vertical' : 'horizontal'),
 				scrollPrev,
 				scrollNext,
 				canScrollPrev,
@@ -134,10 +139,10 @@ const Carousel = ({
 			}}
 		>
 			<div
-				onKeyDownCapture={handleKeyDown}
-				className={cn('relative', className)}
-				role='region'
 				aria-roledescription='carousel'
+				className={cn('relative', className)}
+				onKeyDownCapture={handleKeyDown}
+				role='region'
 				{...props}
 			>
 				{children}
@@ -146,19 +151,26 @@ const Carousel = ({
 	)
 }
 
-const CarouselContent = <T extends object>({ className, ...props }: SectionProps<T>) => {
+const CarouselContent = <T extends object>({
+	className,
+	...props
+}: SectionProps<T>) => {
 	const { carouselRef, orientation } = useCarousel()
 
 	return (
 		<ListBox
-			layout={orientation === 'vertical' ? 'stack' : 'grid'}
 			aria-label='Slides'
+			className='overflow-hidden'
+			layout={orientation === 'vertical' ? 'stack' : 'grid'}
 			orientation={orientation}
 			ref={carouselRef}
-			className='overflow-hidden'
 		>
 			<ListBoxSection
-				className={cn('flex', orientation === 'horizontal' ? '-ml-4' : '-mt-4 flex-col', className)}
+				className={cn(
+					'flex',
+					orientation === 'horizontal' ? '-ml-4' : '-mt-4 flex-col',
+					className
+				)}
 				{...props}
 			/>
 		</ListBox>
@@ -173,7 +185,7 @@ const CarouselItem = ({ className, ...props }: ListBoxItemProps) => {
 			aria-label={`Slide ${props.id}`}
 			aria-roledescription='slide'
 			className={cn(
-				'min-w-0 xd24r shrink-0 focus:outline-none grow-0 basis-full focus-visible:outline-none',
+				'xd24r min-w-0 shrink-0 grow-0 basis-full focus:outline-none focus-visible:outline-none',
 				orientation === 'horizontal' ? 'pl-4' : 'pt-4',
 				className
 			)}
@@ -182,22 +194,23 @@ const CarouselItem = ({ className, ...props }: ListBoxItemProps) => {
 	)
 }
 
-const CarouselHandler = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
-	({ className, ...props }, ref) => {
-		const { orientation } = useCarousel()
-		return (
-			<div
-				ref={ref}
-				className={cn(
-					'mt-6 z-10 relative flex items-center gap-x-2',
-					orientation === 'horizontal' ? 'justify-end' : 'justify-center',
-					className
-				)}
-				{...props}
-			/>
-		)
-	}
-)
+const CarouselHandler = React.forwardRef<
+	HTMLDivElement,
+	React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => {
+	const { orientation } = useCarousel()
+	return (
+		<div
+			className={cn(
+				'relative z-10 mt-6 flex items-center gap-x-2',
+				orientation === 'horizontal' ? 'justify-end' : 'justify-center',
+				className
+			)}
+			ref={ref}
+			{...props}
+		/>
+	)
+})
 CarouselHandler.displayName = 'CarouselHandler'
 
 const CarouselButton = ({
@@ -209,7 +222,8 @@ const CarouselButton = ({
 	size = 'square-petite',
 	...props
 }: ButtonProps & { slot: 'previous' | 'next' }) => {
-	const { orientation, scrollPrev, canScrollPrev, scrollNext, canScrollNext } = useCarousel()
+	const { orientation, scrollPrev, canScrollPrev, scrollNext, canScrollNext } =
+		useCarousel()
 	const isNext = slot === 'next'
 	const canScroll = isNext ? canScrollNext : canScrollPrev
 	const scroll = isNext ? scrollNext : scrollPrev
@@ -217,15 +231,15 @@ const CarouselButton = ({
 
 	return (
 		<Button
-			aria-label={isNext ? 'Next slide' : 'Previous slide'}
-			slot={slot}
-			intent={intent}
 			appearance={appearance}
-			size={size}
-			shape={shape}
+			aria-label={isNext ? 'Next slide' : 'Previous slide'}
 			className={cn(orientation === 'vertical' ? 'rotate-90' : '', className)}
+			intent={intent}
 			isDisabled={!canScroll}
 			onPress={scroll}
+			shape={shape}
+			size={size}
+			slot={slot}
 			{...props}
 		>
 			<Icon className='size-4' />

@@ -17,17 +17,19 @@ import { tv, type VariantProps } from 'tailwind-variants'
 import { Dialog } from './dialog'
 
 const sheetOverlayStyles = tv({
-	base: ['fixed top-0 left-0 w-full h-[--visual-viewport-height] isolate z-50 flex items-center justify-center p-4'],
+	base: [
+		'fixed left-0 top-0 isolate z-50 flex h-[--visual-viewport-height] w-full items-center justify-center p-4',
+	],
 	variants: {
 		isBlurred: {
 			true: 'backdrop-blur',
 			false: 'bg-dark/15 dark:bg-dark/40',
 		},
 		isEntering: {
-			true: 'animate-in fade-in duration-200 ease-out',
+			true: 'duration-200 ease-out animate-in fade-in',
 		},
 		isExiting: {
-			true: 'animate-out fade-out duration-200 ease-in',
+			true: 'duration-200 ease-in animate-out fade-out',
 		},
 	},
 })
@@ -49,27 +51,33 @@ const generateCompoundVariants = (sides: Array<Sides>) => {
 }
 
 const sheetContentStyles = tv({
-	base: 'fixed z-50 grid gap-4 bg-overlay border-dark/5 dark:border-border text-overlay-fg shadow-lg transition ease-in-out',
+	base: 'fixed z-50 grid gap-4 border-dark/5 bg-overlay text-overlay-fg shadow-lg transition ease-in-out dark:border-border',
 	variants: {
 		isEntering: {
-			true: 'duration-300 animate-in ',
+			true: 'duration-300 animate-in',
 		},
 		isExiting: {
 			true: 'duration-200 animate-out',
 		},
 		side: {
 			top: 'inset-x-0 top-0 rounded-b-2xl border-b entering:slide-in-from-top exiting:slide-out-to-top',
-			bottom: 'inset-x-0 bottom-0 rounded-t-2xl border-t entering:slide-in-from-bottom exiting:slide-out-to-bottom',
-			left: 'inset-y-0 left-0 h-auto w-[19rem] sm:w-3/4 overflow-y-auto border-r entering:slide-in-from-left exiting:slide-out-to-left sm:max-w-xs',
+			bottom:
+				'inset-x-0 bottom-0 rounded-t-2xl border-t entering:slide-in-from-bottom exiting:slide-out-to-bottom',
+			left: 'inset-y-0 left-0 h-auto w-[19rem] overflow-y-auto border-r entering:slide-in-from-left exiting:slide-out-to-left sm:w-3/4 sm:max-w-xs',
 			right:
-				'inset-y-0 right-0 h-auto w-[19rem] sm:w-3/4 overflow-y-auto border-l entering:slide-in-from-right exiting:slide-out-to-right sm:max-w-xs',
+				'inset-y-0 right-0 h-auto w-[19rem] overflow-y-auto border-l entering:slide-in-from-right exiting:slide-out-to-right sm:w-3/4 sm:max-w-xs',
 		},
 		isStack: {
 			true: '',
 			false: '',
 		},
 	},
-	compoundVariants: generateCompoundVariants(['top', 'bottom', 'left', 'right']),
+	compoundVariants: generateCompoundVariants([
+		'top',
+		'bottom',
+		'left',
+		'right',
+	]),
 })
 
 const Sheet = ({ children, ...props }: DialogTriggerProps) => {
@@ -106,34 +114,43 @@ const SheetContent = ({
 	const _isDismissable = role === 'alertdialog' ? false : isDismissable
 	return (
 		<ModalOverlay
+			className={composeRenderProps(
+				classNames?.overlay,
+				(className, renderProps) => {
+					return sheetOverlayStyles({
+						...renderProps,
+						isBlurred,
+						className,
+					})
+				}
+			)}
 			isDismissable={_isDismissable}
-			className={composeRenderProps(classNames?.overlay, (className, renderProps) => {
-				return sheetOverlayStyles({
-					...renderProps,
-					isBlurred,
-					className,
-				})
-			})}
 			{...props}
 		>
 			<ModalPrimitive
-				className={composeRenderProps(classNames?.content, (className, renderProps) =>
-					sheetContentStyles({
-						...renderProps,
-						side,
-						isStack,
-						className,
-					})
+				className={composeRenderProps(
+					classNames?.content,
+					(className, renderProps) =>
+						sheetContentStyles({
+							...renderProps,
+							side,
+							isStack,
+							className,
+						})
 				)}
 				{...props}
 			>
-				<Dialog role={role} aria-label={props['aria-label'] ?? undefined} className='h-full'>
+				<Dialog
+					aria-label={props['aria-label'] ?? undefined}
+					className='h-full'
+					role={role}
+				>
 					{(values) => (
 						<>
 							{props.children as React.ReactNode}
 							{closeButton && (
 								<Dialog.CloseIndicator
-									className='top-2.5 right-2.5'
+									className='right-2.5 top-2.5'
 									close={values.close}
 									isDismissable={_isDismissable}
 								/>

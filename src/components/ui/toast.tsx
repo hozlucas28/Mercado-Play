@@ -1,5 +1,9 @@
 import { useTheme } from '@/components/theme-provider'
-import { IconCheck, IconCircleExclamationFill, IconTriangleExclamationFill } from 'justd-icons'
+import {
+	IconCheck,
+	IconCircleExclamationFill,
+	IconTriangleExclamationFill,
+} from 'justd-icons'
 import { Toaster as ToasterPrimitive, type ToasterProps } from 'sonner'
 import { twJoin } from 'tailwind-merge'
 
@@ -10,7 +14,6 @@ const Toast = ({ ...props }: ToasterProps) => {
 	const { theme = 'system' } = useTheme()
 	return (
 		<ToasterPrimitive
-			theme={theme as ToasterProps['theme']}
 			className='toaster group'
 			icons={{
 				info: <IconCircleExclamationFill />,
@@ -19,6 +22,7 @@ const Toast = ({ ...props }: ToasterProps) => {
 				error: <IconTriangleExclamationFill />,
 				loading: <Loader variant='spin' />,
 			}}
+			theme={theme as ToasterProps['theme']}
 			toastOptions={{
 				unstyled: true,
 				closeButton: true,
@@ -34,8 +38,10 @@ const Toast = ({ ...props }: ToasterProps) => {
 						'[&>[data-cancel=true]]:left-4'
 					),
 					icon: 'absolute top-[1rem] sm:top-[1.50rem]',
-					content: '[&:not(:has(+button))]:pr-10 [&:has(+button)]:pb-11 md:[&:has(+button)]:pb-9',
-					error: 'bg-danger ring-danger-fg/10 text-white ring-inset [&>[data-close-button=true]>svg]:text-white',
+					content:
+						'[&:not(:has(+button))]:pr-10 [&:has(+button)]:pb-11 md:[&:has(+button)]:pb-9',
+					error:
+						'bg-danger ring-danger-fg/10 text-white ring-inset [&>[data-close-button=true]>svg]:text-white',
 					info: 'bg-info ring-info-fg/10 text-info-fg ring-inset [&>[data-close-button=true]>svg]:text-info-fg',
 					warning:
 						'bg-warning text-warning-fg ring-warning-fg/10 ring-inset [&>[data-close-button=true]>svg]:text-amber-950',
