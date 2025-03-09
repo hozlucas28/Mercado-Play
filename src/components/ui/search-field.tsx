@@ -17,7 +17,7 @@ const searchFieldStyles = tv({
 		searchIcon:
 			'ml-2.5 size-4 shrink-0 text-muted-fg group-disabled:text-muted-fg forced-colors:text-[ButtonText] forced-colors:group-disabled:text-[GrayText]',
 		clearButton: [
-			'mr-1 size-8 text-muted-fg group-empty:invisible pressed:bg-transparent hover:bg-transparent hover:text-fg pressed:text-fg',
+			'mr-1 size-8 text-muted-fg group-empty:invisible hover:bg-transparent hover:text-fg pressed:bg-transparent pressed:text-fg',
 		],
 		input: '[&::-webkit-search-cancel-button]:hidden',
 	},
@@ -50,12 +50,25 @@ const SearchField = ({
 		>
 			{label && <Label>{label}</Label>}
 			<FieldGroup>
-				<IconSearch aria-hidden className={searchIcon()} />
-				<Input placeholder={placeholder ?? 'Search...'} className={input()} />
+				<IconSearch
+					aria-hidden
+					className={searchIcon()}
+				/>
+				<Input
+					className={input()}
+					placeholder={placeholder ?? 'Search...'}
+				/>
 				{isPending ? (
-					<Loader variant='spin' className='mr-2.5' />
+					<Loader
+						className='mr-2.5'
+						variant='spin'
+					/>
 				) : (
-					<Button size='square-petite' appearance='plain' className={clearButton()}>
+					<Button
+						appearance='plain'
+						className={clearButton()}
+						size='square-petite'
+					>
 						<IconX aria-hidden />
 					</Button>
 				)}

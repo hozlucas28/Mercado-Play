@@ -32,10 +32,10 @@ interface FieldProps {
 const fieldStyles = tv({
 	slots: {
 		description: 'text-pretty text-base/6 text-muted-fg sm:text-sm/6',
-		label: 'w-fit cursor-default font-medium text-secondary-fg text-sm',
+		label: 'w-fit cursor-default text-sm font-medium text-secondary-fg',
 		fieldError: 'text-sm/6 text-danger forced-colors:text-[Mark]',
 		input: [
-			'w-full min-w-0 [&::-ms-reveal]:hidden bg-transparent py-2 px-2.5 text-base text-fg placeholder-muted-fg outline-none focus:outline-none lg:text-sm',
+			'w-full min-w-0 bg-transparent px-2.5 py-2 text-base text-fg placeholder-muted-fg outline-none focus:outline-none lg:text-sm [&::-ms-reveal]:hidden',
 		],
 	},
 })
@@ -43,7 +43,12 @@ const fieldStyles = tv({
 const { description, label, fieldError, input } = fieldStyles()
 
 const Label = ({ className, ...props }: LabelProps) => {
-	return <LabelPrimitive {...props} className={label({ className })} />
+	return (
+		<LabelPrimitive
+			{...props}
+			className={label({ className })}
+		/>
+	)
 }
 
 interface DescriptionProps extends TextProps {
@@ -55,14 +60,21 @@ const Description = ({ className, ...props }: DescriptionProps) => {
 	return (
 		<Text
 			{...props}
+			className={description({
+				className: isWarning ? 'text-warning' : className,
+			})}
 			slot='description'
-			className={description({ className: isWarning ? 'text-warning' : className })}
 		/>
 	)
 }
 
 const FieldError = ({ className, ...props }: FieldErrorProps) => {
-	return <FieldErrorPrimitive {...props} className={ctr(className, fieldError())} />
+	return (
+		<FieldErrorPrimitive
+			{...props}
+			className={ctr(className, fieldError())}
+		/>
+	)
 }
 
 const FieldGroup = ({ className, ...props }: GroupProps) => {
@@ -70,9 +82,9 @@ const FieldGroup = ({ className, ...props }: GroupProps) => {
 		<Group
 			{...props}
 			className={cn([
-				'border border-input transition duration-200 ease-out rounded-lg flex items-center',
+				'flex items-center rounded-lg border border-input transition duration-200 ease-out',
 				'focus-within:border-primary/70 focus-within:ring-4 focus-within:ring-primary/20',
-				'group-invalid:focus-within:border-danger focus-within:ring-4 group-invalid:focus-within:ring-danger/20',
+				'focus-within:ring-4 group-invalid:focus-within:border-danger group-invalid:focus-within:ring-danger/20',
 				'[&>[role=progressbar]]:mr-2.5',
 				'[&_[data-slot=icon]]:size-4 [&_[data-slot=icon]]:shrink-0',
 				'[&>[data-slot=suffix]]:mr-2.5 [&>[data-slot=suffix]]:text-muted-fg',
@@ -84,9 +96,17 @@ const FieldGroup = ({ className, ...props }: GroupProps) => {
 	)
 }
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>(({ className, ...props }, ref) => {
-	return <InputPrimitive ref={ref} {...props} className={ctr(className, input())} />
-})
+const Input = React.forwardRef<HTMLInputElement, InputProps>(
+	({ className, ...props }, ref) => {
+		return (
+			<InputPrimitive
+				ref={ref}
+				{...props}
+				className={ctr(className, input())}
+			/>
+		)
+	}
+)
 
 Input.displayName = 'Input'
 

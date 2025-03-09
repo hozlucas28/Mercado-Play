@@ -25,9 +25,17 @@ interface KeyboardProps extends React.HTMLAttributes<HTMLElement> {
 
 const Keyboard = ({ keys, classNames, className, ...props }: KeyboardProps) => {
 	return (
-		<KeyboardPrimitive className={base({ className: classNames?.base ?? className })} {...props}>
+		<KeyboardPrimitive
+			className={base({ className: classNames?.base ?? className })}
+			{...props}
+		>
 			{(Array.isArray(keys) ? keys : keys.split('')).map((char, index) => (
-				<kbd key={index} className={kbd({ className: index > 0 && char.length > 1 ? 'pl-1' : classNames?.kbd })}>
+				<kbd
+					className={kbd({
+						className: index > 0 && char.length > 1 ? 'pl-1' : classNames?.kbd,
+					})}
+					key={index}
+				>
 					{char}
 				</kbd>
 			))}

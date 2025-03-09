@@ -14,33 +14,102 @@ type Props = {
 const { title, description, keywords, locale, pageURL } = Astro.props
 ---
 
-<html dir='ltr' lang={locale}>
+<html
+	dir='ltr'
+	lang={locale}
+>
 	<head>
 		<meta charset='UTF-8' />
-		<meta name='robots' content='index, follow' />
-		<meta name='mobile-web-app-capable' content='yes' />
-		<meta name='viewport' content='width=device-width, initial-scale=1.0' />
-		<meta http-equiv='X-UA-Compatible' content='IE=edge' />
+		<meta
+			name='robots'
+			content='index, follow'
+		/>
+		<meta
+			name='mobile-web-app-capable'
+			content='yes'
+		/>
+		<meta
+			name='viewport'
+			content='width=device-width, initial-scale=1.0'
+		/>
+		<meta
+			http-equiv='X-UA-Compatible'
+			content='IE=edge'
+		/>
 
 		<title>{title}</title>
-		<meta name='description' content={description} />
-		<meta name='keywords' content={keywords} />
-		<meta name='Author' lang={locale} content='Lucas Hoz' />
-		<meta name='copyright' content='Lucas Hoz' />
-		<meta name='generator' content={Astro.generator} />
+		<meta
+			name='description'
+			content={description}
+		/>
+		<meta
+			name='keywords'
+			content={keywords}
+		/>
+		<meta
+			name='Author'
+			lang={locale}
+			content='Lucas Hoz'
+		/>
+		<meta
+			name='copyright'
+			content='Lucas Hoz'
+		/>
+		<meta
+			name='generator'
+			content={Astro.generator}
+		/>
 
-		<link rel='alternate' href={pageURL} hreflang='x-default' />
+		<link
+			rel='alternate'
+			href={pageURL}
+			hreflang='x-default'
+		/>
 
-		<link rel='icon' sizes='16x16' type='image/png' href='/favicon-16x16.png' />
-		<link rel='icon' sizes='32x32' type='image/png' href='/favicon-32x32.png' />
-		<link rel='icon' sizes='96x96' type='image/png' href='/favicon-96x96.png' />
-		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
-		<link rel='shortcut icon' href='/favicon.ico' />
-		<link rel='manifest' href='/manifest.json' />
+		<link
+			rel='icon'
+			sizes='16x16'
+			type='image/png'
+			href='/favicon-16x16.png'
+		/>
+		<link
+			rel='icon'
+			sizes='32x32'
+			type='image/png'
+			href='/favicon-32x32.png'
+		/>
+		<link
+			rel='icon'
+			sizes='96x96'
+			type='image/png'
+			href='/favicon-96x96.png'
+		/>
+		<link
+			rel='icon'
+			type='image/svg+xml'
+			href='/favicon.svg'
+		/>
+		<link
+			rel='shortcut icon'
+			href='/favicon.ico'
+		/>
+		<link
+			rel='manifest'
+			href='/manifest.json'
+		/>
 
-		<meta name='apple-mobile-web-app-title' content={BRAND_NAME} />
-		<meta name='apple-mobile-web-app-status-bar-style' content='default' />
-		<link rel='apple-touch-icon' href='/icons/apple-icon-180.png' />
+		<meta
+			name='apple-mobile-web-app-title'
+			content={BRAND_NAME}
+		/>
+		<meta
+			name='apple-mobile-web-app-status-bar-style'
+			content='default'
+		/>
+		<link
+			rel='apple-touch-icon'
+			href='/icons/apple-icon-180.png'
+		/>
 		<link
 			rel='apple-touch-startup-image'
 			href='/icons/apple-splash-2048-2732.png'
@@ -232,33 +301,108 @@ const { title, description, keywords, locale, pageURL } = Astro.props
 			media='(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)'
 		/>
 
-		<meta name='msapplication-square70x70logo' content='/icons/mstile-icon-128.png' />
-		<meta name='msapplication-square150x150logo' content='/icons/mstile-icon-270.png' />
-		<meta name='msapplication-square310x310logo' content='/icons/mstile-icon-558.png' />
-		<meta name='msapplication-wide310x150logo' content='/icons/mstile-icon-558-270.png' />
+		<meta
+			name='msapplication-square70x70logo'
+			content='/icons/mstile-icon-128.png'
+		/>
+		<meta
+			name='msapplication-square150x150logo'
+			content='/icons/mstile-icon-270.png'
+		/>
+		<meta
+			name='msapplication-square310x310logo'
+			content='/icons/mstile-icon-558.png'
+		/>
+		<meta
+			name='msapplication-wide310x150logo'
+			content='/icons/mstile-icon-558-270.png'
+		/>
 
-		<meta property='og:type' content='website' />
-		<meta property='og:url' content={pageURL} />
-		<meta property='og:locale' content={locale} />
-		<meta property='og:title' content={title} />
-		<meta property='og:site_name' content={BRAND_NAME} />
-		<meta property='og:description' content={description} />
-		<meta property='og:image' content='/og-image.webp' />
-		<meta property='og:image:type' content='image/webp' />
-		<meta property='og:image:width' content='1200' />
-		<meta property='og:image:height' content='630' />
-		<meta property='og:image' content='/og-image.png' />
-		<meta property='og:image:type' content='image/png' />
-		<meta property='og:image:width' content='1200' />
-		<meta property='og:image:height' content='630' />
+		<meta
+			property='og:type'
+			content='website'
+		/>
+		<meta
+			property='og:url'
+			content={pageURL}
+		/>
+		<meta
+			property='og:locale'
+			content={locale}
+		/>
+		<meta
+			property='og:title'
+			content={title}
+		/>
+		<meta
+			property='og:site_name'
+			content={BRAND_NAME}
+		/>
+		<meta
+			property='og:description'
+			content={description}
+		/>
+		<meta
+			property='og:image'
+			content='/og-image.webp'
+		/>
+		<meta
+			property='og:image:type'
+			content='image/webp'
+		/>
+		<meta
+			property='og:image:width'
+			content='1200'
+		/>
+		<meta
+			property='og:image:height'
+			content='630'
+		/>
+		<meta
+			property='og:image'
+			content='/og-image.png'
+		/>
+		<meta
+			property='og:image:type'
+			content='image/png'
+		/>
+		<meta
+			property='og:image:width'
+			content='1200'
+		/>
+		<meta
+			property='og:image:height'
+			content='630'
+		/>
 
-		<meta name='twitter:card' content='summary_large_image' />
-		<meta name='twitter:url' content={pageURL} />
-		<meta name='twitter:title' content={title} />
-		<meta name='twitter:description' content={description} />
-		<meta name='twitter:creator' content='@hozlucas28' />
-		<meta name='twitter:image' content='/og-twitter-image.webp' />
-		<meta name='twitter:image:alt' content='Rediseño de Mercado Play, desarrollado por @hozlucas28.' />
+		<meta
+			name='twitter:card'
+			content='summary_large_image'
+		/>
+		<meta
+			name='twitter:url'
+			content={pageURL}
+		/>
+		<meta
+			name='twitter:title'
+			content={title}
+		/>
+		<meta
+			name='twitter:description'
+			content={description}
+		/>
+		<meta
+			name='twitter:creator'
+			content='@hozlucas28'
+		/>
+		<meta
+			name='twitter:image'
+			content='/og-twitter-image.webp'
+		/>
+		<meta
+			name='twitter:image:alt'
+			content='Rediseño de Mercado Play, desarrollado por @hozlucas28.'
+		/>
 	</head>
 
 	<body class='font-sans antialiased'>
@@ -275,14 +419,25 @@ const { title, description, keywords, locale, pageURL } = Astro.props
 		const darkTheme: Theme = 'dark'
 		const lightTheme: Theme = 'light'
 
-		const themePreference: Theme = (localStorage.getItem(DEFAULT_THEME_STORAGE_KEY) as Theme) ?? DEFAULT_THEME
-		document.documentElement.classList[themePreference === darkTheme ? 'add' : 'remove'](darkTheme)
+		const themePreference: Theme =
+			(localStorage.getItem(DEFAULT_THEME_STORAGE_KEY) as Theme) ??
+			DEFAULT_THEME
+		document.documentElement.classList[
+			themePreference === darkTheme ? 'add' : 'remove'
+		](darkTheme)
 
 		const observer = new MutationObserver(() => {
-			const isDark: boolean = document.documentElement.classList.contains(darkTheme)
-			localStorage.setItem(DEFAULT_THEME_STORAGE_KEY, isDark ? darkTheme : lightTheme)
+			const isDark: boolean =
+				document.documentElement.classList.contains(darkTheme)
+			localStorage.setItem(
+				DEFAULT_THEME_STORAGE_KEY,
+				isDark ? darkTheme : lightTheme
+			)
 		})
 
-		observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
+		observer.observe(document.documentElement, {
+			attributes: true,
+			attributeFilter: ['class'],
+		})
 	</script>
 </html>

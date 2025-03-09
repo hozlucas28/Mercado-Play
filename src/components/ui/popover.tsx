@@ -26,25 +26,50 @@ const Popover = ({ children, ...props }: DialogTriggerProps) => {
 	return <DialogTrigger {...props}>{children}</DialogTrigger>
 }
 
-const Title = ({ level = 2, className, ...props }: React.ComponentProps<typeof Dialog.Title>) => (
-	<Dialog.Title className={cn('sm:leading-none', level === 2 && 'sm:text-lg', className)} {...props} />
+const Title = ({
+	level = 2,
+	className,
+	...props
+}: React.ComponentProps<typeof Dialog.Title>) => (
+	<Dialog.Title
+		className={cn('sm:leading-none', level === 2 && 'sm:text-lg', className)}
+		{...props}
+	/>
 )
 
-const Header = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-	<Dialog.Header className={cn('p-0 sm:pt-0', className)} {...props} />
+const Header = ({
+	className,
+	...props
+}: React.HTMLAttributes<HTMLDivElement>) => (
+	<Dialog.Header
+		className={cn('p-0 sm:pt-0', className)}
+		{...props}
+	/>
 )
 
-const Footer = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-	<Dialog.Footer className={cn('pb-0 pt-4 sm:pb-0', className)} {...props} />
+const Footer = ({
+	className,
+	...props
+}: React.HTMLAttributes<HTMLDivElement>) => (
+	<Dialog.Footer
+		className={cn('pb-0 pt-4 sm:pb-0', className)}
+		{...props}
+	/>
 )
 
-const Body = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-	<Dialog.Body className={cn('sm:p-0', className)} {...props} />
+const Body = ({
+	className,
+	...props
+}: React.HTMLAttributes<HTMLDivElement>) => (
+	<Dialog.Body
+		className={cn('sm:p-0', className)}
+		{...props}
+	/>
 )
 
 const popoverContentStyles = tv({
 	base: [
-		'max-w-xs min-w-80 p-4 rounded-xl border bg-overlay bg-clip-padding text-overlay-fg shadow-sm dark:backdrop-saturate-200 lg:text-sm sm:max-w-3xl forced-colors:bg-[Canvas] [&::-webkit-scrollbar]:size-0.5 [scrollbar-width:thin]',
+		'min-w-80 max-w-xs rounded-xl border bg-overlay bg-clip-padding p-4 text-overlay-fg shadow-sm [scrollbar-width:thin] dark:backdrop-saturate-200 sm:max-w-3xl lg:text-sm forced-colors:bg-[Canvas] [&::-webkit-scrollbar]:size-0.5',
 	],
 	variants: {
 		isMenu: {
@@ -65,17 +90,17 @@ const popoverContentStyles = tv({
 
 const drawerStyles = tv({
 	base: [
-		'fixed max-h-full bottom-0 top-auto z-50 w-full bg-overlay max-w-2xl border border-b-transparent outline-none',
+		'fixed bottom-0 top-auto z-50 max-h-full w-full max-w-2xl border border-b-transparent bg-overlay outline-none',
 	],
 	variants: {
 		isMenu: {
-			true: 'p-0 [&_[role=dialog]]:px-0 rounded-t-xl',
-			false: 'py-4 rounded-t-2xl',
+			true: 'rounded-t-xl p-0 [&_[role=dialog]]:px-0',
+			false: 'rounded-t-2xl py-4',
 		},
 		isEntering: {
 			true: [
-				'[will-change:transform] [transition:transform_0.5s_cubic-bezier(0.32,_0.72,_0,_1)]',
-				'animate-in duration-200 fade-in-0 slide-in-from-bottom-56',
+				'[transition:transform_0.5s_cubic-bezier(0.32,_0.72,_0,_1)] [will-change:transform]',
+				'duration-200 animate-in fade-in-0 slide-in-from-bottom-56',
 				'[transition:translate3d(0,_100%,_0)]',
 				'sm:slide-in-from-bottom-auto sm:slide-in-from-top-[20%]',
 			],
@@ -99,7 +124,13 @@ interface PopoverProps
 	'className'?: string | ((values: { defaultClassName?: string }) => string)
 }
 
-const Content = ({ respectScreen = true, children, showArrow = true, className, ...props }: PopoverProps) => {
+const Content = ({
+	respectScreen = true,
+	children,
+	showArrow = true,
+	className,
+	...props
+}: PopoverProps) => {
 	const isMobile = useMediaQuery('(max-width: 600px)')
 	const popoverContext = useSlottedContext(PopoverContext)!
 	const isMenuTrigger = popoverContext?.trigger === 'MenuTrigger'
@@ -121,7 +152,10 @@ const Content = ({ respectScreen = true, children, showArrow = true, className, 
 					drawerStyles({ ...renderProps, isMenu, className })
 				)}
 			>
-				<Dialog aria-label={isMenu ? 'Menu' : props['aria-label']} className='touch-none focus:outline-none'>
+				<Dialog
+					aria-label={isMenu ? 'Menu' : props['aria-label']}
+					className='touch-none focus:outline-none'
+				>
 					{children}
 				</Dialog>
 			</Modal>
@@ -140,10 +174,10 @@ const Content = ({ respectScreen = true, children, showArrow = true, className, 
 			{showArrow && (
 				<OverlayArrow className='group'>
 					<svg
-						width={12}
+						className='block fill-overlay stroke-border group-placement-left:-rotate-90 group-placement-right:rotate-90 group-placement-bottom:rotate-180 forced-colors:fill-[Canvas] forced-colors:stroke-[ButtonBorder]'
 						height={12}
 						viewBox='0 0 12 12'
-						className='block fill-overlay stroke-border group-placement-left:-rotate-90 group-placement-right:rotate-90 group-placement-bottom:rotate-180 forced-colors:fill-[Canvas] forced-colors:stroke-[ButtonBorder]'
+						width={12}
 					>
 						<path d='M0 0 L6 6 L12 0' />
 					</svg>
@@ -158,11 +192,16 @@ const Picker = ({ children, className, ...props }: PopoverProps) => {
 	return (
 		<PopoverPrimitive
 			{...props}
-			className={composeRenderProps(className as PopoverPrimitiveProps['className'], (className, renderProps) =>
-				popoverContentStyles({
-					...renderProps,
-					className: cn('max-h-72 min-w-[--trigger-width] overflow-y-auto p-0', className),
-				})
+			className={composeRenderProps(
+				className as PopoverPrimitiveProps['className'],
+				(className, renderProps) =>
+					popoverContentStyles({
+						...renderProps,
+						className: cn(
+							'max-h-72 min-w-[--trigger-width] overflow-y-auto p-0',
+							className
+						),
+					})
 			)}
 		>
 			{children}

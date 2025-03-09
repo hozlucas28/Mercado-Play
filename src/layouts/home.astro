@@ -21,6 +21,11 @@ const avatar: AvatarProps = {
 	locale='es'
 	pageURL={pageURL}
 >
-	<Header {avatar} currentPage={pageURL} slot='header' client:only='react' />
+	<Header
+		{avatar}
+		currentPage={pageURL}
+		slot='header'
+		client:only='react'
+	/>
 	<slot />
 </Template>

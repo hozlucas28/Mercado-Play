@@ -8,17 +8,24 @@ const avatarGroupStyles = tv({
 	base: 'flex items-center justify-center -space-x-2 [&_[data-slot=avatar]]:ring-2 [&_[data-slot=avatar]]:ring-bg',
 })
 
-interface AvatarGroupProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof avatarGroupStyles> {
+interface AvatarGroupProps
+	extends React.HTMLAttributes<HTMLDivElement>,
+		VariantProps<typeof avatarGroupStyles> {
 	children: React.ReactNode
 }
 
 const AvatarGroup = ({ className, ...props }: AvatarGroupProps) => {
-	return <div className={avatarGroupStyles({ className })} {...props} />
+	return (
+		<div
+			className={avatarGroupStyles({ className })}
+			{...props}
+		/>
+	)
 }
 
 const avatarStyles = tv({
 	base: [
-		'grid relative place-content-center shrink-0 bg-secondary align-middle [--avatar-radius:20%] [--ring-opacity:20%] *:col-start-1 *:row-start-1',
+		'relative grid shrink-0 place-content-center bg-secondary align-middle [--avatar-radius:20%] [--ring-opacity:20%] *:col-start-1 *:row-start-1',
 		'loo2ppvkxrcah38e outline outline-1 -outline-offset-1 outline-fg/[--ring-opacity]',
 	],
 	variants: {
@@ -29,7 +36,8 @@ const avatarStyles = tv({
 			'large': 'size-10',
 		},
 		shape: {
-			square: 'rounded-[--avatar-radius] *:rounded-[--avatar-radius] [&_[data-slot=badge]]:rounded-full',
+			square:
+				'rounded-[--avatar-radius] *:rounded-[--avatar-radius] [&_[data-slot=badge]]:rounded-full',
 			circle: 'rounded-full *:rounded-full',
 		},
 	},
@@ -42,7 +50,9 @@ const avatarStyles = tv({
 
 type Status = 'away' | 'online' | 'offline' | 'dnd' | 'idle'
 
-interface AvatarProps extends React.ComponentPropsWithoutRef<'span'>, VariantProps<typeof avatarStyles> {
+interface AvatarProps
+	extends React.ComponentPropsWithoutRef<'span'>,
+		VariantProps<typeof avatarStyles> {
 	src?: string | null
 	initials?: string
 	alt?: string
@@ -72,18 +82,36 @@ const Avatar = ({
 		>
 			{initials && (
 				<svg
+					aria-hidden={alt ? undefined : 'true'}
 					className='select-none fill-current text-[48px] font-medium uppercase'
 					viewBox='0 0 100 100'
-					aria-hidden={alt ? undefined : 'true'}
 				>
 					{alt && <title>{alt}</title>}
-					<text x='50%' y='50%' alignmentBaseline='middle' dominantBaseline='middle' textAnchor='middle' dy='.125em'>
+					<text
+						alignmentBaseline='middle'
+						dominantBaseline='middle'
+						dy='.125em'
+						textAnchor='middle'
+						x='50%'
+						y='50%'
+					>
 						{initials}
 					</text>
 				</svg>
 			)}
-			{src && <img src={src} alt={alt} />}
-			{status && <AvatarBadge size={size} status={status} aria-label={status} />}
+			{src && (
+				<img
+					alt={alt}
+					src={src}
+				/>
+			)}
+			{status && (
+				<AvatarBadge
+					aria-label={status}
+					size={size}
+					status={status}
+				/>
+			)}
 		</span>
 	)
 }
@@ -97,7 +125,9 @@ type AvatarBadgeProps = {
 }
 
 const avatarBadgeStyles = tv({
-	base: ['size-3 z-10 absolute bottom-0 right-0 rounded-full ring-[1.5px] ring-bg bg-bg'],
+	base: [
+		'absolute bottom-0 right-0 z-10 size-3 rounded-full bg-bg ring-[1.5px] ring-bg',
+	],
 	variants: {
 		size: {
 			'extra-small': 'size-[0.360rem] translate-x-[0%] translate-y-[0%]',
@@ -119,9 +149,19 @@ const avatarBadgeStyles = tv({
 	},
 })
 
-const AvatarBadge = ({ size, className, status, ...props }: AvatarBadgeProps) => {
+const AvatarBadge = ({
+	size,
+	className,
+	status,
+	...props
+}: AvatarBadgeProps) => {
 	return (
-		<span data-slot='badge' {...props} aria-hidden className={avatarBadgeStyles({ size, status, className })}>
+		<span
+			data-slot='badge'
+			{...props}
+			aria-hidden
+			className={avatarBadgeStyles({ size, status, className })}
+		>
 			<VisuallyHidden>{status}</VisuallyHidden>
 		</span>
 	)

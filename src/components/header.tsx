@@ -51,18 +51,32 @@ function Header({ avatar, currentPage }: HeaderProps) {
 		const description: () => React.ReactNode = () => (
 			<span>
 				Rediseño de{' '}
-				<Link intent='primary' href='https://play.mercadolibre.com.ar/' target='_blank' rel='noopener noreferrer'>
+				<Link
+					href='https://play.mercadolibre.com.ar/'
+					intent='primary'
+					rel='noopener noreferrer'
+					target='_blank'
+				>
 					Mercado Play
 				</Link>
 				, desarrollado por{' '}
-				<Link intent='primary' href='https://github.com/hozlucas28' target='_blank' rel='noopener noreferrer'>
+				<Link
+					href='https://github.com/hozlucas28'
+					intent='primary'
+					rel='noopener noreferrer'
+					target='_blank'
+				>
 					@hozlucas28
 				</Link>
 				.
 			</span>
 		)
 
-		showToast(title, { description, id: TOASTS_IDS.UNOFFICIAL_WEB }, { oneTime: true, untilManualClose: true })
+		showToast(
+			title,
+			{ description, id: TOASTS_IDS.UNOFFICIAL_WEB },
+			{ oneTime: true, untilManualClose: true }
+		)
 	}, [])
 
 	return (
@@ -71,36 +85,58 @@ function Header({ avatar, currentPage }: HeaderProps) {
 				<Navbar.Nav>
 					<Navbar.Section className='h-full'>
 						{/* Desktop and mobile */}
-						<Navbar.Logo className='p-0 my-3 max-w-fit lg:my-0' {...navbarLogoProps}>
+						<Navbar.Logo
+							className='my-3 max-w-fit p-0 lg:my-0'
+							{...navbarLogoProps}
+						>
 							<BrandLogo className='h-10 lg:h-8' />
 						</Navbar.Logo>
 
 						{/* Only mobile */}
-						<SearchField className='lg:hidden' {...searchFieldProps} />
+						<SearchField
+							className='lg:hidden'
+							{...searchFieldProps}
+						/>
 
 						{/* Desktop and mobile */}
-						<Navbar.Item href='/' isCurrent={currentPage === '/'} rel='home'>
+						<Navbar.Item
+							href='/'
+							isCurrent={currentPage === '/'}
+							rel='home'
+						>
 							Inicio
 						</Navbar.Item>
-						<Navbar.Item href='/series' isCurrent={currentPage === '/series'}>
+						<Navbar.Item
+							href='/series'
+							isCurrent={currentPage === '/series'}
+						>
 							Series
 						</Navbar.Item>
-						<Navbar.Item href='/films' isCurrent={currentPage === '/films'}>
+						<Navbar.Item
+							href='/films'
+							isCurrent={currentPage === '/films'}
+						>
 							Películas
 						</Navbar.Item>
-						<Navbar.Item href='/latest-releases' isCurrent={currentPage === '/latest-releases'}>
+						<Navbar.Item
+							href='/latest-releases'
+							isCurrent={currentPage === '/latest-releases'}
+						>
 							Últimos lanzamientos
 						</Navbar.Item>
-						<Navbar.Item href='/my-list' isCurrent={currentPage === '/my-list'}>
+						<Navbar.Item
+							href='/my-list'
+							isCurrent={currentPage === '/my-list'}
+						>
 							Mi lista
 						</Navbar.Item>
 
 						{/* Only mobile */}
-						<ThemeSwitcher className='mt-auto mb-3 size-[2.75rem] lg:hidden' />
+						<ThemeSwitcher className='mb-3 mt-auto size-[2.75rem] lg:hidden' />
 					</Navbar.Section>
 
 					{/* Only desktop */}
-					<Navbar.Section className='hidden lg:flex lg:ml-auto'>
+					<Navbar.Section className='hidden lg:ml-auto lg:flex'>
 						<Navbar.Flex>
 							<SearchField {...searchFieldProps} />
 							<ThemeSwitcher className='size-[2.5rem]' />
@@ -112,7 +148,10 @@ function Header({ avatar, currentPage }: HeaderProps) {
 
 				{/* Only mobile */}
 				<Navbar.Compact>
-					<Navbar.Logo className='my-3 p-0' {...navbarLogoProps}>
+					<Navbar.Logo
+						className='my-3 p-0'
+						{...navbarLogoProps}
+					>
 						<BrandLogo className='h-full' />
 					</Navbar.Logo>
 

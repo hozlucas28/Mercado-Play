@@ -15,13 +15,13 @@ import { tv } from 'tailwind-variants'
 
 const dropdownItemStyles = tv({
 	base: [
-		'group text-fg forced-colors:text-[LinkText] flex cursor-default forced-color-adjust-none select-none items-center gap-x-1.5 rounded-[calc(var(--radius)-1px)] py-2 px-2.5 relative text-base outline outline-0 forced-color:text-[Highlight] lg:text-sm',
+		'forced-color:text-[Highlight] group relative flex cursor-default select-none items-center gap-x-1.5 rounded-[calc(var(--radius)-1px)] px-2.5 py-2 text-base text-fg outline outline-0 forced-color-adjust-none lg:text-sm forced-colors:text-[LinkText]',
 		'has-submenu:open:data-[danger=true]:bg-danger/20 has-submenu:open:data-[danger=true]:text-danger',
 		'has-submenu:open:bg-accent has-submenu:open:text-accent-fg [&[data-has-submenu][data-open]_[data-slot=icon]]:text-accent-fg [&[data-has-submenu][data-open]_.text-muted-fg]:text-accent-fg',
 		'[&_[data-slot=avatar]]:-mr-0.5 [&_[data-slot=avatar]]:size-6 sm:[&_[data-slot=avatar]]:size-5',
-		'[&_[data-slot=icon]]:size-4 [&_[data-slot=icon]]:shrink-0 [&_[data-slot=icon]]:text-muted-fg [&[data-hovered]_[data-slot=icon]]:text-accent-fg [&[data-focused]_[data-slot=icon]]:text-accent-fg [&[data-danger]_[data-slot=icon]]:text-danger/60 [&[data-focused][data-danger]_[data-slot=icon]]:text-danger-fg',
+		'[&[data-hovered]_[data-slot=icon]]:text-accent-fg [&[data-focused]_[data-slot=icon]]:text-accent-fg [&[data-danger]_[data-slot=icon]]:text-danger/60 [&[data-focused][data-danger]_[data-slot=icon]]:text-danger-fg [&_[data-slot=icon]]:size-4 [&_[data-slot=icon]]:shrink-0 [&_[data-slot=icon]]:text-muted-fg',
 		'[&_[data-slot=menu-radio]>[data-slot=icon]]:size-3',
-		'forced-colors:[&_[data-slot=icon]]:text-[CanvasText] forced-colors:[&_[data-slot=icon]]:group-data-[focus]:text-[Canvas] ',
+		'forced-colors:[&_[data-slot=icon]]:text-[CanvasText] forced-colors:[&_[data-slot=icon]]:group-data-[focus]:text-[Canvas]',
 	],
 	variants: {
 		isDisabled: {
@@ -30,7 +30,7 @@ const dropdownItemStyles = tv({
 		isFocused: {
 			false: 'data-[danger=true]:text-danger',
 			true: [
-				'bg-accent text-accent-fg forced-colors:text-[HighlightText] forced-colors:bg-[Highlight]',
+				'bg-accent text-accent-fg forced-colors:bg-[Highlight] forced-colors:text-[HighlightText]',
 				'data-[danger=true]:bg-danger data-[danger=true]:text-danger-fg',
 				'[&_.text-muted-fg]:text-accent-fg/80 [&[data-slot=label]]:text-accent-fg [&[data-slot=description]]:text-accent-fg',
 			],
@@ -47,9 +47,10 @@ const dropdownItemStyles = tv({
 
 const dropdownSectionStyles = tv({
 	slots: {
-		section: "first:-mt-[5px] xss3 flex flex-col gap-y-0.5 after:content-[''] after:block after:h-[5px]",
+		section:
+			"xss3 flex flex-col gap-y-0.5 after:block after:h-[5px] after:content-[''] first:-mt-[5px]",
 		header:
-			'text-sm font-medium text-muted-fg px-4 py-2 truncate min-w-[--trigger-width] sticky -top-[5px] bg-tertiary -mb-0.5 -mx-1 z-10 supports-[-moz-appearance:none]:bg-tertiary border-y [&+*]:mt-1',
+			'sticky -top-[5px] z-10 -mx-1 -mb-0.5 min-w-[--trigger-width] truncate border-y bg-tertiary px-4 py-2 text-sm font-medium text-muted-fg supports-[-moz-appearance:none]:bg-tertiary [&+*]:mt-1',
 	},
 })
 
@@ -59,7 +60,10 @@ interface DropdownSectionProps<T> extends SectionProps<T> {
 	title?: string
 }
 
-const DropdownSection = <T extends object>({ className, ...props }: DropdownSectionProps<T>) => {
+const DropdownSection = <T extends object>({
+	className,
+	...props
+}: DropdownSectionProps<T>) => {
 	return (
 		<ListBoxSection className={section({ className })}>
 			{'title' in props && <Header className={header()}>{props.title}</Header>}
@@ -69,13 +73,15 @@ const DropdownSection = <T extends object>({ className, ...props }: DropdownSect
 }
 
 const DropdownItem = ({ className, ...props }: ListBoxItemProps) => {
-	const textValue = props.textValue || (typeof props.children === 'string' ? props.children : undefined)
+	const textValue =
+		props.textValue ||
+		(typeof props.children === 'string' ? props.children : undefined)
 	return (
 		<ListBoxItemPrimitive
-			textValue={textValue}
 			className={composeRenderProps(className, (className, renderProps) =>
 				dropdownItemStyles({ ...renderProps, className })
 			)}
+			textValue={textValue}
 			{...props}
 		>
 			{composeRenderProps(props.children, (children, { isSelected }) => (
@@ -104,20 +110,32 @@ interface DropdownItemSlot extends TextProps {
 	}
 }
 
-const DropdownItemDetails = ({ label, description, classNames, ...props }: DropdownItemSlot) => {
+const DropdownItemDetails = ({
+	label,
+	description,
+	classNames,
+	...props
+}: DropdownItemSlot) => {
 	const { slot, children, title, ...restProps } = props
 
 	return (
-		<div className='flex flex-col gap-y-1' {...restProps}>
+		<div
+			className='flex flex-col gap-y-1'
+			{...restProps}
+		>
 			{label && (
-				<Text slot={slot ?? 'label'} className={cn('font-medium lg:text-sm', classNames?.label)} {...restProps}>
+				<Text
+					className={cn('font-medium lg:text-sm', classNames?.label)}
+					slot={slot ?? 'label'}
+					{...restProps}
+				>
 					{label}
 				</Text>
 			)}
 			{description && (
 				<Text
+					className={cn('text-xs text-muted-fg', classNames?.description)}
 					slot={slot ?? 'description'}
-					className={cn('text-muted-fg text-xs', classNames?.description)}
 					{...restProps}
 				>
 					{description}
@@ -129,4 +147,10 @@ const DropdownItemDetails = ({ label, description, classNames, ...props }: Dropd
 }
 
 // Note: This is not exposed component, but it's used in other components to render dropdowns.
-export { DropdownItem, DropdownItemDetails, dropdownItemStyles, DropdownSection, dropdownSectionStyles }
+export {
+	DropdownItem,
+	DropdownItemDetails,
+	dropdownItemStyles,
+	DropdownSection,
+	dropdownSectionStyles,
+}
