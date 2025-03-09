@@ -1,0 +1,43 @@
+name: 'Compress statics'
+
+on:
+  push:
+    paths:
+      - 'src/**/static?(s)/**/!(__)*.+(jpg|png)'
+      - 'src/**/static?(s)/**/!(__)*.+(mp4)'
+
+jobs:
+  format:
+    name: Compress statics
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate a token
+        id: generate_token
+        uses: actions/create-github-app-token@v1.8.1
+        with:
+          app-id: ${{ secrets.CONTINUOUS_INTEGRATION_BOT_ID }}
+          private-key: ${{ secrets.CONTINUOUS_INTEGRATION_BOT_KEY }}
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ steps.generate_token.outputs.token }}
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Compress statics
+        run: node --run compress:statics
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add .
+          git diff-index --quiet HEAD || git commit -m "ci: compress statics"
+          git push
