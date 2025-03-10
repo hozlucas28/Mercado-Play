@@ -9,7 +9,8 @@
 		"bierner.markdown-mermaid",
 		"bradlc.vscode-tailwindcss",
 		"tldraw-org.tldraw-vscode",
-		"esbenp.prettier-vscode"
+		"esbenp.prettier-vscode",
+		"stivo.tailwind-fold"
 	],
 	"unwantedRecommendations": []
 }
