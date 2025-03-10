@@ -1,3 +1,5 @@
+type Breakpoint = 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+
 type Locale = 'es'
 
 type Page = `/${'' | 'series' | 'films' | 'latest-releases' | 'my-list'}`
@@ -8,4 +10,4 @@ type ToastsStorage = {
 	displayed: string[]
 }
 
-export type { Locale, Page, Theme, ToastsStorage }
+export type { Breakpoint, Locale, Page, Theme, ToastsStorage }
