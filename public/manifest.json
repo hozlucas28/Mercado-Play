@@ -38,42 +38,42 @@
 			"form_factor": "wide",
 			"label": "Home page",
 			"sizes": "1920x1080",
-			"src": "/screenshots/home-desktop.png",
+			"src": "/screenshots/home__desktop.png",
 			"type": "image/png"
 		},
 		{
 			"form_factor": "wide",
 			"label": "Film page",
 			"sizes": "1920x1080",
-			"src": "/screenshots/film-desktop.png",
+			"src": "/screenshots/film__desktop.png",
 			"type": "image/png"
 		},
 		{
 			"form_factor": "wide",
 			"label": "Serie page",
 			"sizes": "1920x1080",
-			"src": "/screenshots/serie-desktop.png",
+			"src": "/screenshots/serie__desktop.png",
 			"type": "image/png"
 		},
 		{
 			"form_factor": "narrow",
 			"label": "Home page",
 			"sizes": "360x640",
-			"src": "/screenshots/home-mobile.png",
+			"src": "/screenshots/home__mobile.png",
 			"type": "image/png"
 		},
 		{
 			"form_factor": "narrow",
 			"label": "Film page",
 			"sizes": "360x640",
-			"src": "/screenshots/film-mobile.png",
+			"src": "/screenshots/film__mobile.png",
 			"type": "image/png"
 		},
 		{
 			"form_factor": "narrow",
 			"label": "Serie page",
 			"sizes": "360x640",
-			"src": "/screenshots/serie-mobile.png",
+			"src": "/screenshots/serie__mobile.png",
 			"type": "image/png"
 		}
 	],
