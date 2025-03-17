@@ -6,7 +6,9 @@
 		"paths": {
 			"@/*": ["src/*"],
 			"ui": ["src/components/ui/index.ts"]
-		}
+		},
+		"sourceMap": true,
+		"strictNullChecks": true
 	},
 	"exclude": ["dist"],
 	"extends": "astro/tsconfigs/strict",

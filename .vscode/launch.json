@@ -1,6 +1,16 @@
 {
 	"configurations": [
 		{
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"name": "Run Current TS File",
+			"program": "${file}",
+			"request": "launch",
+			"runtimeExecutable": "tsx",
+			"skipFiles": ["<node_internals>/**", "**/node_modules/**"],
+			"type": "node"
+		},
+		{
 			"command": "./node_modules/.bin/astro dev",
 			"name": "Development server",
 			"request": "launch",
