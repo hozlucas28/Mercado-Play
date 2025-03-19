@@ -8,7 +8,8 @@
 			"ui": ["src/components/ui/index.ts"]
 		},
 		"sourceMap": true,
-		"strictNullChecks": true
+		"strictNullChecks": true,
+		"types": ["astro/client", "vite-plugin-pwa/vanillajs", "vite-plugin-pwa/info", "vite-plugin-pwa/pwa-assets"]
 	},
 	"exclude": ["dist"],
 	"extends": "astro/tsconfigs/strict",

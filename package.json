@@ -12,9 +12,7 @@
 		"format": "prettier --write .",
 		"lint": "eslint --fix",
 		"prepare": "husky",
-		"compress:statics": "node ./scripts/compress/statics.js",
-		"compress:statics-force": "node ./scripts/compress/statics.js --force",
-		"generate:pwa-assets": "sh ./scripts/generate/pwa-assets.sh"
+		"compress:public": "tsx ./scripts/compress/public.ts"
 	},
 	"lint-staged": {
 		"**/*": [
@@ -42,8 +40,6 @@
 		"@eslint/compat": "1.2.7",
 		"@eslint/js": "9.22.0",
 		"@types/glob": "8.1.0",
-		"@types/imagemin": "9.0.1",
-		"@types/imagemin-webp": "7.0.3",
 		"@types/react": "19.0.7",
 		"@types/react-dom": "19.0.3",
 		"@typescript-eslint/eslint-plugin": "8.26.1",
@@ -54,11 +50,7 @@
 		"glob": "11.0.1",
 		"globals": "16.0.0",
 		"husky": "9.1.7",
-		"image-size": "2.0.0",
-		"imagemin": "9.0.0",
-		"imagemin-webp": "8.0.0",
 		"lint-staged": "15.4.1",
-		"pngquant-bin": "9.0.0",
 		"prettier": "3.4.2",
 		"prettier-plugin-astro": "0.14.1",
 		"prettier-plugin-jsxattribute-sort": "1.0.1",
@@ -66,20 +58,24 @@
 		"prettier-plugin-organize-imports": "4.1.0",
 		"prettier-plugin-sort-json": "4.1.1",
 		"prettier-plugin-tailwindcss": "0.6.10",
-		"pwa-asset-generator": "6.4.0",
+		"sharp": "0.33.5",
+		"sharp-ico": "0.1.5",
 		"tailwind-merge": "2.6.0",
 		"tailwind-variants": "0.3.1",
 		"tailwindcss-animate": "1.0.7",
 		"tailwindcss-react-aria-components": "1.2.0",
+		"tsx": "4.19.3",
 		"typescript": "5.7.3",
-		"typescript-eslint": "8.26.1"
+		"vite-plugin-pwa": "0.21.1",
+		"workbox-window": "7.3.0"
 	},
 	"pnpm": {
+		"overrides": {
+			"sharp": "0.33.5"
+		},
 		"onlyBuiltDependencies": [
-			"cwebp-bin",
 			"esbuild",
 			"handbrake-js",
-			"pngquant-bin",
 			"sharp"
 		]
 	}
