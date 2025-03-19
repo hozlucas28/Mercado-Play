@@ -23,7 +23,7 @@
 		"prettier-plugin-tailwindcss",
 		"prettier-plugin-merge"
 	],
-	"printWidth": 80,
+	"printWidth": 120,
 	"proseWrap": "preserve",
 	"quoteProps": "consistent",
 	"requirePragma": false,
