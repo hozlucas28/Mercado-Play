@@ -1,14 +1,13 @@
-name: 'Compress statics'
+name: 'Compress public'
 
 on:
   push:
     paths:
-      - 'src/**/static?(s)/**/!(__)*.+(jpg|png)'
-      - 'src/**/static?(s)/**/!(__)*.+(mp4)'
+      - './public/!(icons)/**/!(__)*[^-]*[^(2xl|xl|lg|md|sm)].+(png)'
 
 jobs:
   format:
-    name: Compress statics
+    name: Compress public
     runs-on: ubuntu-latest
 
     strategy:
@@ -40,13 +39,13 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Compress statics
-        run: node --run compress:statics
+      - name: Compress public
+        run: node --run compress:public
 
       - name: Commit and push changes
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add .
-          git diff-index --quiet HEAD || git commit -m "ci: compress statics"
+          git diff-index --quiet HEAD || git commit -m "ci: compress public"
           git push

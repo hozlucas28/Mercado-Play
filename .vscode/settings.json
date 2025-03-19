@@ -1,17 +1,5 @@
 {
-	"editor.codeActionsOnSave": {
-		"source.fixAll.eslint": "always"
-	},
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"editor.formatOnSave": true,
-	"eslint.format.enable": true,
-	"eslint.validate": [
-		"javascript",
-		"typescript",
-		"astro",
-		"javascriptreact",
-		"typescriptreact"
-	],
-
 	"typescript.tsdk": "node_modules/typescript/lib"
 }
