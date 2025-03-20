@@ -1,0 +1,77 @@
+---
+import { BREAKPOINTS, COMPRESS_CONFIGURATION } from '@/constants'
+import type { Breakpoint, BreakpointWidth, CompressConfiguration } from '@/types'
+import nodePath from 'node:path'
+import type { LocalImageProps, Size } from './local-image.astro'
+
+/* ---------------------------------- Types --------------------------------- */
+
+interface Props extends Omit<LocalImageProps, 'src'> {
+	src: `/${string}.${RawExts}`
+	width: number
+	height: number
+}
+
+type SrcSet<T extends string> =
+	`${string}${CompressConfiguration['images']['breakpointSep']}${Breakpoint}.${T} ${number}w`
+
+type RawExts = CompressConfiguration['images']['extsToCompress'][number]
+
+type CompressedExts = keyof CompressConfiguration['images']['outputFormats']
+
+/* ---------------------------------- Logic --------------------------------- */
+
+const { breakpointSep, outputFormats } = COMPRESS_CONFIGURATION.images
+
+const { pictureAttributes, src, ...imgAttributes }: Props = Astro.props
+
+const sizes: Size[] = []
+const rawSrcSet: SrcSet<RawExts>[] = []
+const srcSetPerFormat = {} as Record<CompressedExts, SrcSet<CompressedExts>[]>
+
+const parsedSrc = nodePath.parse(src)
+
+for (const breakpoint in BREAKPOINTS) {
+	const _breakpoint = breakpoint as Breakpoint
+
+	const width: BreakpointWidth = BREAKPOINTS[_breakpoint]
+	sizes.push(`(min-width: ${width}px) ${width}px`)
+
+	const srcSet =
+		`${parsedSrc.dir}/${parsedSrc.name}${breakpointSep}${_breakpoint}.${parsedSrc.ext} ${width}w` as SrcSet<RawExts>
+	rawSrcSet.push(srcSet)
+
+	for (const format in outputFormats) {
+		const _format = format as CompressedExts
+
+		const srcSet =
+			`${parsedSrc.dir}/${parsedSrc.name}${breakpointSep}${_breakpoint}.${_format} ${width}w` as SrcSet<CompressedExts>
+
+		srcSetPerFormat[_format] ??= []
+		srcSetPerFormat[_format].push(srcSet)
+	}
+}
+
+export type { Props as PublicImageProps }
+---
+
+{
+	(
+		<picture {...pictureAttributes}>
+			{Object.entries(srcSetPerFormat).map(([format, srcSet]) => (
+				<source
+					sizes={sizes.join(', ')}
+					srcset={srcSet.join(', ')}
+					type={`image/${format}`}
+				/>
+			))}
+			<img
+				loading='lazy'
+				decoding='sync'
+				sizes={sizes.join(', ')}
+				srcset={Object.entries(rawSrcSet).join(', ')}
+				{...imgAttributes}
+			/>
+		</picture>
+	)
+}

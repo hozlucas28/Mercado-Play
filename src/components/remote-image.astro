@@ -1,0 +1,38 @@
+---
+import { BREAKPOINTS, COMPRESS_CONFIGURATION } from '@/constants'
+import type { Breakpoint, BreakpointWidth } from '@/types'
+import { Picture } from 'astro:assets'
+import type { LocalImageProps, Size } from './local-image.astro'
+
+/* ---------------------------------- Types --------------------------------- */
+
+interface Props extends Omit<LocalImageProps, 'src'> {
+	src: string
+}
+
+/* ---------------------------------- Logic --------------------------------- */
+
+const props: Props = Astro.props
+
+const sizes: Size[] = []
+const widths: BreakpointWidth[] = []
+
+for (const breakpoint in BREAKPOINTS) {
+	const _breakpoint = breakpoint as Breakpoint
+	const width: BreakpointWidth = BREAKPOINTS[_breakpoint]
+
+	widths.push(width)
+	sizes.push(`(min-width: ${width}px) ${width}px`)
+}
+
+export type { Props as RemoteImageProps }
+---
+
+<Picture
+	sizes={sizes.join(', ')}
+	formats={Object.keys(COMPRESS_CONFIGURATION.images.outputFormats)}
+	quality={'high'}
+	inferSize
+	{widths}
+	{...props}
+/>
