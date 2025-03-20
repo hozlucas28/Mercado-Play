@@ -1,0 +1,16 @@
+---
+import { BRAND } from '@/constants'
+import PublicImage, { type PublicImageProps } from './public-image.astro'
+
+interface Props extends Omit<PublicImageProps, 'alt' | 'src' | 'width' | 'height'> {}
+
+const props: Props = Astro.props
+---
+
+<PublicImage
+	alt=`Logo de ${BRAND.name}.`
+	src='/brand/logo.png'
+	width={1381}
+	height={495}
+	{...props}
+/>
