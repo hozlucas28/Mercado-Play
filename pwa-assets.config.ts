@@ -7,7 +7,11 @@ import {
 	minimal2023Preset,
 } from '@vite-pwa/assets-generator/config'
 
-import { BRAND } from './src/constants'
+import { BRAND, COMPRESS_CONFIGURATION } from './src/constants'
+
+/* ------------------------- Configuration Variables ------------------------ */
+
+const { png: pngQuality } = COMPRESS_CONFIGURATION.images.outputFormats
 
 /* -------------------------------- Utilities ------------------------------- */
 
@@ -33,7 +37,7 @@ const appleSplashScreens = createAppleSplashScreens(
 		padding: 0,
 
 		png: {
-			quality: 80,
+			quality: pngQuality,
 			compressionLevel: 6,
 		},
 
@@ -48,6 +52,7 @@ const appleSplashScreens = createAppleSplashScreens(
 			addMediaScreen: true,
 		},
 	},
+
 	AllAppleDeviceNames
 )
 
@@ -62,25 +67,28 @@ export default defineConfig({
 	manifestIconsEntry: true,
 
 	headLinkOptions: {
+		preset: '2023',
 		basePath: '/',
 		xhtml: true,
 		includeId: false,
-		preset: '2023',
 	},
 
 	preset: {
 		...minimal2023Preset,
+
 		assetName,
 
 		png: {
-			quality: 80,
+			quality: pngQuality,
 			compressionLevel: 6,
 		},
 
 		apple: {
 			...minimal2023Preset.apple,
+
 			padding: 0,
 			sizes: [180, 167, 152, 120, 76, 57],
+
 			resizeOptions: {
 				background: BRAND.primaryColor,
 			},
@@ -90,8 +98,10 @@ export default defineConfig({
 
 		maskable: {
 			...minimal2023Preset.maskable,
+
 			padding: 0.2,
 			sizes: [512, 192, 64],
+
 			resizeOptions: {
 				background: BRAND.primaryColor,
 			},
@@ -99,8 +109,10 @@ export default defineConfig({
 
 		transparent: {
 			...minimal2023Preset.transparent,
+
 			padding: 0.2,
 			sizes: [512, 192, 64],
+
 			resizeOptions: {
 				background: BRAND.primaryColor,
 			},

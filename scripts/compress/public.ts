@@ -16,9 +16,7 @@ interface Size {
 	height: number
 }
 
-type OutputFormat =
-	| CompressConfiguration['images']['extsToCompress'][number]
-	| CompressConfiguration['images']['outputFormats'][number]
+type OutputFormat = keyof CompressConfiguration['images']['outputFormats']
 
 /* ------------------------- Configuration Variables ------------------------ */
 
@@ -47,7 +45,11 @@ async function compress(path: string, outputFormats: OutputFormat[]): Promise<vo
 
 		if (fsSync.existsSync(outputPath)) await fs.rm(outputPath)
 
-		const output: OutputInfo = await sharp(path)[outputFormat]().toFile(outputPath)
+		const output: OutputInfo = await sharp(path)
+			[outputFormat]({
+				quality: images.outputFormats[outputFormat],
+			})
+			.toFile(outputPath)
 
 		console.log(
 			'> "%s" (%dx%d) [~%f kb]',
@@ -113,10 +115,7 @@ async function compressWithBreakpoints(path: string): Promise<void> {
 
 	const parsedPath: ParsedPath = nodePath.parse(path)
 
-	const outputFormats = [
-		parsedPath.ext.slice(1) as CompressConfiguration['images']['extsToCompress'][number],
-		...images.outputFormats,
-	] as const
+	const outputFormats = Object.keys(images.outputFormats) as OutputFormat[]
 
 	for (let i = 0; i < outputFormats.length; i++) {
 		const outputFormat = outputFormats[i]
@@ -133,7 +132,12 @@ async function compressWithBreakpoints(path: string): Promise<void> {
 
 			if (fsSync.existsSync(outputPath)) await fs.rm(outputPath)
 
-			const output: OutputInfo = await sharp(path).resize(size)[outputFormat]().toFile(outputPath)
+			const output: OutputInfo = await sharp(path)
+				.resize(size)
+				[outputFormat]({
+					quality: images.outputFormats[outputFormat],
+				})
+				.toFile(outputPath)
 
 			console.log(
 				'> "%s" (%dx%d) [~%f kb]',
@@ -168,7 +172,7 @@ async function main(): Promise<void> {
 			const rawPath: string = nodePath.join(parsedImgPath.dir, `${rawPrefix}${parsedImgPath.name}${parsedImgPath.ext}`)
 			if (fsSync.existsSync(rawPath)) continue
 
-			await compress(imgPath, [parsedImgPath.ext.slice(1) as OutputFormat, ...images.outputFormats])
+			await compress(imgPath, Object.keys(images.outputFormats) as OutputFormat[])
 		} else {
 			await compressWithBreakpoints(imgPath)
 		}
