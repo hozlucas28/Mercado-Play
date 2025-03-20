@@ -1,36 +1,38 @@
-import BrandLogo from '@/components/brand-logo'
 import ThemeSwitcher from '@/components/theme-switcher'
 import { TOASTS_IDS } from '@/constants'
 import type { Page } from '@/types'
 import showToast from '@/utils/show-toast'
+import type { ReactNode } from 'react'
 import { useEffect } from 'react'
 import { Avatar, Link, Navbar, SearchField, Separator, Toast } from 'ui'
 
 interface AvatarProps {
-	src: string
 	alt: string
+	src: string
 	initials: string
 }
 
 interface HeaderProps {
-	currentPage: Page
 	avatar: AvatarProps
+	currentPage: Page
+	Brand: ReactNode
+	SidebarBrand: ReactNode
 }
 
-function Header({ avatar, currentPage }: HeaderProps) {
+function Header({ avatar, currentPage, Brand, SidebarBrand }: HeaderProps) {
 	const navbarLogoProps: React.ComponentProps<typeof Navbar.Logo> = {
-		'aria-label': 'Ir a la página de inicio',
 		'href': '/',
+		'aria-label': 'Ir a la página de inicio',
 	}
 
 	const searchFieldProps: React.ComponentProps<typeof SearchField> = {
-		'aria-label': 'Buscar películas, series y más',
-		'placeholder': 'Buscar películas o series...',
 		'name': 'query',
 		'type': 'text',
 		'inputMode': 'text',
 		'spellCheck': 'true',
-		'onChange': (value) => console.log(value),
+		'placeholder': 'Buscar películas o series...',
+		'aria-label': 'Buscar películas, series y más',
+		'onChange': (value) => console.log(value), // TODO
 	}
 
 	const separatorProps: React.ComponentProps<typeof Separator> = {
@@ -39,10 +41,10 @@ function Header({ avatar, currentPage }: HeaderProps) {
 	}
 
 	const avatarProps: React.ComponentProps<typeof Avatar> = {
-		src: avatar.src,
 		alt: avatar.alt,
-		initials: avatar.initials,
+		src: avatar.src,
 		size: 'large',
+		initials: avatar.initials,
 	}
 
 	useEffect(() => {
@@ -74,8 +76,14 @@ function Header({ avatar, currentPage }: HeaderProps) {
 
 		showToast(
 			title,
-			{ description, id: TOASTS_IDS.UNOFFICIAL_WEB },
-			{ oneTime: true, untilManualClose: true }
+			{
+				id: TOASTS_IDS.UNOFFICIAL_WEB,
+				description,
+			},
+			{
+				oneTime: true,
+				untilManualClose: true,
+			}
 		)
 	}, [])
 
@@ -89,7 +97,7 @@ function Header({ avatar, currentPage }: HeaderProps) {
 							className='my-3 max-w-fit p-0 lg:my-0'
 							{...navbarLogoProps}
 						>
-							<BrandLogo className='h-10 lg:h-8' />
+							{Brand}
 						</Navbar.Logo>
 
 						{/* Only mobile */}
@@ -152,7 +160,7 @@ function Header({ avatar, currentPage }: HeaderProps) {
 						className='my-3 p-0'
 						{...navbarLogoProps}
 					>
-						<BrandLogo className='h-full' />
+						{SidebarBrand}
 					</Navbar.Logo>
 
 					<Navbar.Flex>

@@ -1,0 +1,45 @@
+---
+import Brand from '@/components/brand.astro'
+import type { AvatarProps } from '@/components/header'
+import Header from '@/components/header'
+import { BRAND } from '@/constants'
+import type { Page } from '@/types'
+import Template from './template.astro'
+
+const pageURL: Page = '/'
+
+const avatar: AvatarProps = {
+	src: 'https://avatars.githubusercontent.com/u/88015479',
+	alt: 'hozlucas28',
+	initials: 'HZ',
+}
+---
+
+<Template
+	locale='es'
+	title=`${BRAND.name} - Ver Películas y Series Gratis`
+	description={BRAND.description}
+	keywords='ver online, ver en línea, películas, ver películas, películas online, películas en línea, películas completas, películas en streaming, series, ver series, series online, series en línea, series completas, series en streaming, ver programas, programas online, programas en línea'
+	pageURL={pageURL}
+>
+	<Header
+		{avatar}
+		currentPage={pageURL}
+		slot='header'
+		client:only='react'
+		Brand
+		SidebarBrand
+	>
+		<Brand
+			class='h-10 w-auto lg:h-8'
+			pictureAttributes={{ class: 'h-10 w-auto lg:h-8' }}
+			slot='Brand'
+		/>
+		<Brand
+			class='h-full w-auto'
+			pictureAttributes={{ class: 'h-full w-auto' }}
+			slot='SidebarBrand'
+		/>
+	</Header>
+	<slot />
+</Template>
