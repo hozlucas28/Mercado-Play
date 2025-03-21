@@ -140,7 +140,7 @@ function Header({ avatar, currentPage, Brand, SidebarBrand }: HeaderProps) {
 						</Navbar.Item>
 
 						{/* Only mobile */}
-						<ThemeSwitcher className='mb-3 mt-auto size-[2.75rem] lg:hidden' />
+						<ThemeSwitcher className='mt-auto mb-3 size-[2.75rem] lg:hidden' />
 					</Navbar.Section>
 
 					{/* Only desktop */}
