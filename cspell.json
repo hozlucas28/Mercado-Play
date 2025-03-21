@@ -5,5 +5,5 @@
 	"ignoreWords": [],
 	"import": [],
 	"version": "0.2",
-	"words": ["mstile"]
+	"words": ["fontsource", "geist", "mstile", "opsz", "tailwindcss"]
 }
