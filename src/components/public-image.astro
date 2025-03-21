@@ -23,7 +23,7 @@ type CompressedExts = keyof CompressConfiguration['images']['outputFormats']
 
 const { breakpointSep, outputFormats } = COMPRESS_CONFIGURATION.images
 
-const { pictureAttributes, src, ...imgAttributes }: Props = Astro.props
+const { src, pictureAttributes, ...imgAttributes }: Props = Astro.props
 
 const sizes: Size[] = []
 const rawSrcSet: SrcSet<RawExts>[] = []
@@ -52,6 +52,14 @@ for (const breakpoint in BREAKPOINTS) {
 	}
 }
 
+const _imgAttributes = Object.assign(
+	{
+		loading: 'lazy' as const,
+		decoding: 'sync' as const,
+	},
+	imgAttributes
+)
+
 export type { Props as PublicImageProps }
 ---
 
@@ -66,11 +74,9 @@ export type { Props as PublicImageProps }
 				/>
 			))}
 			<img
-				loading='lazy'
-				decoding='sync'
 				sizes={sizes.join(', ')}
 				srcset={Object.entries(rawSrcSet).join(', ')}
-				{...imgAttributes}
+				{..._imgAttributes}
 			/>
 		</picture>
 	)
