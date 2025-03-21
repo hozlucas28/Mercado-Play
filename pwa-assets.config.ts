@@ -27,7 +27,7 @@ function assetName(type: AssetType, size: ResolvedAssetSize): string {
 }
 
 // Apple
-function appleAssetName(landscape: boolean, size: AppleDeviceSize, dark?: boolean): string {
+function appleAssetName(landscape: boolean, size: AppleDeviceSize, _dark?: boolean): string {
 	return `apple-splash-${landscape ? 'landscape' : 'portrait'}-${size.width}x${size.height}.png`
 }
 

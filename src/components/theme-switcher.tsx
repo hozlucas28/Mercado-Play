@@ -4,9 +4,8 @@ import { DEFAULT_THEME, DEFAULT_THEME_STORAGE_KEY } from '@/constants'
 import type { Theme } from '@/types'
 import { IconMoon, IconSun } from 'justd-icons'
 import { useEffect, useState, type ComponentProps } from 'react'
-import { Button, cn } from 'ui'
-
-const _defaultStorageKey: string = 'ui-theme'
+import { twMerge } from 'tailwind-merge'
+import { Button } from 'ui'
 
 interface ThemeSwitcherProps extends ComponentProps<typeof Button> {
 	defaultTheme?: Theme
@@ -24,47 +23,38 @@ function ThemeSwitcher({
 	const lightTheme: Theme = 'light'
 
 	useEffect(() => {
-		const savedTheme =
-			(localStorage.getItem(storageKey) as Theme) || defaultTheme
+		const savedTheme = (localStorage.getItem(storageKey) as Theme) || defaultTheme
 		setCurrentTheme(savedTheme)
 
-		document.documentElement.classList[
-			savedTheme === darkTheme ? 'add' : 'remove'
-		](darkTheme)
+		document.documentElement.classList[savedTheme === darkTheme ? 'add' : 'remove'](darkTheme)
 	}, [])
 
 	const handleSwitchTheme = () => {
 		const newTheme = currentTheme === lightTheme ? darkTheme : lightTheme
 		setCurrentTheme(newTheme)
 
-		document.documentElement.classList[
-			newTheme === darkTheme ? 'add' : 'remove'
-		](darkTheme)
+		document.documentElement.classList[newTheme === darkTheme ? 'add' : 'remove'](darkTheme)
 		localStorage.setItem(storageKey, newTheme)
 	}
 
 	return (
 		<Button
-			appearance='outline'
+			intent='outline'
 			aria-label='Cambiar tema'
 			onPress={handleSwitchTheme}
 			size='square-petite'
 			{...props}
 		>
 			<IconSun
-				className={cn(
+				className={twMerge(
 					'h-[1.2rem] w-[1.2rem] transition-all',
-					currentTheme === darkTheme
-						? '-rotate-90 scale-0 opacity-0'
-						: 'rotate-0 scale-100 opacity-100'
+					currentTheme === darkTheme ? 'scale-0 -rotate-90 opacity-0' : 'scale-100 rotate-0 opacity-100'
 				)}
 			/>
 			<IconMoon
-				className={cn(
+				className={twMerge(
 					'absolute h-[1.2rem] w-[1.2rem] transition-all',
-					currentTheme === darkTheme
-						? 'rotate-0 scale-100 opacity-100'
-						: 'rotate-90 scale-0 opacity-0'
+					currentTheme === darkTheme ? 'scale-100 rotate-0 opacity-100' : 'scale-0 rotate-90 opacity-0'
 				)}
 			/>
 		</Button>

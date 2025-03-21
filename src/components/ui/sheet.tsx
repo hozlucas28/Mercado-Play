@@ -1,175 +1,158 @@
-import * as React from 'react'
+import type { DialogProps, DialogTriggerProps, ModalOverlayProps } from "react-aria-components"
+import { DialogTrigger, Modal, ModalOverlay, composeRenderProps } from "react-aria-components"
+import { type VariantProps, tv } from "tailwind-variants"
 
-import type {
-	DialogProps,
-	DialogTriggerProps,
-	Modal,
-	ModalOverlayProps as ModalOverlayPrimitiveProps,
-} from 'react-aria-components'
-import {
-	composeRenderProps,
-	DialogTrigger as DialogTriggerPrimitive,
-	ModalOverlay,
-	Modal as ModalPrimitive,
-} from 'react-aria-components'
-import { tv, type VariantProps } from 'tailwind-variants'
+import { Dialog } from "./dialog"
 
-import { Dialog } from './dialog'
-
-const sheetOverlayStyles = tv({
-	base: [
-		'fixed left-0 top-0 isolate z-50 flex h-[--visual-viewport-height] w-full items-center justify-center p-4',
-	],
-	variants: {
-		isBlurred: {
-			true: 'backdrop-blur',
-			false: 'bg-dark/15 dark:bg-dark/40',
-		},
-		isEntering: {
-			true: 'duration-200 ease-out animate-in fade-in',
-		},
-		isExiting: {
-			true: 'duration-200 ease-in animate-out fade-out',
-		},
-	},
+const overlayStyles = tv({
+  base: [
+    "fixed top-0 left-0 isolate z-50 flex h-(--visual-viewport-height) w-full items-center justify-center bg-fg/15 p-4 dark:bg-bg/40",
+  ],
+  variants: {
+    isBlurred: {
+      true: "bg-bg/15 backdrop-blur dark:bg-bg/40",
+    },
+    isEntering: {
+      true: "fade-in animate-in duration-300 ease-out",
+    },
+    isExiting: {
+      true: "fade-out animate-out duration-200 ease-in",
+    },
+  },
 })
 
-type Sides = 'top' | 'bottom' | 'left' | 'right'
+type Sides = "top" | "bottom" | "left" | "right"
 const generateCompoundVariants = (sides: Array<Sides>) => {
-	return sides.map((side) => ({
-		side,
-		isStack: true,
-		className:
-			side === 'top'
-				? 'top-2 inset-x-2 rounded-xl ring-1 border-b-0 ring-dark/5 dark:ring-border'
-				: side === 'bottom'
-					? 'bottom-2 inset-x-2 rounded-xl ring-1 border-t-0 ring-dark/5 dark:ring-border'
-					: side === 'left'
-						? 'left-2 inset-y-2 rounded-xl ring-1 border-r-0 ring-dark/5 dark:ring-border'
-						: 'right-2 inset-y-2 rounded-xl ring-1 border-l-0 ring-dark/5 dark:ring-border',
-	}))
+  return sides.map((side) => ({
+    side,
+    isFloat: true,
+    className:
+      side === "top"
+        ? "top-2 inset-x-2 rounded-xl ring-1 border-b-0"
+        : side === "bottom"
+          ? "bottom-2 inset-x-2 rounded-xl ring-1 border-t-0"
+          : side === "left"
+            ? "left-2 inset-y-2 rounded-xl ring-1 border-r-0"
+            : "right-2 inset-y-2 rounded-xl ring-1 border-l-0",
+  }))
 }
 
-const sheetContentStyles = tv({
-	base: 'fixed z-50 grid gap-4 border-dark/5 bg-overlay text-overlay-fg shadow-lg transition ease-in-out dark:border-border',
-	variants: {
-		isEntering: {
-			true: 'duration-300 animate-in',
-		},
-		isExiting: {
-			true: 'duration-200 animate-out',
-		},
-		side: {
-			top: 'inset-x-0 top-0 rounded-b-2xl border-b entering:slide-in-from-top exiting:slide-out-to-top',
-			bottom:
-				'inset-x-0 bottom-0 rounded-t-2xl border-t entering:slide-in-from-bottom exiting:slide-out-to-bottom',
-			left: 'inset-y-0 left-0 h-auto w-[19rem] overflow-y-auto border-r entering:slide-in-from-left exiting:slide-out-to-left sm:w-3/4 sm:max-w-xs',
-			right:
-				'inset-y-0 right-0 h-auto w-[19rem] overflow-y-auto border-l entering:slide-in-from-right exiting:slide-out-to-right sm:w-3/4 sm:max-w-xs',
-		},
-		isStack: {
-			true: '',
-			false: '',
-		},
-	},
-	compoundVariants: generateCompoundVariants([
-		'top',
-		'bottom',
-		'left',
-		'right',
-	]),
+const contentStyles = tv({
+  base: "fixed z-50 grid gap-4 border-fg/5 bg-overlay text-overlay-fg shadow-lg transition ease-in-out dark:border-border",
+  variants: {
+    isEntering: {
+      true: "animate-in duration-300 ",
+    },
+    isExiting: {
+      true: "animate-out duration-200",
+    },
+    side: {
+      top: "data-entering:slide-in-from-top data-exiting:slide-out-to-top inset-x-0 top-0 rounded-b-2xl border-b",
+      bottom:
+        "data-entering:slide-in-from-bottom data-exiting:slide-out-to-bottom inset-x-0 bottom-0 rounded-t-2xl border-t",
+      left: "data-entering:slide-in-from-left data-exiting:slide-out-to-left inset-y-0 left-0 h-auto w-full max-w-xs overflow-y-auto border-r",
+      right:
+        "data-entering:slide-in-from-right data-exiting:slide-out-to-right inset-y-0 right-0 h-auto w-full max-w-xs overflow-y-auto border-l",
+    },
+    isFloat: {
+      false: "border-fg/20 dark:border-border",
+      true: "ring-fg/5 dark:ring-border",
+    },
+  },
+  compoundVariants: generateCompoundVariants(["top", "bottom", "left", "right"]),
 })
 
-const Sheet = ({ children, ...props }: DialogTriggerProps) => {
-	return <DialogTriggerPrimitive {...props}>{children}</DialogTriggerPrimitive>
+type SheetProps = DialogTriggerProps
+const Sheet = (props: SheetProps) => {
+  return <DialogTrigger {...props} />
 }
 
 interface SheetContentProps
-	extends Omit<React.ComponentProps<typeof Modal>, 'children' | 'className'>,
-		Omit<ModalOverlayPrimitiveProps, 'className'>,
-		VariantProps<typeof sheetOverlayStyles> {
-	'aria-label'?: DialogProps['aria-label']
-	'aria-labelledby'?: DialogProps['aria-labelledby']
-	'role'?: DialogProps['role']
-	'closeButton'?: boolean
-	'isBlurred'?: boolean
-	'isStack'?: boolean
-	'side'?: Sides
-	'classNames'?: {
-		overlay?: ModalOverlayPrimitiveProps['className']
-		content?: ModalOverlayPrimitiveProps['className']
-	}
+  extends Omit<React.ComponentProps<typeof Modal>, "children" | "className">,
+    Omit<ModalOverlayProps, "className">,
+    VariantProps<typeof overlayStyles> {
+  "aria-label"?: DialogProps["aria-label"]
+  "aria-labelledby"?: DialogProps["aria-labelledby"]
+  role?: DialogProps["role"]
+  closeButton?: boolean
+  isBlurred?: boolean
+  isFloat?: boolean
+  side?: Sides
+  classNames?: {
+    overlay?: ModalOverlayProps["className"]
+    content?: ModalOverlayProps["className"]
+  }
 }
 
 const SheetContent = ({
-	classNames,
-	isBlurred = false,
-	isDismissable = true,
-	side = 'right',
-	role = 'dialog',
-	closeButton = true,
-	isStack = true,
-	...props
+  classNames,
+  isBlurred = false,
+  isDismissable = true,
+  side = "right",
+  role = "dialog",
+  closeButton = true,
+  isFloat = true,
+  children,
+  ...props
 }: SheetContentProps) => {
-	const _isDismissable = role === 'alertdialog' ? false : isDismissable
-	return (
-		<ModalOverlay
-			className={composeRenderProps(
-				classNames?.overlay,
-				(className, renderProps) => {
-					return sheetOverlayStyles({
-						...renderProps,
-						isBlurred,
-						className,
-					})
-				}
-			)}
-			isDismissable={_isDismissable}
-			{...props}
-		>
-			<ModalPrimitive
-				className={composeRenderProps(
-					classNames?.content,
-					(className, renderProps) =>
-						sheetContentStyles({
-							...renderProps,
-							side,
-							isStack,
-							className,
-						})
-				)}
-				{...props}
-			>
-				<Dialog
-					aria-label={props['aria-label'] ?? undefined}
-					className='h-full'
-					role={role}
-				>
-					{(values) => (
-						<>
-							{props.children as React.ReactNode}
-							{closeButton && (
-								<Dialog.CloseIndicator
-									className='right-2.5 top-2.5'
-									close={values.close}
-									isDismissable={_isDismissable}
-								/>
-							)}
-						</>
-					)}
-				</Dialog>
-			</ModalPrimitive>
-		</ModalOverlay>
-	)
+  const _isDismissable = role === "alertdialog" ? false : isDismissable
+  return (
+    <ModalOverlay
+      isDismissable={_isDismissable}
+      className={composeRenderProps(classNames?.overlay, (className, renderProps) => {
+        return overlayStyles({
+          ...renderProps,
+          isBlurred,
+          className,
+        })
+      })}
+      {...props}
+    >
+      <Modal
+        className={composeRenderProps(classNames?.content, (className, renderProps) =>
+          contentStyles({
+            ...renderProps,
+            side,
+            isFloat,
+            className,
+          }),
+        )}
+        {...props}
+      >
+        {(values) => (
+          <Dialog role={role} aria-label={props["aria-label"] ?? undefined} className="h-full">
+            <>
+              {typeof children === "function" ? children(values) : children}
+              {closeButton && (
+                <Dialog.CloseIndicator
+                  className="top-2.5 right-2.5"
+                  isDismissable={_isDismissable}
+                />
+              )}
+            </>
+          </Dialog>
+        )}
+      </Modal>
+    </ModalOverlay>
+  )
 }
 
-Sheet.Trigger = Dialog.Trigger
-Sheet.Footer = Dialog.Footer
-Sheet.Content = SheetContent
-Sheet.Header = Dialog.Header
-Sheet.Title = Dialog.Title
-Sheet.Description = Dialog.Description
-Sheet.Body = Dialog.Body
-Sheet.Close = Dialog.Close
+const SheetTrigger = Dialog.Trigger
+const SheetFooter = Dialog.Footer
+const SheetHeader = Dialog.Header
+const SheetTitle = Dialog.Title
+const SheetDescription = Dialog.Description
+const SheetBody = Dialog.Body
+const SheetClose = Dialog.Close
 
+Sheet.Trigger = SheetTrigger
+Sheet.Footer = SheetFooter
+Sheet.Header = SheetHeader
+Sheet.Title = SheetTitle
+Sheet.Description = SheetDescription
+Sheet.Body = SheetBody
+Sheet.Close = SheetClose
+Sheet.Content = SheetContent
+
+export type { SheetProps, SheetContentProps, Sides }
 export { Sheet }

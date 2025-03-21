@@ -2,15 +2,22 @@
 import { defineConfig } from 'astro/config'
 
 import react from '@astrojs/react'
-import tailwind from '@astrojs/tailwind'
+import tailwind from '@tailwindcss/vite'
 import pwa from '@vite-pwa/astro'
 import { BRAND } from './src/constants.ts'
+
+import sentry from '@sentry/astro'
+import spotlightjs from '@spotlightjs/astro'
 
 /** @type {string} */
 const pwaID = `${BRAND.name.toLowerCase().replaceAll(' ', '-')}-pwa`
 
 // https://astro.build/config
 export default defineConfig({
+	vite: {
+		plugins: [tailwind()],
+	},
+
 	image: {
 		remotePatterns: [
 			{
@@ -21,7 +28,6 @@ export default defineConfig({
 
 	integrations: [
 		react(),
-		tailwind(),
 		pwa({
 			outDir: 'dist',
 			srcDir: 'public',
@@ -110,5 +116,7 @@ export default defineConfig({
 				navigateFallbackAllowlist: [/^\//],
 			},
 		}),
+		sentry(),
+		spotlightjs(),
 	],
 })
