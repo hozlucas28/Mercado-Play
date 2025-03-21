@@ -1,20 +1,16 @@
-/*
-* Uncomment the following line to use the Inter font when not working on a Next.js project.
-* @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-* Then replace var(--font-inter) to Inter
-*/
-
 @import 'tailwindcss';
 @import 'tw-animate-css';
+
 @plugin 'tailwindcss-react-aria-components';
 
 @theme {
-	/* Recommended font is: Inter, Sathosi, Geist */
-	/*--font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",*/
-	/*"Segoe UI Symbol", "Noto Color Emoji";*/
+	--font-sans:
+		'Geist Variable', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+		'Noto Color Emoji';
 
-	/* Recommended font is: Geist Mono */
-	/*--font-mono: var(--font-geist), 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace';*/
+	--font-mono:
+		'Geist Mono Variable', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', '"Liberation Mono"',
+		'"Courier New"', 'monospace';
 
 	--color-border: var(--border);
 	--color-input: var(--input);

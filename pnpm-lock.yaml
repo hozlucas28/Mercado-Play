@@ -14,6 +14,12 @@ importers:
       '@astrojs/react':
         specifier: 4.2.1
         version: 4.2.1(@types/node@22.13.10)(@types/react-dom@19.0.4(@types/react@19.0.12))(@types/react@19.0.12)(jiti@2.4.2)(lightningcss@1.29.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.3)(yaml@2.7.0)
+      '@fontsource-variable/geist':
+        specifier: 5.2.5
+        version: 5.2.5
+      '@fontsource-variable/geist-mono':
+        specifier: 5.2.5
+        version: 5.2.5
       '@sentry/astro':
         specifier: 9.7.0
         version: 9.7.0(astro@5.5.3(@types/node@22.13.10)(jiti@2.4.2)(lightningcss@1.29.2)(rollup@2.79.2)(terser@5.39.0)(tsx@4.19.3)(typescript@5.8.2)(yaml@2.7.0))
@@ -862,6 +868,12 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
+
+  '@fontsource-variable/geist-mono@5.2.5':
+    resolution: {integrity: sha512-zyuyDtO00SbmqU4Bo5XWzX2hE5RUxL+h2bv3P8SrmxqfqW66FU/xw5DW3xRQPqQgyEpb/Fh5FEFCpOna78dvCA==}
+
+  '@fontsource-variable/geist@5.2.5':
+    resolution: {integrity: sha512-773ht1maARKCDSxxmyc6cWiSRudk4GU+pW/0PHHnTEISprej9ARfGZVVhW04nmrk1Nlj888MLyuutTx1UnYy0g==}
 
   '@formatjs/ecma402-abstract@2.3.3':
     resolution: {integrity: sha512-pJT1OkhplSmvvr6i3CWTPvC/FGC06MbN5TNBfRO6Ox62AEz90eMq+dVvtX9Bl3jxCEkS0tATzDarRZuOLw7oFg==}
@@ -5996,6 +6008,10 @@ snapshots:
 
   '@esbuild/win32-x64@0.25.1':
     optional: true
+
+  '@fontsource-variable/geist-mono@5.2.5': {}
+
+  '@fontsource-variable/geist@5.2.5': {}
 
   '@formatjs/ecma402-abstract@2.3.3':
     dependencies:

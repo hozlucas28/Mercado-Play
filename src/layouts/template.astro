@@ -1,6 +1,10 @@
 ---
-import { BRAND } from '@/constants'
+import '@fontsource-variable/geist'
+import '@fontsource-variable/geist-mono'
+
 import '@/styles/globals.css'
+
+import { BRAND } from '@/constants'
 import type { Page, Locale } from '@/types'
 import { pwaInfo } from 'virtual:pwa-info'
 import { pwaAssetsHead } from 'virtual:pwa-assets/head'
@@ -196,7 +200,7 @@ const { locale, title, description, keywords, pageURL } = Astro.props
 		/>
 	</head>
 
-	<body class='h-screen bg-red-500 font-sans antialiased'>
+	<body class='h-screen bg-stone-800 font-sans antialiased'>
 		<slot name='header' />
 		<main>
 			<slot />
