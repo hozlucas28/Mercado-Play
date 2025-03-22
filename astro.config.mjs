@@ -6,9 +6,6 @@ import tailwind from '@tailwindcss/vite'
 import pwa from '@vite-pwa/astro'
 import { BRAND } from './src/constants.ts'
 
-import sentry from '@sentry/astro'
-import spotlightjs from '@spotlightjs/astro'
-
 /** @type {string} */
 const pwaID = `${BRAND.name.toLowerCase().replaceAll(' ', '-')}-pwa`
 
@@ -116,7 +113,5 @@ export default defineConfig({
 				navigateFallbackAllowlist: [/^\//],
 			},
 		}),
-		sentry(),
-		spotlightjs(),
 	],
 })
