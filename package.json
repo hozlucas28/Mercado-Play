@@ -11,7 +11,8 @@
 		"dev:host": "astro dev --host",
 		"format": "prettier --write .",
 		"prepare": "husky",
-		"compress:public": "tsx ./scripts/compress/public.ts"
+		"compress:public": "tsx ./scripts/compress/public.ts",
+		"download:youtube-video": "sh ./scripts/download/youtube-video.sh"
 	},
 	"lint-staged": {
 		"**/*": "prettier --write --ignore-unknown"
@@ -51,6 +52,7 @@
 		"prettier": "3.5.3",
 		"prettier-plugin-astro": "0.14.1",
 		"prettier-plugin-organize-imports": "4.1.0",
+		"prettier-plugin-sh": "0.15.0",
 		"prettier-plugin-sort-json": "4.1.1",
 		"prettier-plugin-tailwindcss": "0.6.11",
 		"sharp": "0.33.5",
