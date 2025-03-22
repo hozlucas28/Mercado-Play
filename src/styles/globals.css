@@ -187,4 +187,8 @@
 		background-color: var(--bg);
 		color: var(--fg);
 	}
+
+	button {
+		cursor: pointer;
+	}
 }
