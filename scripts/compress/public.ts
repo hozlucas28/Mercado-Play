@@ -33,7 +33,7 @@ async function compress(path: string, outputFormats: OutputFormat[]): Promise<vo
 	}
 
 	console.log(
-		'> Optimizing "%s" [~%f kb]...\n',
+		'> Optimizing "%s" [~%f KB]...\n',
 		nodePath.join(cwd(), path),
 		((await fs.stat(path)).size / 1024).toFixed(3)
 	)
@@ -52,7 +52,7 @@ async function compress(path: string, outputFormats: OutputFormat[]): Promise<vo
 			.toFile(outputPath)
 
 		console.log(
-			'> "%s" (%dx%d) [~%f kb]',
+			'> "%s" (%dx%d) [~%f KB]',
 			nodePath.join(cwd(), outputPath),
 			output.width,
 			output.height,
@@ -108,7 +108,7 @@ async function compressWithBreakpoints(path: string): Promise<void> {
 	}
 
 	console.log(
-		'> Optimizing "%s" [~%f kb]...\n',
+		'> Optimizing "%s" [~%f KB]...\n',
 		nodePath.join(cwd(), path),
 		((await fs.stat(path)).size / 1024).toFixed(3)
 	)
@@ -140,7 +140,7 @@ async function compressWithBreakpoints(path: string): Promise<void> {
 				.toFile(outputPath)
 
 			console.log(
-				'> "%s" (%dx%d) [~%f kb]',
+				'> "%s" (%dx%d) [~%f KB]',
 				nodePath.join(cwd(), outputPath),
 				output.width,
 				output.height,
