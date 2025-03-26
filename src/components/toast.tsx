@@ -1,6 +1,6 @@
 import { scrollbarWidth as getScrollbarWidth } from '@/utils/scrollbar-width'
-import { useStore } from '@nanostores/react'
 
+import { useStore } from '@nanostores/react'
 import type { ToasterProps } from 'sonner'
 import { Toast as PrimitiveToast } from 'ui'
 
