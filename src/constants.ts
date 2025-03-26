@@ -1,5 +1,3 @@
-import type { Theme } from './types'
-
 const BRAND = {
 	name: 'Mercado Play',
 	description:
@@ -30,21 +28,18 @@ const COMPRESS_CONFIGURATION = {
 	},
 } as const
 
-const DEFAULT_THEME: Theme = 'dark'
-const DEFAULT_THEME_STORAGE_KEY = 'ui-theme' as const
-
-const DEFAULT_TOASTS_STORAGE_KEY = 'toasts' as const
-
-const TOASTS_IDS = {
-	UNOFFICIAL_WEB: `unofficial-website-of-${BRAND.name.toLowerCase().replaceAll(/\s/g, '-')}`,
+const THEME = {
+	default: 'dark',
+	storageKey: 'ui-theme',
+	values: ['light', 'dark'],
 } as const
 
-export {
-	BRAND,
-	BREAKPOINTS,
-	COMPRESS_CONFIGURATION,
-	DEFAULT_THEME,
-	DEFAULT_THEME_STORAGE_KEY,
-	DEFAULT_TOASTS_STORAGE_KEY,
-	TOASTS_IDS,
-}
+const TOASTS = {
+	storageKey: 'toasts',
+
+	ids: {
+		unofficialWeb: `unofficial-website-of-${BRAND.name.toLowerCase().replaceAll(/\s/g, '-')}`,
+	},
+} as const
+
+export { BRAND, BREAKPOINTS, COMPRESS_CONFIGURATION, THEME, TOASTS }
