@@ -30,6 +30,7 @@
 	"singleAttributePerLine": true,
 	"singleQuote": true,
 	"tabWidth": 2,
+	"tailwindAttributes": ["toastOptions"],
 	"tailwindFunctions": ["clsx", "tw", "tv", "cn", "twMerge", "tm", "cx"],
 	"trailingComma": "es5",
 	"useTabs": true,

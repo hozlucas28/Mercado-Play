@@ -4,6 +4,7 @@
 	"colorize.hide_current_line_decorations": false,
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"editor.formatOnSave": true,
+	"tailwindCSS.classAttributes": ["class", "className", "ngClass", "class:list", "toastOptions"],
 	"tailwindCSS.classFunctions": ["clsx", "tw", "tv", "cn", "twMerge", "tm", "cx"],
 	"typescript.tsdk": "node_modules/typescript/lib"
 }
