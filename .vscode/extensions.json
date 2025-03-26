@@ -10,7 +10,8 @@
 		"bradlc.vscode-tailwindcss",
 		"tldraw-org.tldraw-vscode",
 		"esbenp.prettier-vscode",
-		"stivo.tailwind-fold"
+		"stivo.tailwind-fold",
+		"kamikillerto.vscode-colorize"
 	],
 	"unwantedRecommendations": []
 }

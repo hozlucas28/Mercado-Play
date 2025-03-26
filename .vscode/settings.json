@@ -1,5 +1,9 @@
 {
+	"colorize.colorized_colors": ["OKLCH"],
+	"colorize.decoration_type": "square-dot",
+	"colorize.hide_current_line_decorations": false,
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"editor.formatOnSave": true,
+	"tailwindCSS.classFunctions": ["clsx", "tw", "tv", "cn", "twMerge", "tm", "cx"],
 	"typescript.tsdk": "node_modules/typescript/lib"
 }
