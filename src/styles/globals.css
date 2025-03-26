@@ -55,6 +55,25 @@
 	--color-chart-3: var(--chart-3);
 	--color-chart-4: var(--chart-4);
 	--color-chart-5: var(--chart-5);
+
+	--breakpoint-md: 769px;
+
+	@keyframes fade-in {
+		0% {
+			opacity: 0;
+		}
+
+		100% {
+			opacity: 1;
+		}
+	}
+
+	@keyframes fade-out {
+		100% {
+			display: none;
+			opacity: 0;
+		}
+	}
 }
 
 @layer base {
@@ -174,18 +193,18 @@
 	* {
 		font-feature-settings: 'cv11', 'ss01';
 		font-variation-settings: 'opsz' 850;
+
 		text-rendering: optimizeLegibility;
 
-		/*
-     * Scrollbar
-     */
 		scrollbar-width: thin;
 		scrollbar-color: var(--border) transparent;
 	}
 
 	body {
-		background-color: var(--bg);
+		@apply transition-colors ease-in-out;
+
 		color: var(--fg);
+		background-color: var(--bg);
 	}
 
 	button {
