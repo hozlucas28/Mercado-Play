@@ -1,17 +1,22 @@
 ---
 import Brand from '@/components/brand.astro'
 import type { AvatarProps } from '@/components/header'
+
 import Header from '@/components/header'
+
 import { BRAND } from '@/constants'
 import type { Page } from '@/types'
+
+import Avatar from './assets/user-avatar.jpg'
+
 import Template from './template.astro'
 
 const pageURL: Page = '/'
 
 const avatar: AvatarProps = {
-	src: 'https://avatars.githubusercontent.com/u/88015479',
-	alt: 'hozlucas28',
-	initials: 'HZ',
+	src: Avatar.src,
+	alt: 'Esteban Gutierrez',
+	initials: 'EG',
 }
 ---
 
@@ -27,21 +32,22 @@ const avatar: AvatarProps = {
 		currentPage={pageURL}
 		slot='header'
 		client:only='react'
-		Brand
-		SidebarBrand
+		DesktopBrand
+		MobileBrand
 	>
 		<Brand
-			class='h-10 w-auto lg:h-8'
+			class='h-12 w-auto md:h-9'
 			loading='eager'
-			pictureAttributes={{ class: 'h-10 w-auto lg:h-8' }}
-			slot='Brand'
+			pictureAttributes={{ class: 'h-12 md:h-9 w-auto' }}
+			slot='DesktopBrand'
 		/>
 		<Brand
-			class='h-full w-auto'
+			class='h-8 w-auto'
 			loading='eager'
-			pictureAttributes={{ class: 'h-full w-auto' }}
-			slot='SidebarBrand'
+			pictureAttributes={{ class: 'h-8 w-auto' }}
+			slot='MobileBrand'
 		/>
 	</Header>
+
 	<slot />
 </Template>
