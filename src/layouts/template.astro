@@ -4,12 +4,13 @@ import '@fontsource-variable/geist-mono'
 
 import '@/styles/globals.css'
 
-import { BRAND } from '@/constants'
+import { BRAND, THEME } from '@/constants'
 import type { Page, Locale } from '@/types'
+
 import { pwaInfo } from 'virtual:pwa-info'
 import { pwaAssetsHead } from 'virtual:pwa-assets/head'
 
-type Props = {
+interface Props {
 	locale: Locale
 	title: string
 	description: string
@@ -21,6 +22,7 @@ const { locale, title, description, keywords, pageURL } = Astro.props
 ---
 
 <html
+	class={THEME.default}
 	dir='ltr'
 	lang={locale}
 >
@@ -198,34 +200,51 @@ const { locale, title, description, keywords, pageURL } = Astro.props
 			name='twitter:image:alt'
 			content='Rediseño de Mercado Play, desarrollado por @hozlucas28.'
 		/>
+
+		<script is:inline>
+			// Stay it update with project constants
+			const THEME = {
+				default: 'dark',
+				storageKey: 'ui-theme',
+				values: ['light', 'dark'],
+			}
+
+			const themePreference = localStorage.getItem(THEME.storageKey) ?? THEME.default
+
+			if (THEME.values.includes(themePreference)) {
+				document.documentElement.classList.remove(...THEME.values)
+				document.documentElement.classList.add(themePreference)
+			} else {
+				localStorage.removeItem(THEME.storageKey)
+
+				document.documentElement.classList.remove(...THEME.values)
+				document.documentElement.classList.add(THEME.default)
+			}
+
+			const observer = new MutationObserver(() => {
+				if (document.documentElement.classList.contains('dark')) {
+					localStorage.setItem(THEME.storageKey, 'dark')
+				} else if (document.documentElement.classList.contains('light')) {
+					localStorage.setItem(THEME.storageKey, 'light')
+				}
+			})
+
+			observer.observe(document.documentElement, {
+				attributes: true,
+				attributeFilter: ['class'],
+			})
+		</script>
 	</head>
 
-	<body class='h-screen bg-stone-800 font-sans antialiased'>
+	<body class='relative h-full font-sans antialiased'>
 		<slot name='header' />
-		<main>
-			<slot />
+
+		<main class='mx-auto w-full max-w-7xl pt-16 md:pt-[4.5rem] 2xl:max-w-(--breakpoint-2xl)'>
+			<div class='mx-4'>
+				<slot />
+			</div>
 		</main>
+
 		<slot name='footer' />
 	</body>
-
-	<script>
-		import { DEFAULT_THEME, DEFAULT_THEME_STORAGE_KEY } from '@/constants'
-		import type { Theme } from '@/types'
-
-		const darkTheme: Theme = 'dark'
-		const lightTheme: Theme = 'light'
-
-		const themePreference: Theme = (localStorage.getItem(DEFAULT_THEME_STORAGE_KEY) as Theme) ?? DEFAULT_THEME
-		document.documentElement.classList[themePreference === darkTheme ? 'add' : 'remove'](darkTheme)
-
-		const observer = new MutationObserver(() => {
-			const isDark: boolean = document.documentElement.classList.contains(darkTheme)
-			localStorage.setItem(DEFAULT_THEME_STORAGE_KEY, isDark ? darkTheme : lightTheme)
-		})
-
-		observer.observe(document.documentElement, {
-			attributes: true,
-			attributeFilter: ['class'],
-		})
-	</script>
 </html>
