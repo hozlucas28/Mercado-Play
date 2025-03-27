@@ -12,7 +12,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  format:
+  compress:
     name: Compress public
     runs-on: ubuntu-latest
 
