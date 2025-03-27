@@ -5,6 +5,10 @@ on:
     paths:
       - './public/!(icons)/**/!(__)*[^-]*[^(2xl|xl|lg|md|sm)].+(png)'
 
+concurrency:
+  group: compress-public-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   format:
     name: Compress public

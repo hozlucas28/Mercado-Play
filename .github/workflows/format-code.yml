@@ -2,6 +2,10 @@ name: 'Format code'
 
 on: push
 
+concurrency:
+  group: format-code-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   format:
     name: Format code
