@@ -20,11 +20,13 @@ function Toast(props: ToasterProps) {
 			className={hasUnderlays ? `animate-[fade-out_200ms_forwards]` : 'animate-[fade-in_200ms_forwards]'}
 			toastOptions={{
 				classNames: {
-					toast: `transition-colors! ease-in-out! has-data-description:**:data-icon:mt-[3.5px] has-data-description:**:data-icon:mb-auto`,
+					toast:
+						'cursor-[grab] **:select-none has-data-description:**:data-icon:mt-[3.5px] has-data-description:**:data-icon:mb-auto data-[swiping=true]:cursor-[grabbing]',
 					title: 'text-base text-balance',
 					description: 'text-sm text-pretty',
 					icon: 'mx-0! w-fit! **:m-0!',
 				},
+				closeButtonAriaLabel: 'Cerrar notificación',
 			}}
 			offset={{
 				top: offset,
