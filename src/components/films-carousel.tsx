@@ -35,9 +35,7 @@ export function FilmsCarousel() {
 			className='w-full max-w-sm'
 			setApi={setApi}
 		>
-			<Carousel.Content
-				items={Array.from({ length: 10 }, (_, id) => ({ id: id + 1 }))}
-			>
+			<Carousel.Content items={Array.from({ length: 10 }, (_, id) => ({ id: id + 1 }))}>
 				{({ id }) => (
 					<Carousel.Item id={id}>
 						<Card>
@@ -49,15 +47,15 @@ export function FilmsCarousel() {
 				)}
 			</Carousel.Content>
 			<div className='mt-4 flex items-center justify-between'>
-				<div className='flex gap-1 py-2 text-center text-sm text-muted-fg'>
+				<div className='text-muted-fg flex gap-1 py-2 text-center text-sm'>
 					{Array.from({ length: 10 }).map((_, index) => (
 						<Button
 							aria-label={`Slide ${current} of ${count}`}
 							className={twJoin(
-								'data-focused:outline-hidden rounded-xl transition',
+								'rounded-xl transition data-focused:outline-hidden',
 								current === index + 1
-									? 'data-hovered:bg-primary/80 h-3 w-5 bg-primary transition-all'
-									: 'data-hovered:bg-fg/15 h-3 w-3 bg-fg/10'
+									? 'data-hovered:bg-primary/80 bg-primary h-3 w-5 transition-all'
+									: 'data-hovered:bg-fg/15 bg-fg/10 h-3 w-3'
 							)}
 							key={index}
 							onPress={() => handleSelect(index)}
