@@ -1,7 +1,7 @@
 const BRAND = {
 	name: 'Mercado Play',
 	description:
-		'Encontrá series y películas gratis en Mercado Play. Explorá cientos de películas y series sin costo alguno.',
+		'Encontrá películas y series en Mercado Play, rediseñado por @hozlucas28. Explorá cientos de películas y series sin costo alguno.',
 	primaryColor: '#ffe501',
 } as const
 
