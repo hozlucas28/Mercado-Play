@@ -1,10 +1,18 @@
+import { useSwitchTheme } from '@/components/hooks/use-switch-theme'
+import { underlaysStore } from '@/components/stores/underlays'
 import ThemeSwitcher from '@/components/theme-switcher'
-import { TOASTS_IDS } from '@/constants'
+import Toast from '@/components/toast'
+import { TOASTS } from '@/constants'
 import type { Page } from '@/types'
-import showToast from '@/utils/show-toast'
-import type { ReactNode } from 'react'
-import { useEffect } from 'react'
-import { Avatar, Link, Navbar, SearchField, Separator, Toast } from 'ui'
+import { scrollbarWidth as getScrollbarWidth } from '@/utils/scrollbar-width'
+import { uniqueLocalExec } from '@/utils/unique-local-exec'
+import { Avatar, Button, CommandMenu, Link, Menu, Navbar, SearchField, Separator } from 'ui'
+
+import { useStore } from '@nanostores/react'
+import { IconChevronLgDown, IconMoon, IconSearch, IconSun } from 'justd-icons'
+import type { ComponentProps, ReactNode } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { toast } from 'sonner'
 
 interface AvatarProps {
 	alt: string
@@ -15,47 +23,57 @@ interface AvatarProps {
 interface HeaderProps {
 	avatar: AvatarProps
 	currentPage: Page
-	Brand: ReactNode
-	SidebarBrand: ReactNode
+	DesktopBrand: ReactNode
+	MobileBrand: ReactNode
 }
 
-function Header({ avatar, currentPage, Brand, SidebarBrand }: HeaderProps) {
-	const navbarLogoProps: React.ComponentProps<typeof Navbar.Logo> = {
+function Header({ avatar, currentPage, DesktopBrand, MobileBrand }: HeaderProps) {
+	const [menu, setMenu] = useState(false)
+	const [commandMenu, setCommandMenu] = useState(false)
+
+	const $menu = useRef<HTMLButtonElement>(null)
+	const $commandMenu = useRef<HTMLDivElement>(null)
+
+	const [theme, setTheme] = useSwitchTheme()
+
+	const underlays = useStore(underlaysStore)
+
+	const scrollbarWidth = getScrollbarWidth()
+
+	const navbarLogoProps: ComponentProps<typeof Navbar.Logo> = {
 		'href': '/',
 		'aria-label': 'Ir a la página de inicio',
 	}
 
-	const searchFieldProps: React.ComponentProps<typeof SearchField> = {
+	const searchFieldProps: ComponentProps<typeof SearchField> = {
 		'name': 'query',
-		'type': 'text',
-		'inputMode': 'text',
-		'spellCheck': 'true',
+		'type': 'search',
+		'inputMode': 'search',
 		'placeholder': 'Buscar películas o series...',
 		'aria-label': 'Buscar películas, series y más',
 		'onChange': (value) => console.log(value), // TODO
 	}
 
-	const separatorProps: React.ComponentProps<typeof Separator> = {
-		className: 'ml-1 mr-3 h-6',
+	const separatorProps: ComponentProps<typeof Separator> = {
+		className: 'mx-2 h-6 max-[1050px]:lg:mx-0.5 transition-colors ease-in-out',
 		orientation: 'vertical',
 	}
 
-	const avatarProps: React.ComponentProps<typeof Avatar> = {
+	const avatarProps: ComponentProps<typeof Avatar> = {
+		size: 'large',
+		shape: 'square',
 		alt: avatar.alt,
 		src: avatar.src,
-		size: 'large',
 		initials: avatar.initials,
 	}
 
 	useEffect(() => {
-		const title: string = 'Web no oficial'
-
-		const description: () => React.ReactNode = () => (
-			<span>
+		const description: () => ReactNode = () => (
+			<>
 				Rediseño de{' '}
 				<Link
-					href='https://play.mercadolibre.com.ar/'
 					intent='primary'
+					href='https://play.mercadolibre.com.ar/'
 					rel='noopener noreferrer'
 					target='_blank'
 				>
@@ -63,46 +81,93 @@ function Header({ avatar, currentPage, Brand, SidebarBrand }: HeaderProps) {
 				</Link>
 				, desarrollado por{' '}
 				<Link
-					href='https://github.com/hozlucas28'
 					intent='primary'
+					href='https://github.com/hozlucas28'
 					rel='noopener noreferrer'
 					target='_blank'
 				>
 					@hozlucas28
 				</Link>
 				.
-			</span>
+			</>
 		)
 
-		showToast(
-			title,
-			{
-				id: TOASTS_IDS.UNOFFICIAL_WEB,
-				description,
+		const uniqueToast = uniqueLocalExec(
+			(id, setExecuted) => {
+				return toast('Web no oficial', {
+					id,
+					description,
+					duration: Infinity,
+					onDismiss: setExecuted,
+				})
 			},
 			{
-				oneTime: true,
-				untilManualClose: true,
+				id: TOASTS.ids.unofficialWeb,
+				localStorageID: TOASTS.storageKey,
 			}
 		)
+
+		if (uniqueToast) uniqueToast()
+
+		const searchParams = new URLSearchParams(document.location.search)
+
+		const origin = searchParams.get('origin') ?? ''
+		if (origin === '404') {
+			toast.error('La página a la que has intentado ingresar no existe', {
+				description: 'Te hemos redirigido a la página principal.',
+				duration: 8000,
+			})
+
+			searchParams.delete('origin')
+			window.history.replaceState(null, '', `?${searchParams.toString()}`)
+		}
+
+		const observer = new ResizeObserver((entries) => {
+			for (const entry of entries) {
+				const viewportWidth: number = entry.contentRect.width + scrollbarWidth
+
+				if (viewportWidth >= 1024) {
+					setMenu(false)
+					underlaysStore.setKey('menu', false)
+					underlaysStore.setKey('sideNavbar', false)
+				} else if (viewportWidth >= 769) {
+					underlaysStore.setKey('sideNavbar', false)
+				} else {
+					setMenu(false)
+					underlaysStore.setKey('menu', false)
+				}
+			}
+		})
+
+		observer.observe(document.documentElement)
 	}, [])
 
 	return (
 		<>
-			<Navbar className='min-h-fit'>
+			<Navbar
+				className='fixed z-10 *:transition-colors *:ease-in-out'
+				style={{
+					paddingRight: Object.values(underlays).some((bool) => bool)
+						? `calc(var(--spacing) * 2.5 + ${scrollbarWidth}px)`
+						: '',
+				}}
+				intent='floating'
+				isOpen={underlays.sideNavbar}
+				onOpenChange={(isOpen) => underlaysStore.setKey('sideNavbar', isOpen)}
+			>
 				<Navbar.Nav>
 					<Navbar.Section className='h-full'>
 						{/* Desktop and mobile */}
 						<Navbar.Logo
-							className='my-3 max-w-fit p-0 lg:my-0'
+							className='max-w-fit px-0'
 							{...navbarLogoProps}
 						>
-							{Brand}
+							{DesktopBrand}
 						</Navbar.Logo>
 
-						{/* Only mobile */}
+						{/* Only for mobile */}
 						<SearchField
-							className='lg:hidden'
+							className='mb-4 sm:min-md:hidden'
 							{...searchFieldProps}
 						/>
 
@@ -110,7 +175,6 @@ function Header({ avatar, currentPage, Brand, SidebarBrand }: HeaderProps) {
 						<Navbar.Item
 							href='/'
 							isCurrent={currentPage === '/'}
-							rel='home'
 						>
 							Inicio
 						</Navbar.Item>
@@ -139,43 +203,118 @@ function Header({ avatar, currentPage, Brand, SidebarBrand }: HeaderProps) {
 							Mi lista
 						</Navbar.Item>
 
-						{/* Only mobile */}
-						<ThemeSwitcher className='mt-auto mb-3 size-[2.75rem] lg:hidden' />
+						{/* Only for mobile */}
+						<ThemeSwitcher className='mt-auto mb-1 size-[2.5rem] sm:mb-5 sm:min-md:hidden' />
 					</Navbar.Section>
 
-					{/* Only desktop */}
-					<Navbar.Section className='hidden lg:ml-auto lg:flex'>
-						<Navbar.Flex>
-							<SearchField {...searchFieldProps} />
-							<ThemeSwitcher className='size-[2.5rem]' />
-							<Separator {...separatorProps} />
-							<Avatar {...avatarProps} />
-						</Navbar.Flex>
+					{/* Only for desktop */}
+					<Navbar.Section className='ml-auto max-md:hidden sm:max-[800px]:gap-x-2 max-[1050px]:lg:gap-x-2'>
+						{/* Only for "md" breakpoint */}
+						<Menu
+							isOpen={menu}
+							onOpenChange={(isOpen) => {
+								setMenu(isOpen)
+								underlaysStore.setKey('menu', isOpen)
+							}}
+						>
+							<Button
+								className='group hidden size-10 md:max-lg:flex'
+								intent='outline'
+								aria-label='Más opciones'
+								ref={$menu}
+							>
+								<IconChevronLgDown className='group-pressed:rotate-180 decoration-200 transition-transform' />
+							</Button>
+							<Menu.Content
+								className='hidden *:cursor-pointer md:max-lg:grid'
+								placement='bottom'
+								showArrow
+							>
+								<Menu.Item
+									onAction={() => {
+										setCommandMenu(true)
+										underlaysStore.setKey('commandMenu', true)
+									}}
+								>
+									<IconSearch />
+									<Menu.Label ref={$commandMenu}>Buscar películas o series</Menu.Label>
+								</Menu.Item>
+								<Menu.Item onAction={setTheme}>
+									{theme === 'dark' ? <IconSun /> : <IconMoon />}
+									<Menu.Label>Cambiar tema</Menu.Label>
+								</Menu.Item>
+							</Menu.Content>
+						</Menu>
+
+						{/* Only for breakpoints after "lg" */}
+						<SearchField
+							className='max-lg:hidden'
+							{...searchFieldProps}
+						/>
+						<ThemeSwitcher className='size-10 max-lg:hidden' />
+
+						<Separator {...separatorProps} />
+						<Avatar {...avatarProps} />
 					</Navbar.Section>
 				</Navbar.Nav>
 
-				{/* Only mobile */}
+				{/* Only for mobile */}
 				<Navbar.Compact>
 					<Navbar.Logo
-						className='my-3 p-0'
+						className='p-0'
 						{...navbarLogoProps}
 					>
-						{SidebarBrand}
+						{MobileBrand}
 					</Navbar.Logo>
 
-					<Navbar.Flex>
+					<Navbar.Flex ref={$commandMenu}>
 						<Navbar.Trigger />
 						<Separator {...separatorProps} />
-						<Avatar {...avatarProps} />
+						<Avatar
+							className='size-8 *:size-8'
+							{...avatarProps}
+						/>
 					</Navbar.Flex>
 				</Navbar.Compact>
+
+				{/* Backdrop */}
+				<span className='absolute inset-0 -z-10 mx-auto h-[calc(var(--navbar-height)+0.5rem)] w-full max-w-[calc(var(--container-7xl)+0.5rem)] rounded-xl bg-neutral-800 blur-xl [--navbar-height:3.5rem] md:h-[calc(var(--navbar-height)+1rem)] md:max-w-[calc(var(--container-7xl)+1rem)] 2xl:max-w-(--breakpoint-2xl)' />
 			</Navbar>
+
+			{/* Only for "md" breakpoint */}
+			<CommandMenu
+				classNames={{
+					overlay: 'data-exiting:pointer-events-none data-exiting:animate-[fade-out_200ms_forwards]!',
+				}}
+				aria-label='Buscador'
+				isOpen={commandMenu}
+				isBlurred
+				onOpenChange={(isOpen) => {
+					setCommandMenu(isOpen)
+					underlaysStore.setKey('commandMenu', isOpen)
+				}}
+			>
+				<CommandMenu.Search
+					inputMode={searchFieldProps.inputMode}
+					placeholder={searchFieldProps.placeholder}
+					aria-label={searchFieldProps['aria-label']}
+				/>
+				<CommandMenu.List className='[&_div[role="menuitem"]]:cursor-pointer!'>
+					<CommandMenu.Section title='Películas'>
+						<CommandMenu.Item textValue='Black Sails'>Black Sails</CommandMenu.Item>
+					</CommandMenu.Section>
+					<CommandMenu.Section title='Series'>
+						<CommandMenu.Item textValue='Interestelar'>Interestelar</CommandMenu.Item>
+						<CommandMenu.Item textValue='Yellowstone'>Yellowstone</CommandMenu.Item>
+					</CommandMenu.Section>
+				</CommandMenu.List>
+			</CommandMenu>
 
 			<Toast />
 		</>
 	)
 }
 
-export type { AvatarProps, HeaderProps }
+export type { AvatarProps }
 
 export default Header
