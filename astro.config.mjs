@@ -2,15 +2,19 @@
 import { defineConfig } from 'astro/config'
 
 import react from '@astrojs/react'
+import sitemap from '@astrojs/sitemap'
 import tailwind from '@tailwindcss/vite'
 import pwa from '@vite-pwa/astro'
-import { BRAND } from './src/constants.ts'
+
+import { BRAND, SITE_URL } from './src/constants.ts'
 
 /** @type {string} */
 const pwaID = `${BRAND.name.toLowerCase().replaceAll(' ', '-')}-pwa`
 
 // https://astro.build/config
 export default defineConfig({
+	site: SITE_URL,
+
 	vite: {
 		plugins: [tailwind()],
 	},
@@ -112,6 +116,9 @@ export default defineConfig({
 				enabled: import.meta.env.DEV,
 				navigateFallbackAllowlist: [/^\//],
 			},
+		}),
+		sitemap({
+			lastmod: new Date(),
 		}),
 	],
 

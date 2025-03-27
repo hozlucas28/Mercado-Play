@@ -28,6 +28,8 @@ const COMPRESS_CONFIGURATION = {
 	},
 } as const
 
+const SITE_URL = 'https://pokemon-cards-ochre.vercel.app/' as const
+
 const THEME = {
 	default: 'dark',
 	storageKey: 'ui-theme',
@@ -42,4 +44,4 @@ const TOASTS = {
 	},
 } as const
 
-export { BRAND, BREAKPOINTS, COMPRESS_CONFIGURATION, THEME, TOASTS }
+export { BRAND, BREAKPOINTS, COMPRESS_CONFIGURATION, SITE_URL, THEME, TOASTS }

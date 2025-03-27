@@ -19,6 +19,7 @@
 	},
 	"dependencies": {
 		"@astrojs/react": "4.2.1",
+		"@astrojs/sitemap": "^3.3.0",
 		"@fontsource-variable/geist": "5.2.5",
 		"@fontsource-variable/geist-mono": "5.2.5",
 		"@nanostores/react": "0.8.4",
@@ -67,7 +68,6 @@
 			"sharp": "0.33.5"
 		},
 		"onlyBuiltDependencies": [
-			"@sentry/cli",
 			"esbuild",
 			"handbrake-js",
 			"sharp"
