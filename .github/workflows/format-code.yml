@@ -1,6 +1,6 @@
 name: 'Format code'
 
-on: push
+on: [push, workflow_dispatch]
 
 concurrency:
   group: format-code-${{ github.ref }}

@@ -5,6 +5,8 @@ on:
     paths:
       - './public/!(icons)/**/!(__)*[^-]*[^(2xl|xl|lg|md|sm)].+(png)'
 
+  workflow_dispatch:
+
 concurrency:
   group: compress-public-${{ github.ref }}
   cancel-in-progress: true
