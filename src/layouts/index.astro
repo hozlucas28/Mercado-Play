@@ -1,8 +1,8 @@
 ---
 import Brand from '@/components/brand.astro'
 import type { AvatarProps } from '@/components/header'
-
 import Header from '@/components/header'
+import HeaderSkeleton from '@/components/header-skeleton.astro'
 
 import { BRAND } from '@/constants'
 import type { Page } from '@/types'
@@ -35,6 +35,7 @@ const avatar: AvatarProps = {
 		DesktopBrand
 		MobileBrand
 	>
+		<HeaderSkeleton slot='fallback' />
 		<Brand
 			class='h-12 w-auto md:h-9'
 			loading='eager'
