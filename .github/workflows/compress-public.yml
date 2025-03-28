@@ -3,14 +3,14 @@ name: 'Compress public'
 on:
   push:
     paths:
-      - "public/**.png"
-      - "!public/icons/**"
-      - "!public/**/__*"
-      - "!public/**/*-2xl.png"
-      - "!public/**/*-xl.png"
-      - "!public/**/*-lg.png"
-      - "!public/**/*-md.png"
-      - "!public/**/*-sm.png"
+      - 'public/**.png'
+      - '!public/icons/**'
+      - '!public/**/__*'
+      - '!public/**/*-2xl.png'
+      - '!public/**/*-xl.png'
+      - '!public/**/*-lg.png'
+      - '!public/**/*-md.png'
+      - '!public/**/*-sm.png'
 
   workflow_dispatch:
 
