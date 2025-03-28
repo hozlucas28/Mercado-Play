@@ -1,19 +1,26 @@
 name: 'Format code'
 
-on: [push, workflow_dispatch]
+on:
+  push:
+    paths-ignore:
+      - '**.png'
+      - '**.jpg'
+      - '**.avif'
+      - '**.webp'
+      - '**.mp4'
+      - '**.webm'
+      - '**.exe'
+
+  workflow_dispatch:
 
 concurrency:
-  group: format-code-${{ github.ref }}
+  group: ${{ github.ref }}__format-code
   cancel-in-progress: true
 
 jobs:
   format:
     name: Format code
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [22]
 
     steps:
       - name: Generate a token
@@ -31,11 +38,10 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4.1.0
 
-      - name: Install Node.js v${{ matrix.node-version }}
+      - name: Install Node.js
         uses: actions/setup-node@v4.2.0
         with:
-          cache: 'pnpm'
-          node-version: ${{ matrix.node-version }}
+          node-version-file: '.nvmrc'
 
       - name: Install dependencies
         run: pnpm install

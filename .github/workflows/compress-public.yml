@@ -15,17 +15,13 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: compress-public-${{ github.ref }}
+  group: ${{ github.ref }}__compress-public
   cancel-in-progress: true
 
 jobs:
   compress:
     name: Compress public
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [22]
 
     steps:
       - name: Generate a token
@@ -46,8 +42,7 @@ jobs:
       - name: Install Node.js v${{ matrix.node-version }}
         uses: actions/setup-node@v4.2.0
         with:
-          cache: 'pnpm'
-          node-version: ${{ matrix.node-version }}
+          node-version-file: '.nvmrc'
 
       - name: Install dependencies
         run: pnpm install
