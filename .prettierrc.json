@@ -3,15 +3,23 @@
 	"bracketSameLine": false,
 	"bracketSpacing": true,
 	"embeddedLanguageFormatting": "auto",
+	"endOfLine": "lf",
 	"htmlWhitespaceSensitivity": "css",
 	"insertPragma": false,
 	"jsonRecursiveSort": true,
 	"jsxSingleQuote": true,
+	"objectWrap": "preserve",
 	"overrides": [
 		{
 			"files": "*.astro",
 			"options": {
 				"parser": "astro"
+			}
+		},
+		{
+			"files": "*.yml",
+			"options": {
+				"useTabs": false
 			}
 		}
 	],

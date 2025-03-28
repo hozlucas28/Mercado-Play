@@ -1,5 +1,9 @@
 .astro/
 node_modules/
+
 src/components/ui/
+
+*.mp4
+*.webm
 
 pnpm-lock.yaml
