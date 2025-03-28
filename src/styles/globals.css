@@ -208,6 +208,6 @@
 	}
 
 	button {
-		cursor: pointer;
+		@apply cursor-pointer;
 	}
 }
