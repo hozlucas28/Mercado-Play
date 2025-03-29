@@ -38,7 +38,7 @@ for (const breakpoint in BREAKPOINTS) {
 	sizes.push(`(min-width: ${width}px) ${width}px`)
 
 	const srcSet =
-		`${parsedSrc.dir}/${parsedSrc.name}${breakpointSep}${_breakpoint}.${parsedSrc.ext} ${width}w` as SrcSet<RawExts>
+		`${parsedSrc.dir}/${parsedSrc.name}${breakpointSep}${_breakpoint}${parsedSrc.ext} ${width}w` as SrcSet<RawExts>
 	rawSrcSet.push(srcSet)
 
 	for (const format in outputFormats) {
@@ -75,7 +75,7 @@ export type { Props as PublicImageProps }
 			))}
 			<img
 				sizes={sizes.join(', ')}
-				srcset={Object.entries(rawSrcSet).join(', ')}
+				srcset={rawSrcSet.join(', ')}
 				{..._imgAttributes}
 			/>
 		</picture>
