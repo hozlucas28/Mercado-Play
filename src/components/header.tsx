@@ -156,7 +156,7 @@ function Header({ avatar, currentPage, DesktopBrand, MobileBrand }: HeaderProps)
 				onOpenChange={(isOpen) => underlaysStore.setKey('sideNavbar', isOpen)}
 			>
 				<Navbar.Nav>
-					<Navbar.Section className='h-full'>
+					<Navbar.Section className='h-full min-h-fit'>
 						{/* Desktop and mobile */}
 						<Navbar.Logo
 							className='max-w-fit px-0'
@@ -197,6 +197,7 @@ function Header({ avatar, currentPage, DesktopBrand, MobileBrand }: HeaderProps)
 							Últimos lanzamientos
 						</Navbar.Item>
 						<Navbar.Item
+							className='mb-auto sm:min-md:mb-0'
 							href='/my-list'
 							isCurrent={currentPage === '/my-list'}
 						>
@@ -204,7 +205,7 @@ function Header({ avatar, currentPage, DesktopBrand, MobileBrand }: HeaderProps)
 						</Navbar.Item>
 
 						{/* Only for mobile */}
-						<ThemeSwitcher className='mt-auto mb-1 size-[2.5rem] sm:mb-5 sm:min-md:hidden' />
+						<ThemeSwitcher className='mt-8 mb-1 size-[2.5rem] sm:mb-4 sm:min-md:hidden' />
 					</Navbar.Section>
 
 					{/* Only for desktop */}
