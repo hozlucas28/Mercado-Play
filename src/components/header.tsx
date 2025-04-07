@@ -55,7 +55,7 @@ function Header({ avatar, currentPage, DesktopBrand, MobileBrand }: HeaderProps)
 	}
 
 	const separatorProps: ComponentProps<typeof Separator> = {
-		className: 'mx-2 h-6 max-[1050px]:lg:mx-0.5 transition-colors ease-in-out',
+		className: 'mx-2 h-6 max-[65.625rem]:lg:mx-0.5 transition-colors ease-in-out',
 		orientation: 'vertical',
 	}
 
@@ -209,7 +209,7 @@ function Header({ avatar, currentPage, DesktopBrand, MobileBrand }: HeaderProps)
 					</Navbar.Section>
 
 					{/* Only for desktop */}
-					<Navbar.Section className='ml-auto max-md:hidden sm:max-[800px]:gap-x-2 max-[1050px]:lg:gap-x-2'>
+					<Navbar.Section className='ml-auto max-md:hidden sm:max-[50rem]:gap-x-2 max-[65.625rem]:lg:gap-x-2'>
 						{/* Only for "md" breakpoint */}
 						<Menu
 							isOpen={menu}
@@ -241,8 +241,22 @@ function Header({ avatar, currentPage, DesktopBrand, MobileBrand }: HeaderProps)
 									<Menu.Label ref={$commandMenu}>Buscar películas o series</Menu.Label>
 								</Menu.Item>
 								<Menu.Item onAction={setTheme}>
-									{theme === 'dark' ? <IconSun /> : <IconMoon />}
-									<Menu.Label>Cambiar tema</Menu.Label>
+									<figure
+										className='relative *:absolute *:transition-all'
+										aria-hidden='true'
+										data-slot='icon'
+									>
+										<IconSun
+											className={theme === 'dark' ? 'scale-0 -rotate-90 opacity-0' : 'scale-100 rotate-0 opacity-100'}
+										/>
+										<IconMoon
+											className={theme === 'dark' ? 'scale-100 rotate-0 opacity-100' : 'scale-0 rotate-90 opacity-0'}
+										/>
+									</figure>
+
+									<Menu.Label aria-label={`Cambiar a tema ${theme === 'light' ? 'oscuro' : 'claro'}`}>
+										Cambiar tema
+									</Menu.Label>
 								</Menu.Item>
 							</Menu.Content>
 						</Menu>
