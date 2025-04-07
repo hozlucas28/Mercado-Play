@@ -4,6 +4,22 @@
 	"ignorePaths": [],
 	"ignoreWords": [],
 	"import": [],
+	"language": "en,es-ES,es,en-GB,en-US,lorem",
 	"version": "0.2",
-	"words": ["fontsource", "geist", "justd", "lucashoz", "mstile", "nanostores", "opsz", "rediseñado", "tailwindcss"]
+	"words": [
+		"Dufrayne",
+		"embla",
+		"fontsource",
+		"geist",
+		"justd",
+		"lucashoz",
+		"mstile",
+		"nanostores",
+		"opsz",
+		"rediseñado",
+		"retropropulsores",
+		"tailwindcss",
+		"webvtt",
+		"WEBVTT"
+	]
 }
