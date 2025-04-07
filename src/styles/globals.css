@@ -26,6 +26,8 @@
 	--color-secondary: var(--secondary);
 	--color-secondary-fg: var(--secondary-fg);
 
+	--color-highlight: oklch(0.6986 0.1872 39.86);
+
 	--color-accent: var(--accent);
 	--color-accent-fg: var(--accent-fg);
 
