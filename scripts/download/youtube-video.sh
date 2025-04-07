@@ -52,6 +52,31 @@ echo -e "\e[96m\n> Downloading mobile (720p) version...\n\e[0m"
 
 "${SCRIPT_PATH}/bin/yt-dlp__windows.exe" -f "bv*[ext=mp4][height<=720]" --download-sections "*0:00-2:00" -o "mobile-video.temp.mp4" "$VIDEO_URL"
 "${SCRIPT_PATH}/bin/yt-dlp__windows.exe" -f "ba" -o "mobile-audio.temp.m4a" "$VIDEO_URL"
+
+# Download captions
+echo -e "\e[96m\n> Downloading captions...\n\e[0m"
+
+CAPTIONS_OUTPUT="${OUTPUT%.mp4}"
+
+"${SCRIPT_PATH}/bin/yt-dlp__windows.exe" --skip-download --write-sub --sub-lang "en.*,es.*" --sub-format vtt -o "$CAPTIONS_OUTPUT" "$VIDEO_URL"
+
+trimCaptions() {
+	LANG="$1"
+
+	CAPTIONS_INPUT="${CAPTIONS_OUTPUT}.${LANG}.vtt"
+	CAPTIONS_OUTPUT="${CAPTIONS_OUTPUT}__${LANG}.vtt"
+
+	if [[ -f "$CAPTIONS_INPUT" ]]; then
+		ffmpeg -y -i "$CAPTIONS_INPUT" -ss 00:00:00 -to 00:02:00 -f webvtt -c copy "$CAPTIONS_OUTPUT"
+		rm -f "$CAPTIONS_INPUT"
+	fi
+}
+
+trimCaptions "en"
+trimCaptions "es"
+
+echo -e "\e[96m\n> If the captions were downloaded successfully, check if they need manual modifications.\n\e[0m"
+
 ffmpeg -i "mobile-video.temp.mp4" -i "mobile-audio.temp.m4a" -t 120 -c:v copy -c:a aac "mobile.temp.mp4"
 
 rm -f "mobile-video.temp.mp4" "mobile-audio.temp.m4a"
