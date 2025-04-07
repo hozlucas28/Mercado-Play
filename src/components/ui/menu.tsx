@@ -122,6 +122,7 @@ const MenuContent = <T extends object>({
       )}
     >
       <MenuPrimitive
+        data-slot="menu-content"
         className={composeTailwindRenderProps(
           className,
           "grid max-h-[calc(var(--visual-viewport-height)-10rem)] grid-cols-[auto_1fr] overflow-auto rounded-xl p-1 outline-hidden [clip-path:inset(0_0_0_0_round_calc(var(--radius-lg)-2px))] sm:max-h-[inherit] *:[[role='group']+[role=group]]:mt-4 *:[[role='group']+[role=separator]]:mt-1",

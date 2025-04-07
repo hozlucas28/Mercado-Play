@@ -1,29 +1,29 @@
 import { IconSearch } from "justd-icons"
 import { createContext, use, useEffect } from "react"
 import type {
-    AutocompleteProps,
-    CollectionRenderer,
-    MenuProps,
-    MenuTriggerProps,
-    SearchFieldProps,
+  AutocompleteProps,
+  CollectionRenderer,
+  MenuProps,
+  MenuTriggerProps,
+  SearchFieldProps,
 } from "react-aria-components"
 import {
-    Autocomplete,
-    Button,
-    Collection,
-    CollectionRendererContext,
-    DefaultCollectionRenderer,
-    Dialog,
-    Header,
-    Input,
-    Menu as MenuPrimitive,
-    MenuSection,
-    Modal,
-    ModalContext,
-    ModalOverlay,
-    OverlayTriggerStateContext,
-    SearchField,
-    useFilter,
+  Autocomplete,
+  Button,
+  Collection,
+  CollectionRendererContext,
+  DefaultCollectionRenderer,
+  Dialog,
+  Header,
+  Input,
+  Menu as MenuPrimitive,
+  MenuSection,
+  Modal,
+  ModalContext,
+  ModalOverlay,
+  OverlayTriggerStateContext,
+  SearchField,
+  useFilter,
 } from "react-aria-components"
 import { twMerge } from "tailwind-merge"
 import { DropdownKeyboard } from "./dropdown"
@@ -268,6 +268,5 @@ CommandMenu.Description = CommandMenuDescription
 CommandMenu.Keyboard = DropdownKeyboard
 CommandMenu.Separator = CommandMenuSeparator
 
+export type { CommandMenuProps, CommandMenuSearchProps, CommandMenuDescriptionProps }
 export { CommandMenu }
-export type { CommandMenuDescriptionProps, CommandMenuProps, CommandMenuSearchProps }
-
