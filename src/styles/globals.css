@@ -62,18 +62,32 @@
 
 	@keyframes fade-in {
 		0% {
-			opacity: 0;
+			opacity: 0%;
 		}
 
 		100% {
-			opacity: 1;
+			opacity: 100%;
 		}
 	}
 
 	@keyframes fade-out {
 		100% {
 			display: none;
-			opacity: 0;
+			opacity: 100%;
+		}
+	}
+
+	@keyframes remove-border {
+		100% {
+			border-radius: 0px;
+			border-style: none;
+			border-width: 0px;
+		}
+	}
+
+	@keyframes remove-padding {
+		100% {
+			padding: 0px;
 		}
 	}
 }

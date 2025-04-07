@@ -145,7 +145,7 @@ function Header({ avatar, currentPage, DesktopBrand, MobileBrand }: HeaderProps)
 	return (
 		<>
 			<Navbar
-				className='fixed z-10 *:transition-colors *:ease-in-out'
+				className='fixed z-10 [animation:remove-padding_linear_both] [animation-range:0_32px] [animation-timeline:scroll()] *:transition-colors *:ease-in-out xl:animate-none'
 				style={{
 					paddingRight: Object.values(underlays).some((bool) => bool)
 						? `calc(var(--spacing) * 2.5 + ${scrollbarWidth}px)`
@@ -155,7 +155,7 @@ function Header({ avatar, currentPage, DesktopBrand, MobileBrand }: HeaderProps)
 				isOpen={underlays.sideNavbar}
 				onOpenChange={(isOpen) => underlaysStore.setKey('sideNavbar', isOpen)}
 			>
-				<Navbar.Nav>
+				<Navbar.Nav className='[animation:remove-border_linear_both] [animation-range:0_32px] [animation-timeline:scroll()] xl:animate-none'>
 					<Navbar.Section className='h-full min-h-fit'>
 						{/* Desktop and mobile */}
 						<Navbar.Logo
@@ -274,7 +274,7 @@ function Header({ avatar, currentPage, DesktopBrand, MobileBrand }: HeaderProps)
 				</Navbar.Nav>
 
 				{/* Only for mobile */}
-				<Navbar.Compact>
+				<Navbar.Compact className='[animation:remove-border_linear_both] [animation-range:0_32px] [animation-timeline:scroll()] xl:animate-none'>
 					<Navbar.Logo
 						className='p-0'
 						{...navbarLogoProps}
@@ -293,7 +293,7 @@ function Header({ avatar, currentPage, DesktopBrand, MobileBrand }: HeaderProps)
 				</Navbar.Compact>
 
 				{/* Backdrop */}
-				<span className='absolute inset-0 -z-10 mx-auto h-[calc(var(--navbar-height)+0.5rem)] w-full max-w-[calc(var(--container-7xl)+0.5rem)] rounded-xl bg-neutral-800 blur-xl [--navbar-height:3.5rem] md:h-[calc(var(--navbar-height)+1rem)] md:max-w-[calc(var(--container-7xl)+1rem)] 2xl:max-w-(--breakpoint-2xl)' />
+				<span className='absolute inset-0 -z-10 mx-auto h-[calc(var(--navbar-height)+0.5rem)] w-full max-w-[calc(var(--container-7xl)+0.5rem)] [animation:fade-in_linear_both] rounded-xl bg-neutral-800 blur-xl [--navbar-height:3.5rem] [animation-range:0_32px] [animation-timeline:scroll()] md:h-[calc(var(--navbar-height)+1rem)] md:max-w-[calc(var(--container-7xl)+1rem)] 2xl:max-w-(--breakpoint-2xl)' />
 			</Navbar>
 
 			{/* Only for "md" breakpoint */}
