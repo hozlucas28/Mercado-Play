@@ -26,6 +26,20 @@ const COMPRESS_CONFIGURATION = {
 			png: 100,
 		},
 	},
+
+	videos: {
+		breakpointSep: '__',
+		outputDevices: ['mobile', 'desktop'],
+		outputFormats: ['webm', 'mp4'],
+
+		captions: {
+			langs: ['en', 'es'],
+		},
+	},
+} as const
+
+const MY_LIST = {
+	storageKey: 'my-list',
 } as const
 
 const SITE_URL = 'https://pokemon-cards-ochre.vercel.app/' as const
@@ -44,4 +58,4 @@ const TOASTS = {
 	},
 } as const
 
-export { BRAND, BREAKPOINTS, COMPRESS_CONFIGURATION, SITE_URL, THEME, TOASTS }
+export { BRAND, BREAKPOINTS, COMPRESS_CONFIGURATION, MY_LIST, SITE_URL, THEME, TOASTS }
