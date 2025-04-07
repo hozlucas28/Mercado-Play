@@ -51,9 +51,7 @@ function uniqueLocalExec<T>(
 		}
 
 		return () => callback(id, setExecuted)
-	} catch (error) {
-		return
-	}
+	} catch (error) {}
 }
 
 export { uniqueLocalExec }
