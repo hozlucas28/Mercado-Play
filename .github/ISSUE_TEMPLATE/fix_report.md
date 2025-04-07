@@ -1,14 +1,14 @@
 ---
 name: 'Report a wanted fix'
 about: 'Basic report template with a structure to report a wanted fix.'
-title: '<Verb in infinitive> Short title related to the fix'
+title: '<Verb in infinitive> Short title related to the wanted fix'
 labels: fix
 ---
 
 ## Description
 
-\<Short description of the fix>
+\<Short description of the bug to fix>
 
-## Expected behavior
+## Steps to reproduce it
 
-\<Expected behaviour of the program on complete the fix>
+1. \<Necessary steps to reproduce the bug to fix>
