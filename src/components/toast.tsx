@@ -21,7 +21,7 @@ function Toast(props: ToasterProps) {
 			toastOptions={{
 				classNames: {
 					toast:
-						'cursor-grab **:select-none has-data-description:**:data-icon:mt-[3.5px] has-data-description:**:data-icon:mb-auto data-[swiping=true]:cursor-grabbing',
+						'cursor-grab **:select-none has-data-description:**:data-icon:mt-[0.219rem] has-data-description:**:data-icon:mb-auto data-[swiping=true]:cursor-grabbing',
 					title: 'text-base text-balance',
 					description: 'text-sm text-pretty',
 					icon: 'mx-0! w-fit! **:m-0!',
