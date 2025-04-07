@@ -26,6 +26,15 @@ const avatar: AvatarProps = {
 	description={BRAND.description}
 	keywords='películas, ver películas, películas online, películas en línea, películas completas, películas en streaming, series, ver series, series online, series en línea, series completas, series en streaming, lucas hoz, hoz lucas, lucashoz, hozlucas, hozlucas28'
 	pageURL={pageURL}
+	classes={{
+		html: 'snap-y snap-mandatory',
+		body: {
+			main: {
+				wrapper:
+					'[:is(&_astro-island)]:*:snap-center [:not(&_astro-island)]:snap-center [:is(&_astro-island)]:*:scroll-my-12 [:not(&_astro-island)]:scroll-my-12',
+			},
+		},
+	}}
 >
 	<Header
 		{avatar}

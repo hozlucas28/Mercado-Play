@@ -16,13 +16,24 @@ interface Props {
 	description: string
 	keywords: string
 	pageURL: Page
+
+	classes?: Partial<{
+		html: string
+		body: Partial<{
+			root: string
+			main: Partial<{
+				root: string
+				wrapper: string
+			}>
+		}>
+	}>
 }
 
-const { locale, title, description, keywords, pageURL } = Astro.props
+const { locale, title, description, keywords, pageURL, classes } = Astro.props
 ---
 
 <html
-	class={THEME.default}
+	class:list={[THEME.default, classes?.html]}
 	dir='ltr'
 	lang={locale}
 >
@@ -241,11 +252,16 @@ const { locale, title, description, keywords, pageURL } = Astro.props
 		</script>
 	</head>
 
-	<body class='relative h-full font-sans antialiased'>
+	<body class:list={['relative h-full font-sans antialiased', classes?.body?.root]}>
 		<slot name='header' />
 
-		<main class='mx-auto w-full max-w-7xl pt-16 md:pt-[4.5rem] 2xl:max-w-(--breakpoint-2xl)'>
-			<div class='mx-4'>
+		<main
+			class:list={[
+				'mx-auto w-full max-w-7xl pt-16 md:pt-[4.5rem] 2xl:max-w-(--breakpoint-2xl)',
+				classes?.body?.main?.root,
+			]}
+		>
+			<div class:list={['mx-4', classes?.body?.main?.wrapper]}>
 				<slot />
 			</div>
 		</main>
