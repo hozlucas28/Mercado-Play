@@ -1,4 +1,4 @@
-import { IconCheck } from "justd-icons"
+import { IconCheck } from "@intentui/icons"
 import type {
   ListBoxItemProps,
   SectionProps,
@@ -153,7 +153,17 @@ const DropdownSeparator = ({ className, ...props }: SeparatorProps) => (
 )
 
 const DropdownKeyboard = ({ className, ...props }: React.ComponentProps<typeof Keyboard>) => {
-  return <Keyboard className={twMerge("absolute right-2 pl-2", className)} {...props} />
+  return (
+    <Keyboard
+      classNames={{
+        base: twMerge(
+          "absolute right-2 group-hover:text-primary-fg group-focus:text-primary-fg pl-2",
+          className,
+        ),
+      }}
+      {...props}
+    />
+  )
 }
 
 /**

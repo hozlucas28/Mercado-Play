@@ -1,6 +1,6 @@
 import { createContext, use } from "react"
 
-import { IconBulletFill, IconCheck, IconChevronLgRight } from "justd-icons"
+import { IconBulletFill, IconCheck, IconChevronLgRight } from "@intentui/icons"
 import type {
   ButtonProps,
   MenuItemProps as MenuItemPrimitiveProps,

@@ -3,9 +3,9 @@ import { BREAKPOINTS } from '@/constants.ts'
 import { getMyList, toggleToMyList } from '@/utils/my-list'
 import { Button, buttonStyles, Carousel, Heading, Link, type CarouselApi } from 'ui'
 
+import { IconCheck, IconMute, IconPlus, IconVolumeFull } from '@intentui/icons'
 import clsx from 'clsx'
 import Autoplay from 'embla-carousel-autoplay'
-import { IconCheck, IconMute, IconPlus, IconVolumeFull } from 'justd-icons'
 import { useEffect, useRef, useState, type ComponentProps } from 'react'
 
 interface Poster {

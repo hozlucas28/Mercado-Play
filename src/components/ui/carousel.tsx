@@ -1,8 +1,8 @@
 import type { HTMLAttributes } from "react"
 import { createContext, use, useCallback, useEffect, useState } from "react"
 
+import { IconChevronLgLeft, IconChevronLgRight } from "@intentui/icons"
 import useEmblaCarousel, { type UseEmblaCarouselType } from "embla-carousel-react"
-import { IconChevronLgLeft, IconChevronLgRight } from "justd-icons"
 import {
   ListBox,
   ListBoxItem,

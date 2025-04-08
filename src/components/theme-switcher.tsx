@@ -1,7 +1,7 @@
 import { useSwitchTheme } from '@/components/hooks/use-switch-theme'
 import { Button } from 'ui'
 
-import { IconMoon, IconSun } from 'justd-icons'
+import { IconMoon, IconSun } from '@intentui/icons'
 import type { ComponentProps } from 'react'
 import { twMerge } from 'tailwind-merge'
 
