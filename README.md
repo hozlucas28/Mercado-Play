@@ -39,6 +39,9 @@
 
 The current [Mercado Play](https://play.mercadolibre.com.ar/) design isn't optimal and has many aspects to improve. For example, it shouldn't be inside the [Mercado Libre ECommerce platform](https://mercadolibre.com/) as there is no clear connection for a user to access an ECommerce platform just to watch a film or series, resulting in poor user experience (UX). However, it could be related to the ECommerce platform in ways that improve the UX by connecting films/series to merchandising or related products. That's why I redesigned it.
 
+> [!IMPORTANT]
+> This project started on January 20, 2025, so please note that the issues listed may already be solved.
+
 ## Key features
 
 - [ TODO ].
@@ -64,7 +67,6 @@ Since the current [Mercado Play](https://play.mercadolibre.com.ar/) design close
 
 To align with the common UX of streaming services, it should have a familiar layout (navigation bar, carousels for films/series, iconography, etc.) while maintaining key differences to make it recognizable. The design team should study the UX patterns of streaming services like [Netflix](https://www.netflix.com/), [Disney+](https://www.disneyplus.com/), [Amazon Prime Video](https://www.primevideo.com/), [Paramount+](https://www.paramountplus.com/), and others, integrating new trends into the [Mercado Play](https://play.mercadolibre.com.ar/) design to create a unique yet intuitive UX.
 
-> [!TIP]
 > Check out the [low-fidelity UI](#design-the-low-fidelity-ui) to see how I planned the component layout.
 
 </details>
@@ -80,7 +82,6 @@ For users with [Level 6](https://www.mercadolibre.com.ar/suscripciones/nivel-6) 
 
 Finally, [Mercado Libre](https://news.mercadolibre.com/) could encourage users to engage with [Mercado Play](https://play.mercadolibre.com.ar/) by offering discounts on related products upon completing a film/series, fostering loyalty and connecting the ECommerce and streaming services.
 
-> [!TIP]
 > When I refer to _"series ends"_, I mean when all episodes of the serie ends and not at the end of each episode. Similarly, _"ads"_ refers to those integrated seamlessly into the interface without disrupting the UX.
 
 </details>
@@ -92,10 +93,7 @@ Developing native mobile and TV apps requires significant investment in resource
 
 As the company uses [React](https://es.react.dev/) and likely has many developers familiar with this technology, some teams could be reoriented to [React Native](https://reactnative.dev/) to develop a cross-platform application for mobile and TV. This approach minimizes costs, leveraging existing knowledge of [React](https://es.react.dev/) since [React Native](https://reactnative.dev/) has a similar syntax and workflow.
 
-<!-- prettier-ignore-start -->
-> [!WARNING]
 > While [React Native](https://reactnative.dev/) supports platforms like iOS, Android, and TVs, it has limitations compared to fully native environments.
-<!-- prettier-ignore-end -->
 
 </details>
 
