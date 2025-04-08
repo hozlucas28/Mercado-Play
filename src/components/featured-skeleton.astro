@@ -1,0 +1,33 @@
+---
+interface Props {
+	featuredItems: number
+}
+
+const { featuredItems }: Props = Astro.props
+---
+
+<section aria-label='Cargando películas y series destacadas'>
+	<article
+		class='bg-muted aspect-video animate-pulse rounded-lg'
+		aria-hidden='true'
+	>
+	</article>
+	<footer
+		class='my-1.5 flex justify-end gap-1'
+		aria-hidden='true'
+	>
+		{
+			Array.from({ length: featuredItems }).map((_, index) => (
+				<span
+					class:list={[
+						'bg-muted h-5 animate-pulse rounded-full',
+						{
+							'w-5': index,
+							'w-10': !index,
+						},
+					]}
+				/>
+			))
+		}
+	</footer>
+</section>

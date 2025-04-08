@@ -1,8 +1,160 @@
 ---
-import { FilmsCarousel } from '@/components/films-carousel'
-import Layout from '../layouts/home.astro'
+import FeaturedSkeleton from '@/components/featured-skeleton.astro'
+import type { CarouselItem } from '@/components/featured.tsx'
+import Featured from '@/components/featured.tsx'
+import { COMPRESS_CONFIGURATION } from '@/constants.ts'
+import Layout from '@/layouts/index.astro'
+
+import BlackSailsPoster from './assets/black-sails/_poster.webp'
+import InterstellarPoster from './assets/interstellar/_poster.webp'
+import YellowstonePoster from './assets/yellowstone/_poster.webp'
+
+/* ---------------------------------- Types --------------------------------- */
+
+type Device = (typeof COMPRESS_CONFIGURATION.videos.outputDevices)[number]
+
+type VideoExt = (typeof COMPRESS_CONFIGURATION.videos.outputFormats)[number]
+
+type CaptionLang = (typeof COMPRESS_CONFIGURATION.videos.captions.langs)[number]
+
+/* ---------------------------------- Logic --------------------------------- */
+
+async function newCarouselItem(
+	data: Omit<CarouselItem, 'captions' | 'desktopVideos' | 'mobileVideos'>,
+	videos: Record<string, () => Promise<{ default: string }>>,
+	captions: Record<string, () => Promise<{ default: string }>>
+): Promise<CarouselItem> {
+	const carouselItem: CarouselItem = {
+		...data,
+		mobileVideos: [],
+		desktopVideos: [],
+		captions: [],
+	}
+
+	const videoRegex = `(?:__)(?<device>${COMPRESS_CONFIGURATION.videos.outputDevices.join('|')})\.(?<type>${COMPRESS_CONFIGURATION.videos.outputFormats.join('|')})$`
+
+	for (const video in videos) {
+		const { default: src } = await videos[video]()
+		const matchResult = src.match(videoRegex)
+
+		if (matchResult?.groups) {
+			const device = matchResult.groups.device as Device
+			const type = matchResult.groups.type as VideoExt
+
+			const targetDevice = device === 'mobile' ? carouselItem.mobileVideos : carouselItem.desktopVideos
+			targetDevice[type === 'webm' ? 'unshift' : 'push']({ src, type })
+		}
+	}
+
+	const captionRegex = `(?:__)(?<lang>${COMPRESS_CONFIGURATION.videos.captions.langs.join('|')})\.vtt$`
+
+	for (const caption in captions) {
+		const { default: src } = await captions[caption]()
+		const matchResult = src.match(captionRegex)
+
+		if (matchResult?.groups) {
+			const lang = matchResult.groups.lang as CaptionLang
+
+			carouselItem.captions.push({
+				kind: 'captions',
+				label: lang === 'en' ? 'Inglés' : 'Español',
+				src: caption,
+				srcLang: lang,
+			})
+		}
+	}
+
+	return carouselItem
+}
+
+const yellowstone = await newCarouselItem(
+	{
+		id: 'tt4236770',
+		title: 'Yellowstone',
+		highlight: 'Tendencia N°1',
+		description: 'Una familia de un rancho de Montana se enfrentan con aquellos que intenten invadir sus tierras.',
+		duration: 2 * 60 * 1000,
+		fadeInDelay: 2 * 1000,
+		fadeOutDelay: 2 * 1000,
+
+		poster: {
+			alt: 'Un hombre con sombrero de vaquero, sosteniendo un rifle, sentado en un porche junto a su familia.',
+			src: YellowstonePoster.src,
+		},
+	},
+	import.meta.glob<{ default: string }>('./assets/yellowstone/*.(webm|mp4)'),
+	import.meta.glob<{ default: string }>('./assets/yellowstone/*.(vtt)')
+)
+
+const blackSails = await newCarouselItem(
+	{
+		id: 'tt2375692',
+		title: 'Black Sails',
+		highlight: 'Tendencia N°2',
+		description:
+			'Sigue al capitán Flint y sus piratas veinte años antes de la clásica novela de Robert Louis Stevenson.',
+		duration: 2 * 60 * 1000,
+		fadeInDelay: 2 * 1000,
+		fadeOutDelay: 2 * 1000,
+
+		poster: {
+			alt: 'Un pirata con espada en mano, de pie frente a una bandera británica desgarrada y un fondo de fuego y destrucción.',
+			src: BlackSailsPoster.src,
+		},
+	},
+	import.meta.glob<{ default: string }>('./assets/black-sails/*.(webm|mp4)'),
+	import.meta.glob<{ default: string }>('./assets/black-sails/*.(vtt)')
+)
+
+const interstellar = await newCarouselItem(
+	{
+		id: 'tt0816692',
+		title: 'Interestelar',
+		highlight: 'Tendencia N°3',
+		description:
+			'Un grupo de exploradores prueban los saltos a través de agujeros de gusano en búsqueda de la sobrevivencia de la humanidad.',
+		duration: 2 * 60 * 1000,
+		fadeInDelay: 3 * 1000,
+		fadeOutDelay: 3 * 1000,
+
+		poster: {
+			alt: 'Un astronauta en un paisaje helado, rodeado de montañas de hielo y nieve, representando un mundo congelado en el espacio.',
+			src: InterstellarPoster.src,
+		},
+	},
+	import.meta.glob<{ default: string }>('./assets/interstellar/*.(webm|mp4)'),
+	import.meta.glob<{ default: string }>('./assets/interstellar/*.(vtt)')
+)
+
+const carouselItems: CarouselItem[] = [yellowstone, blackSails, interstellar]
 ---
 
+{
+	carouselItems.map((item) => (
+		<link
+			as='image'
+			rel='preload'
+			fetchpriority='high'
+			href={item.poster.src}
+		/>
+	))
+}
+
 <Layout>
-	<FilmsCarousel client:only='react' />
+	<Featured
+		items={carouselItems}
+		client:only='react'
+	>
+		<FeaturedSkeleton
+			featuredItems={carouselItems.length}
+			slot='fallback'
+		/>
+	</Featured>
+
+	<div class='h-[50vh] w-full bg-red-500'></div>
+	<div class='h-[50vh] w-full bg-blue-500'></div>
+	<div class='h-[50vh] w-full bg-red-500'></div>
+	<div class='h-[50vh] w-full bg-blue-500'></div>
+	<div class='h-[50vh] w-full bg-red-500'></div>
+	<div class='h-[50vh] w-full bg-blue-500'></div>
 </Layout>

@@ -26,7 +26,14 @@ const avatar: AvatarProps = {
 	description={BRAND.description}
 	keywords='películas, ver películas, películas online, películas en línea, películas completas, películas en streaming, series, ver series, series online, series en línea, series completas, series en streaming, lucas hoz, hoz lucas, lucashoz, hozlucas, hozlucas28'
 	pageURL={pageURL}
-	classes={{ html: 'scroll-smooth' }}
+	classes={{
+		html: 'scroll-smooth',
+		body: {
+			main: {
+				wrapper: '*:mb-[1.625rem] [:is(&>astro-island)]:*:mb-[1.625rem]',
+			},
+		},
+	}}
 >
 	<Header
 		{avatar}
