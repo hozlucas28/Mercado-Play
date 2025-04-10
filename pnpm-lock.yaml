@@ -70,13 +70,13 @@ importers:
         version: 3.0.2
       tailwind-variants:
         specifier: 1.0.0
-        version: 1.0.0(tailwindcss@4.0.14)
+        version: 1.0.0(tailwindcss@4.1.3)
       tailwindcss:
-        specifier: 4.0.14
-        version: 4.0.14
+        specifier: 4.1.3
+        version: 4.1.3
       tailwindcss-react-aria-components:
         specifier: 2.0.0
-        version: 2.0.0(tailwindcss@4.0.14)
+        version: 2.0.0(tailwindcss@4.1.3)
       workbox-window:
         specifier: 7.3.0
         version: 7.3.0
@@ -4026,6 +4026,9 @@ packages:
 
   tailwindcss@4.0.14:
     resolution: {integrity: sha512-92YT2dpt671tFiHH/e1ok9D987N9fHD5VWoly1CdPD/Cd1HMglvZwP3nx2yTj2lbXDAHt8QssZkxTLCCTNL+xw==}
+
+  tailwindcss@4.1.3:
+    resolution: {integrity: sha512-2Q+rw9vy1WFXu5cIxlvsabCwhU2qUwodGq03ODhLJ0jW4ek5BUtoCsnLB0qG+m8AHgEsSJcJGDSDe06FXlP74g==}
 
   tapable@2.2.1:
     resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
@@ -9537,16 +9540,18 @@ snapshots:
 
   tailwind-merge@3.0.2: {}
 
-  tailwind-variants@1.0.0(tailwindcss@4.0.14):
+  tailwind-variants@1.0.0(tailwindcss@4.1.3):
     dependencies:
       tailwind-merge: 3.0.2
-      tailwindcss: 4.0.14
+      tailwindcss: 4.1.3
 
-  tailwindcss-react-aria-components@2.0.0(tailwindcss@4.0.14):
+  tailwindcss-react-aria-components@2.0.0(tailwindcss@4.1.3):
     dependencies:
-      tailwindcss: 4.0.14
+      tailwindcss: 4.1.3
 
   tailwindcss@4.0.14: {}
+
+  tailwindcss@4.1.3: {}
 
   tapable@2.2.1: {}
 
