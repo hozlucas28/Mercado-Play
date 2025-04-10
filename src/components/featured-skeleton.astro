@@ -1,12 +1,15 @@
 ---
 interface Props {
-	featuredItems: number
+	slides: number
 }
 
-const { featuredItems }: Props = Astro.props
+const { slides }: Props = Astro.props
 ---
 
-<section aria-label='Cargando películas y series destacadas'>
+<section
+	class='select-none'
+	aria-label='Cargando películas y series destacadas'
+>
 	<article
 		class='bg-muted aspect-video animate-pulse rounded-lg'
 		aria-hidden='true'
@@ -17,16 +20,8 @@ const { featuredItems }: Props = Astro.props
 		aria-hidden='true'
 	>
 		{
-			Array.from({ length: featuredItems }).map((_, index) => (
-				<span
-					class:list={[
-						'bg-muted h-5 animate-pulse rounded-full',
-						{
-							'w-5': index,
-							'w-10': !index,
-						},
-					]}
-				/>
+			Array.from({ length: slides }).map((_, index) => (
+				<span class={`bg-muted h-5 animate-pulse rounded-full ${index ? 'w-5' : 'w-10'}`} />
 			))
 		}
 	</footer>
