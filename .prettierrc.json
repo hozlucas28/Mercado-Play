@@ -21,11 +21,17 @@
 			"options": {
 				"useTabs": false
 			}
+		},
+		{
+			"excludeFiles": ["_data.json"],
+			"files": ["*.json"],
+			"options": {
+				"plugins": ["prettier-plugin-sort-json"]
+			}
 		}
 	],
 	"plugins": [
 		"prettier-plugin-astro",
-		"prettier-plugin-sort-json",
 		"prettier-plugin-organize-imports",
 		"prettier-plugin-tailwindcss",
 		"prettier-plugin-sh"
