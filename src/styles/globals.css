@@ -20,6 +20,8 @@
 	--color-bg: var(--bg);
 	--color-fg: var(--fg);
 
+	--color-mercado-libre: rgba(255, 209, 0, 1);
+
 	--color-primary: var(--primary);
 	--color-primary-fg: var(--primary-fg);
 
