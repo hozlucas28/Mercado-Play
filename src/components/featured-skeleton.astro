@@ -10,18 +10,21 @@ const { slides }: Props = Astro.props
 	class='select-none'
 	aria-label='Cargando películas y series destacadas'
 >
+	<!-- Slide -->
 	<article
 		class='bg-muted aspect-video animate-pulse rounded-lg'
 		aria-hidden='true'
 	>
 	</article>
+
+	<!-- Selectors -->
 	<footer
-		class='my-1.5 flex justify-end gap-1'
+		class='my-1.5 flex justify-end gap-1 *:pointer-events-none'
 		aria-hidden='true'
 	>
 		{
 			Array.from({ length: slides }).map((_, index) => (
-				<span class={`bg-muted h-5 animate-pulse rounded-full ${index ? 'w-5' : 'w-10'}`} />
+				<button class={`bg-muted h-5 animate-pulse rounded-full ${index ? 'w-5' : 'w-10'}`} />
 			))
 		}
 	</footer>
