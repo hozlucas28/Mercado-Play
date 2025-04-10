@@ -27,6 +27,12 @@ const COMPRESS_CONFIGURATION = {
 		},
 	},
 
+	photos: {
+		breakpointSep: '__',
+		outputDevices: ['mobile', 'desktop'],
+		outputFormats: ['avif', 'webp', 'jpg'],
+	},
+
 	videos: {
 		breakpointSep: '__',
 		outputDevices: ['mobile', 'desktop'],
