@@ -1,6 +1,8 @@
 ---
 import { BRAND } from '@/constants'
-import PublicImage, { type PublicImageProps } from './public-image.astro'
+
+import type { PublicImageProps } from './public-image.astro'
+import PublicImage from './public-image.astro'
 
 interface Props extends Omit<PublicImageProps, 'alt' | 'src' | 'width' | 'height'> {}
 
