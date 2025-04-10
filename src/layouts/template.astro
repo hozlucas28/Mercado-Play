@@ -256,10 +256,7 @@ const { locale, title, description, keywords, pageURL, classes } = Astro.props
 		<slot name='header' />
 
 		<main
-			class:list={[
-				'mx-auto w-full max-w-7xl pt-16 md:pt-[4.5rem] 2xl:max-w-(--breakpoint-2xl)',
-				classes?.body?.main?.root,
-			]}
+			class:list={['mx-auto w-full max-w-7xl pt-19 md:pt-22 2xl:max-w-(--breakpoint-2xl)', classes?.body?.main?.root]}
 		>
 			<div class:list={['mx-4', classes?.body?.main?.wrapper]}>
 				<slot />
