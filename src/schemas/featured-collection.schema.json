@@ -1,0 +1,36 @@
+{
+	"$schema": "https://json-schema.org/draft-07/schema",
+	"patternProperties": {
+		".": {
+			"properties": {
+				"title": {
+					"type": "string"
+				},
+				"highlight": {
+					"type": "string"
+				},
+				"description": {
+					"type": "string"
+				},
+				"duration": {
+					"type": "number"
+				},
+				"fadeInDelay": {
+					"type": "number"
+				},
+				"fadeOutDelay": {
+					"type": "number"
+				},
+				"poster": {
+					"properties": {
+						"alt": {
+							"type": "string"
+						}
+					},
+					"required": ["alt"]
+				}
+			},
+			"required": ["title", "highlight", "description", "duration", "fadeInDelay", "fadeOutDelay", "poster"]
+		}
+	}
+}

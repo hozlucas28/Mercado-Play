@@ -1,0 +1,35 @@
+{
+	"$schema": "https://json-schema.org/draft-07/schema",
+	"patternProperties": {
+		".": {
+			"properties": {
+				"title": {
+					"type": "string"
+				},
+				"ariaTitle": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string",
+					"enum": ["película", "serie"]
+				},
+				"date": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"score": {
+					"type": "number"
+				},
+				"image": {
+					"properties": {
+						"alt": {
+							"type": "string"
+						}
+					},
+					"required": ["alt"]
+				}
+			},
+			"required": ["title", "ariaTitle", "type", "date", "score", "image"]
+		}
+	}
+}
