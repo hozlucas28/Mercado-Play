@@ -1,11 +1,13 @@
 import useVideos from '@/components/hooks/use-videos.ts'
 import { BREAKPOINTS } from '@/constants.ts'
 import { getMyList, toggleToMyList } from '@/utils/my-list'
-import { Button, buttonStyles, Carousel, Heading, Link, type CarouselApi } from 'ui'
+import type { CarouselApi } from 'ui'
+import { Button, buttonStyles, Carousel, Heading, Link } from 'ui'
 
 import { IconCheck, IconMute, IconPlus, IconVolumeFull } from '@intentui/icons'
 import clsx from 'clsx'
 import Autoplay from 'embla-carousel-autoplay'
+import type { UseEmblaCarouselType } from 'embla-carousel-react'
 import { useEffect, useRef, useState, type ComponentProps } from 'react'
 
 interface Poster {
@@ -40,7 +42,7 @@ function Featured({ items }: FeaturedProps) {
 	const [api, setApi] = useState<CarouselApi>()
 	const [myList, setMyList] = useState(getMyList())
 
-	const [slide, setSlide] = useState(1)
+	const [slide, setSlide] = useState(0)
 	const [videos, setVideos] = useVideos(items, (item) => item.id)
 	const [playing, setPlaying] = useState(Object.fromEntries(items.map((item) => [item.id, false])))
 	const [timeouts, setTimeouts] = useState<NodeJS.Timeout[]>([])
@@ -93,6 +95,8 @@ function Featured({ items }: FeaturedProps) {
 				slide.ref.setAttribute('data-timeout', 'true')
 
 				const fadeIn = setTimeout(() => {
+					if (index != api.selectedScrollSnap()) return
+
 					slide.video.ref.play()
 					slide.video.ref.volume = 0
 
@@ -149,66 +153,74 @@ function Featured({ items }: FeaturedProps) {
 		const intersectionObserver = new IntersectionObserver(
 			(entries) => {
 				entries.forEach((entry) => {
-					setIntersecting(entry.isIntersecting)
-					if (entry.isIntersecting) return
+					const isCurrentlyIntersecting = entry.isIntersecting
 
-					const slide = {
-						id: $slides[index].getAttribute('data-id') as string,
-						ref: $slides[index],
-						timeout: $slides[index].getAttribute('data-timeout') === 'true' ? true : false,
+					if (intersecting !== isCurrentlyIntersecting) {
+						setIntersecting(isCurrentlyIntersecting)
 
-						video: {
-							ref: $slides[index].querySelector('video') as HTMLVideoElement,
-							duration: items[index].duration,
-							fadeInDelay: items[index].fadeInDelay,
-							fadeOutDelay: items[index].fadeOutDelay,
-						},
-					} as const
+						if (isCurrentlyIntersecting) {
+							fadeInOut(index)
+							return
+						}
 
-					for (const timeout of timeouts) clearTimeout(timeout)
+						const slide = {
+							id: $slides[index].getAttribute('data-id') as string,
+							ref: $slides[index],
+							timeout: $slides[index].getAttribute('data-timeout') === 'true' ? true : false,
 
-					const _playing = { ...playing }
+							video: {
+								ref: $slides[index].querySelector('video') as HTMLVideoElement,
+								duration: items[index].duration,
+								fadeInDelay: items[index].fadeInDelay,
+								fadeOutDelay: items[index].fadeOutDelay,
+							},
+						} as const
 
-					for (const $slide of $slides) {
-						const id = $slide.getAttribute('data-id') as string
-						const $video = $slide.querySelector('video') as HTMLVideoElement
+						for (const timeout of timeouts) clearTimeout(timeout)
 
-						$video.pause()
-						$video.volume = 0
-						$video.currentTime = 0
-						$slide.setAttribute('data-timeout', 'false')
+						const _playing = { ...playing }
 
-						_playing[id] = false
+						for (const $slide of $slides) {
+							const id = $slide.getAttribute('data-id') as string
+							const $video = $slide.querySelector('video') as HTMLVideoElement
+
+							$video.pause()
+							$video.volume = 0
+							$video.currentTime = 0
+							$slide.setAttribute('data-timeout', 'false')
+
+							_playing[id] = false
+						}
+
+						setPlaying(_playing)
+
+						const fadeOut = setTimeout(
+							() => {
+								setPlaying((prev) => ({ ...prev, [slide.id]: false }))
+
+								const steps: number = 50
+								const duration: number = parseInt(slide.video.ref.getAttribute('data-fade-in-out') as string)
+								const interval: number = duration / steps
+								const decrement: number = slide.video.ref.volume / steps
+
+								const fadeOutVolume = setInterval(() => {
+									const newVolume: number = slide.video.ref.volume - decrement
+
+									if (newVolume > 0) {
+										slide.video.ref.volume = Math.max(0, newVolume)
+									} else {
+										slide.video.ref.pause()
+										slide.video.ref.volume = 0
+										slide.video.ref.currentTime = 0
+										clearInterval(fadeOutVolume as NodeJS.Timeout)
+									}
+								}, interval)
+							},
+							slide.video.fadeInDelay + slide.video.duration - slide.video.fadeOutDelay
+						)
+
+						setTimeouts([fadeOut])
 					}
-
-					setPlaying(_playing)
-
-					const fadeOut = setTimeout(
-						() => {
-							setPlaying((prev) => ({ ...prev, [slide.id]: false }))
-
-							const steps: number = 50
-							const duration: number = parseInt(slide.video.ref.getAttribute('data-fade-in-out') as string)
-							const interval: number = duration / steps
-							const decrement: number = slide.video.ref.volume / steps
-
-							const fadeOutVolume = setInterval(() => {
-								const newVolume: number = slide.video.ref.volume - decrement
-
-								if (newVolume > 0) {
-									slide.video.ref.volume = Math.max(0, newVolume)
-								} else {
-									slide.video.ref.pause()
-									slide.video.ref.volume = 0
-									slide.video.ref.currentTime = 0
-									clearInterval(fadeOutVolume as NodeJS.Timeout)
-								}
-							}, interval)
-						},
-						slide.video.fadeInDelay + slide.video.duration - slide.video.fadeOutDelay
-					)
-
-					setTimeouts([fadeOut])
 				})
 			},
 			{ threshold: 0.5 }
@@ -218,17 +230,21 @@ function Featured({ items }: FeaturedProps) {
 
 		intersectionObserver.observe($carousel)
 
-		fadeInOut(index)
 		setSlide(index)
 
-		api.on('select', (event) => {
+		const handleAPISelect = (event: NonNullable<UseEmblaCarouselType[1]>) => {
 			const index = event.selectedScrollSnap()
 
 			fadeInOut(index)
 			setSlide(index)
-		})
+		}
 
-		return () => intersectionObserver.disconnect()
+		api.on('select', handleAPISelect)
+
+		return () => {
+			intersectionObserver.disconnect()
+			api.off('select', handleAPISelect)
+		}
 	}, [api, intersecting, playing, timeouts])
 
 	useEffect(() => {
@@ -259,7 +275,7 @@ function Featured({ items }: FeaturedProps) {
 	return (
 		<>
 			<Carousel
-				className='**:select-none'
+				className='select-none'
 				opts={{ loop: true, slidesToScroll: 1 }}
 				setApi={setApi}
 				plugins={[autoPlay.current]}
@@ -277,7 +293,8 @@ function Featured({ items }: FeaturedProps) {
 						return (
 							<Carousel.Item
 								id={item.id}
-								aria-label={item.highlight}
+								textValue={`${item.highlight}: "${item.title}"`}
+								aria-label={playing[item.id] ? `${videos[item.id].muted ? 'Activar' : 'Silenciar'} sonido` : ''}
 								data-id={item.id}
 								onAction={() => setVideos.toggleMuted(item.id)}
 							>
@@ -286,18 +303,18 @@ function Featured({ items }: FeaturedProps) {
 									<div className='absolute inset-0 grid w-full grid-cols-[1fr_3rem] p-2 sm:p-3 lg:grid-cols-[1fr_6rem] lg:p-7 lg:pt-3.5 lg:pr-3.5'>
 										<div className='mt-auto'>
 											<header className='relative flex w-full flex-col gap-1 *:relative *:w-fit *:before:absolute *:before:-top-2 *:before:-left-6 *:before:-z-[1] *:before:block *:before:h-[calc(100%_+_1rem)] *:before:w-[calc(100%_+_3rem)] *:before:bg-neutral-950 *:before:blur-2xl *:before:sm:blur-3xl lg:gap-4'>
-												<span className='dark:text-fg text-bg bg-highlight/50 relative w-fit rounded-full px-2 text-[0.5rem] font-medium lg:px-4 lg:text-base'>
+												<span className='dark:text-fg text-bg bg-highlight/50 relative w-fit rounded-full px-2 text-[0.5rem] font-medium sm:text-xs lg:px-4 lg:text-base'>
 													{item.highlight}
 												</span>
 												<Heading
-													className='dark:text-fg text-bg relative flex w-fit sm:text-2xl lg:text-4xl'
+													className='dark:text-fg text-bg relative flex w-fit text-balance sm:text-2xl lg:text-4xl'
 													tracking='wider'
 													level={i ? 2 : 1}
 												>
 													{item.title}
 												</Heading>
 												<div>
-													<p className='dark:text-fg/80 text-bg/80 line-clamp-2 text-xs font-normal sm:text-lg lg:text-2xl'>
+													<p className='dark:text-fg/80 text-bg/80 line-clamp-2 text-sm font-normal text-pretty sm:text-lg lg:text-2xl'>
 														{item.description}
 													</p>
 												</div>
@@ -344,7 +361,7 @@ function Featured({ items }: FeaturedProps) {
 												'dark:text-fg/50 text-bg/50 relative ml-auto size-4 transition-opacity delay-400 duration-600 ease-in-out *:absolute *:size-full *:transition-all before:absolute before:-top-1.5 before:-left-2 before:-z-[1] before:block before:size-[calc(100%_+_1rem)] before:bg-neutral-950 before:blur-2xl sm:size-6 md:size-7 lg:size-8',
 												playing[item.id] && videos[item.id].volumeIcon ? 'opacity-100' : 'opacity-0'
 											)}
-											aria-hidden='true'
+											aria-hidden
 										>
 											<IconMute className={videos[item.id].muted ? 'scale-100 opacity-100' : 'scale-0 opacity-0'} />
 											<IconVolumeFull
@@ -360,7 +377,7 @@ function Featured({ items }: FeaturedProps) {
 											muted={videos[item.id].muted}
 											poster={item.poster.src}
 											preload='metadata'
-											aria-hidden={!playing[item.id]}
+											aria-hidden
 											data-fade-in-out='1000'
 											loop
 											playsInline
@@ -396,6 +413,7 @@ function Featured({ items }: FeaturedProps) {
 											)}
 											alt={item.poster.alt}
 											src={item.poster.src}
+											aria-hidden={playing[item.id]}
 										/>
 									</div>
 								</article>
