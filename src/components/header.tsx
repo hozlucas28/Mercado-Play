@@ -2,7 +2,7 @@ import { useSwitchTheme } from '@/components/hooks/use-switch-theme'
 import { underlaysStore } from '@/components/stores/underlays'
 import ThemeSwitcher from '@/components/theme-switcher'
 import Toast from '@/components/toast'
-import { TOASTS } from '@/constants'
+import { BRAND, TOASTS } from '@/constants'
 import type { Page } from '@/types'
 import { scrollbarWidth as getScrollbarWidth } from '@/utils/scrollbar-width'
 import { uniqueLocalExec } from '@/utils/unique-local-exec'
@@ -42,7 +42,7 @@ function Header({ avatar, currentPage, DesktopBrand, MobileBrand }: HeaderProps)
 
 	const navbarLogoProps: ComponentProps<typeof Navbar.Logo> = {
 		'href': '/',
-		'aria-label': 'Ir a la página de inicio',
+		'aria-label': `Ir a la página de inicio de "${BRAND.name}"`,
 	}
 
 	const searchFieldProps: ComponentProps<typeof SearchField> = {
@@ -243,8 +243,8 @@ function Header({ avatar, currentPage, DesktopBrand, MobileBrand }: HeaderProps)
 								<Menu.Item onAction={setTheme}>
 									<figure
 										className='relative *:absolute *:transition-all'
-										aria-hidden='true'
 										data-slot='icon'
+										aria-hidden
 									>
 										<IconSun
 											className={theme === 'dark' ? 'scale-0 -rotate-90 opacity-0' : 'scale-100 rotate-0 opacity-100'}
@@ -293,7 +293,7 @@ function Header({ avatar, currentPage, DesktopBrand, MobileBrand }: HeaderProps)
 				</Navbar.Compact>
 
 				{/* Backdrop */}
-				<span className='absolute inset-0 -z-10 mx-auto h-[calc(var(--navbar-height)+0.5rem)] w-full max-w-[calc(var(--container-7xl)+0.5rem)] [animation:fade-in_linear_both] rounded-xl bg-neutral-800 blur-xl [--navbar-height:3.5rem] [animation-range:0_32px] [animation-timeline:scroll()] md:h-[calc(var(--navbar-height)+1rem)] md:max-w-[calc(var(--container-7xl)+1rem)] 2xl:max-w-(--breakpoint-2xl)' />
+				<span className='absolute inset-0 -z-10 mx-auto h-[calc(var(--navbar-height)+0.5rem)] w-full max-w-[calc(var(--container-7xl)+0.5rem)] [animation:fade-in_linear_both] rounded-xl bg-neutral-900 blur-xl [--navbar-height:3.5rem] [animation-range:0_32px] [animation-timeline:scroll()] md:h-[calc(var(--navbar-height)+1rem)] md:max-w-[calc(var(--container-7xl)+1rem)] 2xl:max-w-(--breakpoint-2xl)' />
 			</Navbar>
 
 			{/* Only for "md" breakpoint */}
