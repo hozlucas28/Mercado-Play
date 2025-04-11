@@ -23,7 +23,7 @@
 			}
 		},
 		{
-			"excludeFiles": ["_data.json"],
+			"excludeFiles": ["_data.json", "*.schema.json"],
 			"files": ["*.json"],
 			"options": {
 				"plugins": ["prettier-plugin-sort-json"]
