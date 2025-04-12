@@ -379,7 +379,7 @@ function Featured({ slides }: FeaturedProps) {
 											poster={slide.poster.src}
 											preload='metadata'
 											aria-hidden
-											data-fade-in-out='1000'
+											data-fade-in-out='675'
 											loop
 											playsInline
 											onPlay={() => setVideos.setKey(slide.id, { volumeIcon: true })}
@@ -409,7 +409,7 @@ function Featured({ slides }: FeaturedProps) {
 
 										<img
 											className={clsx(
-												'absolute top-0 left-0 size-full object-cover transition-opacity duration-1000 ease-in-out',
+												'absolute top-0 left-0 size-full object-cover transition-opacity duration-675 ease-in-out',
 												!playing[slide.id] ? 'opacity-100' : 'opacity-0'
 											)}
 											alt={slide.poster.alt}
