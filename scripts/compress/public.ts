@@ -1,5 +1,6 @@
 import { BREAKPOINTS, COMPRESS_CONFIGURATION } from '@/constants'
 import type { Breakpoint, CompressConfiguration } from '@/types'
+
 import fsSync from 'node:fs'
 import fs from 'node:fs/promises'
 import type { ParsedPath } from 'node:path'
@@ -25,6 +26,8 @@ const { rawPrefix, images } = COMPRESS_CONFIGURATION
 /* -------------------------------- Utilities ------------------------------- */
 
 async function compress(path: string, outputFormats: OutputFormat[]): Promise<void> {
+	sharp.cache(false)
+
 	const { width, height }: Metadata = await sharp(path).metadata()
 
 	if (!width || !height) {
@@ -70,9 +73,13 @@ async function compress(path: string, outputFormats: OutputFormat[]): Promise<vo
 
 		await fs.rename(compressedPath, newCompressedPath)
 	}
+
+	sharp.cache(true)
 }
 
 async function compressWithBreakpoints(path: string): Promise<void> {
+	sharp.cache(false)
+
 	const { width, height }: Metadata = await sharp(path).metadata()
 
 	if (!width || !height) {
@@ -152,6 +159,7 @@ async function compressWithBreakpoints(path: string): Promise<void> {
 	const rawPath: string = nodePath.join(parsedPath.dir, `${rawPrefix}${parsedPath.name}${parsedPath.ext}`)
 
 	await fs.rename(path, rawPath)
+	sharp.cache(true)
 }
 
 /* ---------------------------------- Main ---------------------------------- */
