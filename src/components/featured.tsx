@@ -414,6 +414,8 @@ function Featured({ slides }: FeaturedProps) {
 											)}
 											alt={slide.poster.alt}
 											src={slide.poster.src}
+											loading={i ? 'lazy' : 'eager'}
+											decoding={i ? 'async' : 'sync'}
 											aria-hidden={playing[slide.id]}
 										/>
 									</div>
