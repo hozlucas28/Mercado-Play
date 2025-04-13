@@ -11,6 +11,7 @@
 		"dev:host": "astro dev --host",
 		"format": "prettier --write .",
 		"prepare": "husky",
+		"resize": "tsx ./scripts/resize.ts",
 		"compress:public": "tsx ./scripts/compress/public.ts",
 		"download:youtube-video": "sh ./scripts/download/youtube-video.sh"
 	},

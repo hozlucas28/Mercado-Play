@@ -48,6 +48,10 @@ const MY_LIST = {
 	storageKey: 'my-list',
 } as const
 
+const RESIZE_CONFIGURATION = {
+	extsToResize: ['avif', 'webp', 'png', 'jpg'],
+} as const
+
 const SITE_URL = 'https://pokemon-cards-ochre.vercel.app/' as const
 
 const THEME = {
@@ -64,4 +68,4 @@ const TOASTS = {
 	},
 } as const
 
-export { BRAND, BREAKPOINTS, COMPRESS_CONFIGURATION, MY_LIST, SITE_URL, THEME, TOASTS }
+export { BRAND, BREAKPOINTS, COMPRESS_CONFIGURATION, MY_LIST, RESIZE_CONFIGURATION, SITE_URL, THEME, TOASTS }
