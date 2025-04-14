@@ -243,7 +243,7 @@ function Featured({ slides }: FeaturedProps) {
 					}
 				})
 			},
-			{ threshold: 0.5 }
+			{ threshold: 0.8 }
 		)
 
 		const $carousel: HTMLElement = api.rootNode()

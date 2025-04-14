@@ -12,7 +12,7 @@ const { slides }: Props = Astro.props
 >
 	<!-- Slide -->
 	<article
-		class='bg-muted aspect-video animate-pulse rounded-lg'
+		class='bg-muted aspect-video animate-pulse rounded-lg border'
 		aria-hidden='true'
 	>
 	</article>
@@ -24,7 +24,7 @@ const { slides }: Props = Astro.props
 	>
 		{
 			Array.from({ length: slides }).map((_, index) => (
-				<button class={`bg-muted h-5 animate-pulse rounded-full ${index ? 'w-5' : 'w-10'}`} />
+				<button class={`bg-muted h-5 animate-pulse rounded-full border ${index ? 'w-5' : 'w-10'}`} />
 			))
 		}
 	</footer>
