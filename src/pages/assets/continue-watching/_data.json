@@ -1,0 +1,58 @@
+{
+	"$schema": "../../../schemas/media-collection.schema.json",
+
+	"tt9783600": {
+		"title": "La cabeza de la araña",
+		"ariaTitle": "La cabeza de la araña",
+		"type": "película",
+		"date": "2022-06-11T00:00:00Z",
+		"score": 5.5,
+		"image": {
+			"alt": "Una persona adulta con anteojos y dos jóvenes, con una isla de fondo"
+		}
+	},
+
+	"tt11311302": {
+		"title": "Vikingos: Valhalla",
+		"ariaTitle": "Vikingos: Valhalla",
+		"type": "serie",
+		"date": "2022-02-25T00:00:00Z",
+		"score": 7.4,
+		"image": {
+			"alt": "Tres guerreros vikingos en batalla rodeados de escudos"
+		}
+	},
+
+	"tt13111078": {
+		"title": "Operativo: Lioness",
+		"ariaTitle": "Operativo: Lioness",
+		"type": "serie",
+		"date": "2023-07-23T00:00:00Z",
+		"score": 7.8,
+		"image": {
+			"alt": "Militares y políticos, con un fondo de la Casa Blanca y un campo de batalla"
+		}
+	},
+
+	"tt18335752": {
+		"title": "1923",
+		"ariaTitle": "1923",
+		"type": "serie",
+		"date": "2022-12-18T00:00:00Z",
+		"score": 8.3,
+		"image": {
+			"alt": "Una pareja de ancianos, una pareja de jóvenes y una mujer india, con un rancho y montañas de fondo"
+		}
+	},
+
+	"tt24069848": {
+		"title": "American Primeval",
+		"ariaTitle": "American Primeval",
+		"type": "serie",
+		"date": "2025-01-09T00:00:00Z",
+		"score": 8.0,
+		"image": {
+			"alt": "Un hombre apuntando con un revólver, acompañado de un niño y dos personas en un paisaje desértico"
+		}
+	}
+}

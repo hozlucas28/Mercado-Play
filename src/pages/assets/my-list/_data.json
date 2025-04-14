@@ -1,0 +1,102 @@
+{
+	"$schema": "../../../schemas/media-collection.schema.json",
+
+	"tt0892769": {
+		"title": "Cómo entrenar a tu dragón",
+		"ariaTitle": "Cómo entrenar a tu dragón",
+		"type": "película",
+		"date": "2010-03-25T00:00:00Z",
+		"score": 8.1,
+		"image": {
+			"alt": "Joven montando un dragón negro"
+		}
+	},
+
+	"tt1016150": {
+		"title": "Sin novedad en el frente",
+		"ariaTitle": "Sin novedad en el frente",
+		"type": "película",
+		"date": "2022-09-29T00:00:00Z",
+		"score": 7.8,
+		"image": {
+			"alt": "Soldado alemán con casco en un campo de batalla"
+		}
+	},
+
+	"tt2119532": {
+		"title": "Hasta el último hombre",
+		"ariaTitle": "Hasta el último hombre",
+		"type": "película",
+		"date": "2016-10-16T00:00:00Z",
+		"score": 8.1,
+		"image": {
+			"alt": "Soldado cargando a un compañero herido en el campo de batalla"
+		}
+	},
+
+	"tt2442560": {
+		"title": "Peaky Blinders",
+		"ariaTitle": "Peaky Blinders",
+		"type": "serie",
+		"date": "2013-09-12T00:00:00Z",
+		"score": 8.7,
+		"image": {
+			"alt": "Hombre con traje elegante y corbata en un ambiente oscuro con una ventana de iglesia al fondo"
+		}
+	},
+
+	"tt2640044": {
+		"title": "Los amos del aire",
+		"ariaTitle": "Los amos del aire",
+		"type": "serie",
+		"date": "2024-01-26T00:00:00Z",
+		"score": 7.8,
+		"image": {
+			"alt": "Pilotos militares con uniformes de la Segunda Guerra Mundial y bombarderos volando en formación"
+		}
+	},
+
+	"tt3032476": {
+		"title": "Better Call Saul",
+		"ariaTitle": "Better Call Saul",
+		"type": "serie",
+		"date": "2015-02-08T00:00:00Z",
+		"score": 9.0,
+		"image": {
+			"alt": "Abogado sosteniendo un cartel con una máscara en un ambiente oscuro"
+		}
+	},
+
+	"tt3201640": {
+		"title": "Extinción",
+		"ariaTitle": "Extinción",
+		"type": "película",
+		"date": "2018-01-16T00:00:00Z",
+		"score": 5.8,
+		"image": {
+			"alt": "Persona de pie frente a una nave alienígena flotante en una ciudad en ruinas"
+		}
+	},
+
+	"tt14186672": {
+		"title": "Landman",
+		"ariaTitle": "Landman",
+		"type": "serie",
+		"date": "2024-11-17T00:00:00Z",
+		"score": 8.2,
+		"image": {
+			"alt": "Pozo petrolero en llamas, en medio de un campo y con una ciudad de fondo"
+		}
+	},
+
+	"tt15398776": {
+		"title": "Oppenheimer",
+		"ariaTitle": "Oppenheimer",
+		"type": "película",
+		"date": "2023-07-21T00:00:00Z",
+		"score": 8.3,
+		"image": {
+			"alt": "Hombre trajeado con un sombrero y un artefacto nuclear de fondo"
+		}
+	}
+}

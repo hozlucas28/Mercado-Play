@@ -1,0 +1,39 @@
+{
+	"$schema": "../../../schemas/hero-collection.schema.json",
+
+	"tt4236770": {
+		"title": "Yellowstone",
+		"highlight": "Tendencia N°1",
+		"description": "Una familia de un rancho de Montana se enfrentan con aquellos que intenten invadir sus tierras.",
+		"duration": 120000,
+		"fadeInDelay": 2000,
+		"fadeOutDelay": 2000,
+		"poster": {
+			"alt": "Un hombre con sombrero de vaquero, sosteniendo un rifle, sentado en un porche junto a su familia."
+		}
+	},
+
+	"tt2375692": {
+		"title": "Black Sails",
+		"highlight": "Tendencia N°2",
+		"description": "Sigue al capitán Flint y sus piratas veinte años antes de la clásica novela de Robert Louis Stevenson.",
+		"duration": 120000,
+		"fadeInDelay": 2000,
+		"fadeOutDelay": 2000,
+		"poster": {
+			"alt": "Un pirata con espada en mano, de pie frente a una bandera británica desgarrada y un fondo de fuego y destrucción."
+		}
+	},
+
+	"tt0816692": {
+		"title": "Interestelar",
+		"description": "Un grupo de exploradores prueban los saltos a través de agujeros de gusano en búsqueda de la sobrevivencia de la humanidad.",
+		"highlight": "Tendencia N°3",
+		"duration": 120000,
+		"fadeInDelay": 2000,
+		"fadeOutDelay": 2000,
+		"poster": {
+			"alt": "Un astronauta en un paisaje helado, rodeado de montañas de hielo y nieve, representando un mundo congelado en el espacio."
+		}
+	}
+}
