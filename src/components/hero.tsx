@@ -303,7 +303,7 @@ function Hero({ slides }: HeroProps) {
 									{/* Overlay */}
 									<div className='absolute inset-0 grid w-full grid-cols-[1fr_3rem] p-2 sm:p-3 lg:grid-cols-[1fr_6rem] lg:p-7 lg:pt-3.5 lg:pr-3.5'>
 										<div className='mt-auto'>
-											<header className='relative flex w-full flex-col gap-1 *:relative *:w-fit *:before:absolute *:before:-top-2 *:before:-left-6 *:before:-z-[1] *:before:block *:before:h-[calc(100%_+_1rem)] *:before:w-[calc(100%_+_3rem)] *:before:bg-neutral-950 *:before:blur-2xl *:before:sm:blur-3xl lg:gap-4'>
+											<header className='*:before:bg-fg dark:*:before:bg-bg relative flex w-full flex-col gap-1 *:relative *:w-fit *:before:absolute *:before:-top-2 *:before:-left-6 *:before:-z-[1] *:before:block *:before:h-[calc(100%_+_1rem)] *:before:w-[calc(100%_+_3rem)] *:before:blur-2xl *:before:sm:blur-3xl lg:gap-4'>
 												<span className='dark:text-fg text-bg bg-highlight/50 relative w-fit rounded-full px-2 text-[0.5rem] font-medium sm:text-xs lg:px-4 lg:text-base'>
 													{slide.highlight}
 												</span>
@@ -359,7 +359,7 @@ function Hero({ slides }: HeroProps) {
 										</div>
 										<figure
 											className={clsx(
-												'dark:text-fg/50 text-bg/50 relative ml-auto size-4 transition-opacity delay-400 duration-600 ease-in-out *:absolute *:size-full *:transition-all before:absolute before:-top-1.5 before:-left-2 before:-z-[1] before:block before:size-[calc(100%_+_1rem)] before:bg-neutral-950 before:blur-2xl sm:size-6 md:size-7 lg:size-8',
+												'dark:text-fg/50 text-bg/50 dark:before:bg-bg before:bg-fg relative ml-auto size-6 transition-opacity delay-400 duration-600 ease-in-out *:absolute *:size-full *:transition-all before:absolute before:-top-1.5 before:-left-2 before:-z-[1] before:block before:size-[calc(100%_+_1rem)] before:blur-2xl md:size-7 lg:size-8',
 												playing[slide.id] && videos[slide.id].volumeIcon ? 'opacity-100' : 'opacity-0'
 											)}
 											aria-hidden
