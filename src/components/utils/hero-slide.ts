@@ -1,4 +1,4 @@
-import type { Slide } from '@/components/featured.tsx'
+import type { Slide } from '@/components/hero'
 import { COMPRESS_CONFIGURATION } from '@/constants.ts'
 
 /* ---------------------------------- Types --------------------------------- */
@@ -20,13 +20,13 @@ const {
 
 /* ---------------------------------- Logic --------------------------------- */
 
-interface FeaturedSlideParams {
+interface HeroSlideParams {
 	data: Omit<Slide, 'mobileVideos' | 'desktopVideos' | 'captions'>
 	videos: string[]
 	captions: string[]
 }
 
-function featuredSlide({ data, videos, captions }: FeaturedSlideParams): Slide {
+function heroSlide({ data, videos, captions }: HeroSlideParams): Slide {
 	const slide: Slide = {
 		...data,
 		mobileVideos: {},
@@ -66,4 +66,4 @@ function featuredSlide({ data, videos, captions }: FeaturedSlideParams): Slide {
 	return slide
 }
 
-export { featuredSlide }
+export { heroSlide }

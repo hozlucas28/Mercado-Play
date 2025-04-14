@@ -31,11 +31,11 @@ interface Slide {
 	fadeOutDelay: number
 }
 
-interface FeaturedProps {
+interface HeroProps {
 	slides: Slide[]
 }
 
-function Featured({ slides }: FeaturedProps) {
+function Hero({ slides }: HeroProps) {
 	const [api, setApi] = useState<CarouselApi>()
 	const [playing, setPlaying] = useState(Object.fromEntries(slides.map((item) => [item.id, false])))
 	const [timeouts, setTimeouts] = useState<NodeJS.Timeout[]>([])
@@ -386,7 +386,7 @@ function Featured({ slides }: FeaturedProps) {
 										>
 											{Object.entries(slide.mobileVideos).map(([type, src]) => (
 												<source
-													key={`${src} - Featured (mobile)`}
+													key={`${src} - Hero media (mobile)`}
 													src={src}
 													type={`video/${type}`}
 													media={`(max-width: ${BREAKPOINTS['md']}px)`}
@@ -394,7 +394,7 @@ function Featured({ slides }: FeaturedProps) {
 											))}
 											{Object.entries(slide.desktopVideos).map(([type, src]) => (
 												<source
-													key={`${src} - Featured (desktop)`}
+													key={`${src} - Hero media (desktop)`}
 													src={src}
 													type={`video/${type}`}
 												/>
@@ -446,6 +446,6 @@ function Featured({ slides }: FeaturedProps) {
 	)
 }
 
-export default Featured
+export default Hero
 
 export type { Slide }
