@@ -3,7 +3,7 @@ import type { CarouselApi } from 'ui'
 import { Carousel, Heading, ProgressBar } from 'ui'
 
 import { capitalize } from '@/utils/capitalize'
-import { IconStarFill } from '@intentui/icons'
+import { IconCirclePlay, IconStarFill } from '@intentui/icons'
 import clsx from 'clsx'
 import type { UseEmblaCarouselType } from 'embla-carousel-react'
 import type { ComponentProps } from 'react'
@@ -98,7 +98,7 @@ function Slide({ id, anchor, ariaTitle, type, image, score, title, date, progres
 				aria-label={`Ver "${title ?? ariaTitle}"`}
 				{...anchor}
 			>
-				<figure className='relative overflow-hidden rounded-lg border transition-[border-bottom-left-radius_border-bottom-right-radius] group-hover:rounded-b-none dark:border-none'>
+				<figure className='relative overflow-hidden rounded-lg border transition-[border-bottom-left-radius_border-bottom-right-radius] group-hover:rounded-b-none'>
 					<picture>
 						{Object.values(sourceProps).map((props) => (
 							<source
@@ -109,7 +109,18 @@ function Slide({ id, anchor, ariaTitle, type, image, score, title, date, progres
 						<img {...imageProps} />
 					</picture>
 
+					{progress && (
+						<figure
+							className='absolute inset-0 size-full place-content-center opacity-0 transition-opacity [grid-template-areas:"stack"] *:size-16 *:[grid-area:stack] group-hover:opacity-100 lg:grid'
+							aria-hidden
+						>
+							<IconCirclePlay className='dark:text-fg text-bg z-10' />
+							<span className='bg-fg dark:bg-bg blur-2xl' />
+						</figure>
+					)}
+
 					{progress && progress.position === 'in' && <ProgressBar {...progressBarProps} />}
+
 					{score && (
 						<div
 							className='bg-primary/50 text-bg dark:text-fg absolute top-0 -right-21 z-10 mt-1 mr-1 mb-auto ml-auto flex size-fit items-center gap-x-0.5 rounded-full px-2 py-0.5 text-[0.5rem] lining-nums opacity-0 backdrop-blur-xs transition-[right_opacity] group-not-data-[dragging]/carousel-content:group-hover:right-0 group-not-data-[dragging]/carousel-content:group-hover:opacity-100 sm:text-xs lg:gap-x-1 lg:text-sm'
@@ -253,7 +264,7 @@ function MediaCarousel({ title, slides, options }: MediaCarouselProps) {
 				data-initializing
 			>
 				<Carousel.Content
-					className='group/carousel-content sm:dark:not-data-dragging:[&>div:hover>a]:bg-muted sm:not-data-dragging:[&>div:hover>a]:bg-muted-fg/10 *:transition-[filter] sm:gap-x-2 lg:gap-x-4 not-data-dragging:[&:has(div:hover)>div:not(:hover)]:brightness-65'
+					className='group/carousel-content sm:dark:not-data-dragging:[&>div:hover>a]:bg-muted sm:not-data-dragging:[&>div:hover>a]:bg-muted-fg/10 sm:gap-x-2 lg:gap-x-4'
 					aria-label={`Contenido de "${title}"`}
 					items={slides}
 				>
@@ -274,7 +285,15 @@ function MediaCarousel({ title, slides, options }: MediaCarouselProps) {
 					)}
 				</Carousel.Content>
 
-				<Carousel.Handler className='hidden lg:flex'>
+				<Carousel.Handler
+					className={clsx([
+						'hidden lg:flex',
+						slides.length < 3 && 'hidden',
+						slides.length < 4 && 'sm:hidden',
+						slides.length < 5 && 'lg:hidden',
+						slides.length < 7 && 'xl:hidden',
+					])}
+				>
 					<Carousel.Button
 						segment='previous'
 						aria-label='Slide siguiente'
@@ -291,4 +310,4 @@ function MediaCarousel({ title, slides, options }: MediaCarouselProps) {
 
 export default MediaCarousel
 
-export type { Media as Media }
+export type { Media }

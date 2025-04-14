@@ -41,7 +41,7 @@ const buttonProps: HTMLAttributes<'button'> = {
 			{
 				Array.from({ length: slides }).map(() => (
 					<article class='relative flex min-w-0 shrink-0 grow-0 basis-1/3 animate-pulse flex-col gap-4 pl-4 sm:basis-1/4 lg:basis-1/5 xl:basis-1/7'>
-						<figure class='relative overflow-hidden rounded-lg border dark:border-none'>
+						<figure class='relative overflow-hidden rounded-lg border'>
 							<picture class='bg-muted grid aspect-[592/841] size-full'>
 								<img
 									class='m-auto w-2/5 opacity-15 dark:opacity-35'
@@ -71,7 +71,13 @@ const buttonProps: HTMLAttributes<'button'> = {
 		</section>
 
 		<div
-			class='mt-6 hidden animate-pulse items-center justify-end gap-x-2 *:pointer-events-none lg:flex'
+			class:list={[
+				'mt-6 hidden animate-pulse items-center justify-end gap-x-2 *:pointer-events-none lg:flex',
+				slides < 3 && 'hidden',
+				slides < 4 && 'sm:hidden',
+				slides < 5 && 'lg:hidden',
+				slides < 7 && 'xl:hidden',
+			]}
 			aria-hidden='true'
 		>
 			<button {...buttonProps}><IconChevronLgLeft className='size-4' /></button>
