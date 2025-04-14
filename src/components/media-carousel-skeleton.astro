@@ -1,0 +1,81 @@
+---
+import { buttonStyles } from '@/components/ui/button.tsx'
+import { IconChevronLgLeft, IconChevronLgRight } from '@intentui/icons'
+import type { HTMLAttributes } from 'astro/types'
+
+type Props = {
+	title: string
+	slides: number
+
+	media?: Partial<{
+		title: boolean
+		date: boolean
+		progress: 'in' | 'out'
+	}>
+}
+
+const { title, slides, media }: Props = Astro.props
+
+const buttonProps: HTMLAttributes<'button'> = {
+	class: buttonStyles({
+		size: 'square-petite',
+		shape: 'circle',
+		intent: 'outline',
+		isDisabled: true,
+	}),
+}
+---
+
+<section class='flex flex-col gap-4'>
+	<header class='text-sm font-semibold text-balance sm:text-lg md:text-xl lg:text-2xl'>
+		{title}
+	</header>
+	<div
+		class='relative mb-4 w-full select-none lg:mb-0'
+		aria-label={`Cargando carrusel de "${title}"`}
+	>
+		<section
+			class='before:from-bg relative -ml-4 flex overflow-hidden before:absolute before:top-0 before:right-0 before:z-1 before:h-full before:w-24 before:bg-gradient-to-l before:opacity-100 sm:gap-x-2 before:sm:w-32 lg:gap-x-4'
+			aria-hidden='true'
+		>
+			{
+				Array.from({ length: slides }).map(() => (
+					<article class='relative flex min-w-0 shrink-0 grow-0 basis-1/3 animate-pulse flex-col gap-4 pl-4 sm:basis-1/4 lg:basis-1/5 xl:basis-1/7'>
+						<figure class='relative overflow-hidden rounded-lg border dark:border-none'>
+							<picture class='bg-muted grid aspect-[592/841] size-full'>
+								<img
+									class='m-auto w-2/5 opacity-15 dark:opacity-35'
+									alt=''
+									src='brand/logo-monochromatic.svg'
+								/>
+							</picture>
+
+							{media?.progress === 'in' && (
+								<div class='bg-secondary absolute bottom-0 left-0 h-2 w-full rounded-full outline-1 -outline-offset-1 outline-transparent' />
+							)}
+						</figure>
+
+						{media?.progress === 'out' && (
+							<div class='bg-secondary bottom-0 left-0 h-2 w-full rounded-full outline-1 -outline-offset-1 outline-transparent' />
+						)}
+
+						{(media?.title || media?.date) && (
+							<header class='*:bg-muted *:text-muted flex flex-col gap-1 *:rounded-lg *:text-xs'>
+								{media?.title && <h4 class='w-full font-medium sm:text-base md:text-lg lg:text-xl'>Lorem</h4>}
+								{media?.date && <time class='w-3/4 sm:text-sm md:text-base lg:text-lg'>Lorem</time>}
+							</header>
+						)}
+					</article>
+				))
+			}
+		</section>
+
+		<div
+			class='mt-6 hidden animate-pulse items-center justify-end gap-x-2 *:pointer-events-none lg:flex'
+			aria-hidden='true'
+		>
+			<button {...buttonProps}><IconChevronLgLeft className='size-4' /></button>
+			<button {...buttonProps}><IconChevronLgRight className='size-4' /></button>
+		</div>
+	</div>
+</section>

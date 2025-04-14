@@ -229,3 +229,7 @@
 		@apply cursor-pointer;
 	}
 }
+
+.content-visibility-auto {
+	content-visibility: auto;
+}
