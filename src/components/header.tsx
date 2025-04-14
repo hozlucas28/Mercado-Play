@@ -293,7 +293,7 @@ function Header({ avatar, currentPage, DesktopBrand, MobileBrand }: HeaderProps)
 				</Navbar.Compact>
 
 				{/* Backdrop */}
-				<span className='absolute inset-0 -z-10 mx-auto h-[calc(var(--navbar-height)+0.5rem)] w-full max-w-[calc(var(--container-7xl)+0.5rem)] [animation:fade-in_linear_both] rounded-xl bg-neutral-900 blur-xl [--navbar-height:3.5rem] [animation-range:0_32px] [animation-timeline:scroll()] md:h-[calc(var(--navbar-height)+1rem)] md:max-w-[calc(var(--container-7xl)+1rem)] 2xl:max-w-(--breakpoint-2xl)' />
+				<span className='bg-bg/40 dark:bg-bg/90 absolute inset-0 -z-10 mx-auto h-[calc(var(--navbar-height)+0.5rem)] w-full max-w-[calc(var(--container-7xl)+0.5rem)] [animation:fade-in_linear_both] rounded-xl blur-md [--navbar-height:3.5rem] [animation-range:0_32px] [animation-timeline:scroll()] md:h-[calc(var(--navbar-height)+1rem)] md:max-w-[calc(var(--container-7xl)+1rem)] 2xl:max-w-(--breakpoint-2xl)' />
 			</Navbar>
 
 			{/* Only for "md" breakpoint */}
