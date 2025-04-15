@@ -7,14 +7,14 @@ type Props = {
 	title: string
 	slides: number
 
-	media?: Partial<{
+	options?: Partial<{
 		title: boolean
 		date: boolean
 		progress: 'in' | 'out'
 	}>
 }
 
-const { title, slides, media }: Props = Astro.props
+const { title, slides, options }: Props = Astro.props
 
 const buttonProps: HTMLAttributes<'button'> = {
 	class: buttonStyles({
@@ -50,19 +50,19 @@ const buttonProps: HTMLAttributes<'button'> = {
 								/>
 							</picture>
 
-							{media?.progress === 'in' && (
+							{options?.progress === 'in' && (
 								<div class='bg-secondary absolute bottom-0 left-0 h-2 w-full rounded-full outline-1 -outline-offset-1 outline-transparent' />
 							)}
 						</figure>
 
-						{media?.progress === 'out' && (
+						{options?.progress === 'out' && (
 							<div class='bg-secondary bottom-0 left-0 h-2 w-full rounded-full outline-1 -outline-offset-1 outline-transparent' />
 						)}
 
-						{(media?.title || media?.date) && (
+						{(options?.title || options?.date) && (
 							<header class='*:bg-muted *:text-muted flex flex-col gap-1 *:rounded-lg *:text-xs'>
-								{media?.title && <h4 class='w-full font-medium sm:text-base md:text-lg lg:text-xl'>Lorem</h4>}
-								{media?.date && <time class='w-3/4 sm:text-sm md:text-base lg:text-lg'>Lorem</time>}
+								{options?.title && <h4 class='w-full font-medium sm:text-base md:text-lg lg:text-xl'>Lorem</h4>}
+								{options?.date && <time class='w-3/4 sm:text-sm md:text-base lg:text-lg'>Lorem</time>}
 							</header>
 						)}
 					</article>

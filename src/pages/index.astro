@@ -223,7 +223,7 @@ const animation: Media[] = await mediaSlides(
 		<MediaCarouselSkeleton
 			title='Mi lista'
 			slides={myList.length}
-			media={{
+			options={{
 				title: !!myList.at(0)?.title,
 				date: !!myList.at(0)?.date,
 				progress: myList.at(0)?.progress?.position,
@@ -245,7 +245,7 @@ const animation: Media[] = await mediaSlides(
 		<MediaCarouselSkeleton
 			title='Continuar viendo'
 			slides={continueWatching.length}
-			media={{
+			options={{
 				title: !!continueWatching.at(0)?.title,
 				date: !!continueWatching.at(0)?.date,
 				progress: continueWatching.at(0)?.progress?.position,
@@ -263,7 +263,7 @@ const animation: Media[] = await mediaSlides(
 		<MediaCarouselSkeleton
 			title='Agregadas recientemente'
 			slides={recentlyAdded.length}
-			media={{
+			options={{
 				title: !!recentlyAdded.at(0)?.title,
 				date: !!recentlyAdded.at(0)?.date,
 				progress: recentlyAdded.at(0)?.progress?.position,
@@ -281,7 +281,7 @@ const animation: Media[] = await mediaSlides(
 		<MediaCarouselSkeleton
 			title='Películas taquilleras'
 			slides={blockbusterMovies.length}
-			media={{
+			options={{
 				title: !!blockbusterMovies.at(0)?.title,
 				date: !!blockbusterMovies.at(0)?.date,
 				progress: blockbusterMovies.at(0)?.progress?.position,
@@ -299,7 +299,7 @@ const animation: Media[] = await mediaSlides(
 		<MediaCarouselSkeleton
 			title='Series para maratonear'
 			slides={bingeWatchSeries.length}
-			media={{
+			options={{
 				title: !!bingeWatchSeries.at(0)?.title,
 				date: !!bingeWatchSeries.at(0)?.date,
 				progress: bingeWatchSeries.at(0)?.progress?.position,
@@ -317,7 +317,7 @@ const animation: Media[] = await mediaSlides(
 		<MediaCarouselSkeleton
 			title='Comedia'
 			slides={comedy.length}
-			media={{
+			options={{
 				title: !!comedy.at(0)?.title,
 				date: !!comedy.at(0)?.date,
 				progress: comedy.at(0)?.progress?.position,
@@ -335,7 +335,7 @@ const animation: Media[] = await mediaSlides(
 		<MediaCarouselSkeleton
 			title='Animación'
 			slides={animation.length}
-			media={{
+			options={{
 				title: !!animation.at(0)?.title,
 				date: !!animation.at(0)?.date,
 				progress: animation.at(0)?.progress?.position,
