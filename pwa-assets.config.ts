@@ -34,7 +34,7 @@ function appleAssetName(landscape: boolean, size: AppleDeviceSize, _dark?: boole
 const appleSplashScreens = createAppleSplashScreens(
 	{
 		name: appleAssetName,
-		padding: 0,
+		padding: 0.05,
 
 		png: {
 			quality: pngQuality,
@@ -86,7 +86,7 @@ export default defineConfig({
 		apple: {
 			...minimal2023Preset.apple,
 
-			padding: 0,
+			padding: 0.05,
 			sizes: [180, 167, 152, 120, 76, 57],
 
 			resizeOptions: {
@@ -99,7 +99,7 @@ export default defineConfig({
 		maskable: {
 			...minimal2023Preset.maskable,
 
-			padding: 0.2,
+			padding: 0.05,
 			sizes: [512, 192, 64],
 
 			resizeOptions: {
@@ -110,7 +110,7 @@ export default defineConfig({
 		transparent: {
 			...minimal2023Preset.transparent,
 
-			padding: 0.2,
+			padding: 0.05,
 			sizes: [512, 192, 64],
 
 			resizeOptions: {
