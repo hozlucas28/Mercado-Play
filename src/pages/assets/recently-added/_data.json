@@ -1,0 +1,135 @@
+{
+	"$schema": "../../../schemas/media-collection.schema.json",
+
+	"tt11198330": {
+		"title": "La casa del dragón",
+		"ariaTitle": "La casa del dragón",
+		"type": "serie",
+		"date": "2022-08-21T00:00:00Z",
+		"score": 8.3,
+		"image": {
+			"alt": "Una mujer vestida de rojo con una capa, de pie frente a un gran dragón y con un trono de espadas."
+		}
+	},
+
+	"tt14539740": {
+		"title": "Godzilla y Kong: El nuevo imperio",
+		"ariaTitle": "Godzilla y Kong: El nuevo imperio",
+		"type": "película",
+		"date": "2024-03-29T00:00:00Z",
+		"score": 6.1,
+		"image": {
+			"alt": "Godzilla y Kong con helicópteros volando debajo."
+		}
+	},
+
+	"tt29268110": {
+		"title": "Sonríe 2",
+		"ariaTitle": "Sonríe 2",
+		"type": "película",
+		"date": "2024-10-18T00:00:00Z",
+		"score": 6.7,
+		"image": {
+			"alt": "Una figura misteriosa con un fondo oscuro."
+		}
+	},
+
+	"tt5822536": {
+		"title": "Paddington",
+		"ariaTitle": "Paddington",
+		"type": "película",
+		"date": "2025-01-16T00:00:00Z",
+		"score": 6.7,
+		"image": {
+			"alt": "Un oso con un sombrero rojo y un abrigo azul colgando de un bote en un río, rodeado de personajes."
+		}
+	},
+
+	"tt14186876": {
+		"title": "Acaba con ellos",
+		"ariaTitle": "Acaba con ellos",
+		"type": "película",
+		"date": "2025-02-07T00:00:00Z",
+		"score": 6.5,
+		"image": {
+			"alt": "Dos hombres de pie junto a un vehículo en un entorno rural."
+		}
+	},
+
+	"tt13433802": {
+		"title": "Un lugar en silencio: Día uno",
+		"ariaTitle": "Un lugar en silencio: Día uno",
+		"type": "película",
+		"date": "2024-06-28T00:00:00Z",
+		"score": 6.3,
+		"image": {
+			"alt": "Dos personas en una ciudad en caos, con meteoritos cayendo del cielo y edificios en llamas al fondo, mientras intentan protegerse."
+		}
+	},
+
+	"tt15716776": {
+		"title": "Devil May Cry",
+		"ariaTitle": "Devil May Cry",
+		"type": "serie",
+		"date": "2025-04-03T00:00:00Z",
+		"score": 7.5,
+		"image": {
+			"alt": "Un hombre de cabello blanco y abrigo rojo, con una expresión seria y un fondo oscuro que resalta su figura."
+		}
+	},
+
+	"tt0773262": {
+		"title": "Dexter",
+		"ariaTitle": "Dexter",
+		"type": "serie",
+		"date": "2006-10-01T00:00:00Z",
+		"score": 8.6,
+		"image": {
+			"alt": "Un hombre sosteniendo a un bebé en sus hombros, con un fondo azul."
+		}
+	},
+
+	"tt3874544": {
+		"title": "Un jefe en pañales",
+		"ariaTitle": "Un jefe en pañales",
+		"type": "película",
+		"date": "2017-03-12T00:00:00Z",
+		"score": 6.3,
+		"image": {
+			"alt": "Un bebé vestido con un traje negro, sentado en una silla alta con un fondo azul."
+		}
+	},
+
+	"tt12037194": {
+		"title": "Furiosa",
+		"ariaTitle": "Furiosa",
+		"type": "película",
+		"date": "2024-05-15T00:00:00Z",
+		"score": 7.5,
+		"image": {
+			"alt": "Dos personajes enfrentados con una línea de fuego en el centro y rodeados de chispas."
+		}
+	},
+
+	"tt1285016": {
+		"title": "Red social",
+		"ariaTitle": "Red social",
+		"type": "película",
+		"date": "2010-09-24T00:00:00Z",
+		"score": 7.8,
+		"image": {
+			"alt": "Un hombre joven con cabello rizado que representa al creador de Meta (anteriormente conocida como Facebook)."
+		}
+	},
+
+	"tt4772188": {
+		"title": "Flow",
+		"ariaTitle": "Flow",
+		"type": "película",
+		"date": "2024-05-22T00:00:00Z",
+		"score": 7.9,
+		"image": {
+			"alt": "Un gato negro con ojos grandes y brillantes, rodeado de peces de colores en un entorno submarino."
+		}
+	}
+}

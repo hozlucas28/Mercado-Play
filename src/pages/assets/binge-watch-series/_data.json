@@ -1,0 +1,124 @@
+{
+	"$schema": "../../../schemas/media-collection.schema.json",
+
+	"tt31806037": {
+		"title": "Adolescencia",
+		"ariaTitle": "Adolescencia",
+		"type": "serie",
+		"date": "2025-03-13T00:00:00Z",
+		"score": 8.2,
+		"image": {
+			"alt": "Un joven con cabello corto y una persona mayor en primer plano."
+		}
+	},
+
+	"tt23872886": {
+		"title": "Día cero",
+		"ariaTitle": "Día cero",
+		"type": "serie",
+		"date": "2025-02-20T00:00:00Z",
+		"score": 7.0,
+		"image": {
+			"alt": "Un hombre mayor con traje azul y corbata roja, con un pin de la bandera de Estados Unidos."
+		}
+	},
+
+	"tt6470478": {
+		"title": "The Good Doctor",
+		"ariaTitle": "The Good Doctor",
+		"type": "serie",
+		"date": "2017-09-25T00:00:00Z",
+		"score": 8.0,
+		"image": {
+			"alt": "Un médico joven con bata blanca y camisa a cuadros, de pie frente a un fondo azul."
+		}
+	},
+
+	"tt7366338": {
+		"title": "Chernobyl",
+		"ariaTitle": "Chernobyl",
+		"type": "serie",
+		"date": "2019-05-06T00:00:00Z",
+		"score": 9.3,
+		"image": {
+			"alt": "Un hombre con traje protector y máscara, sosteniendo una medidor de radiación en un entorno lleno de humo."
+		}
+	},
+
+	"tt10048342": {
+		"title": "Gambito de dama",
+		"ariaTitle": "Gambito de dama",
+		"type": "serie",
+		"date": "2020-10-23T00:00:00Z",
+		"score": 8.5,
+		"image": {
+			"alt": "Una mujer joven con cabello pelirrojo, sentada frente a un tablero de ajedrez."
+		}
+	},
+
+	"tt0185906": {
+		"title": "Banda de hermanos",
+		"ariaTitle": "Banda de hermanos",
+		"type": "serie",
+		"date": "2001-09-09T00:00:00Z",
+		"score": 9.4,
+		"image": {
+			"alt": "Un grupo de soldados caminando en una colina bajo un cielo nublado."
+		}
+	},
+
+	"tt4786824": {
+		"title": "The Crown",
+		"ariaTitle": "The Crown",
+		"type": "serie",
+		"date": "2016-11-04T00:00:00Z",
+		"score": 8.6,
+		"image": {
+			"alt": "La reyna Isabel II caminando en un espacio amplio con sombras diagonales, evocando un ambiente solemne."
+		}
+	},
+
+	"tt6473344": {
+		"title": "SEAL Team",
+		"ariaTitle": "SEAL Team",
+		"type": "serie",
+		"date": "2017-09-27T00:00:00Z",
+		"score": 7.8,
+		"image": {
+			"alt": "Un grupo de soldados (Navy Seals) sentados en la parte trasera de un vehículo militar en un entorno árido."
+		}
+	},
+
+	"tt2187850": {
+		"title": "Pablo Escobar: El patrón del mal",
+		"ariaTitle": "Pablo Escobar: El patrón del mal",
+		"type": "serie",
+		"date": "2012-05-28T00:00:00Z",
+		"score": 8.4,
+		"image": {
+			"alt": "Un hombre sentado en un escritorio rodeado de fajos de billetes y libros de contabilidad."
+		}
+	},
+
+	"tt5952634": {
+		"title": "El espía",
+		"ariaTitle": "El espía",
+		"type": "serie",
+		"date": "2019-09-06T00:00:00Z",
+		"score": 7.9,
+		"image": {
+			"alt": "Un hombre con traje dividido entre dos mundos, uno colorido y otro en blanco y negro, evocando un ambiente de espionaje."
+		}
+	},
+
+	"tt11280740": {
+		"title": "Severance",
+		"ariaTitle": "Severance",
+		"type": "serie",
+		"date": "2022-02-18T00:00:00Z",
+		"score": 8.7,
+		"image": {
+			"alt": "Un hombre sentado frente a un escritorio con una computadora antigua, representando una separación entre el trabajo y la vida personal."
+		}
+	}
+}

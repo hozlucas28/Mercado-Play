@@ -1,0 +1,179 @@
+{
+	"$schema": "../../../schemas/media-collection.schema.json",
+
+	"tt2861424": {
+		"title": "Rick & Morty",
+		"ariaTitle": "Rick & Morty",
+		"type": "serie",
+		"date": "2013-12-02T00:00:00Z",
+		"score": 9.1,
+		"image": {
+			"alt": "Un científico anciano con cabello puntiagudo y un joven, ambos cubiertos de sangre, de pie en un entorno oscuro y surrealista con espaguetis gigantes y figuras sombrías de fondo."
+		}
+	},
+
+	"tt0182576": {
+		"title": "Padre de familia",
+		"ariaTitle": "Padre de familia",
+		"type": "serie",
+		"date": "1999-01-31T00:00:00Z",
+		"score": 8.1,
+		"image": {
+			"alt": "Una familia posando juntos con expresiones animadas."
+		}
+	},
+
+	"tt0877057": {
+		"title": "Death Note",
+		"ariaTitle": "Death Note",
+		"type": "serie",
+		"date": "2006-10-04T00:00:00Z",
+		"score": 8.9,
+		"image": {
+			"alt": "Un monstruo con aspecto aterrador, una manzana roja flotando en el centro y dos personajes enfrentados, uno con cabello oscuro y otro con cabello claro, rodeados de un ambiente oscuro y misterioso."
+		}
+	},
+
+	"tt1646971": {
+		"title": "Cómo entrenar a tu dragón 2",
+		"ariaTitle": "Cómo entrenar a tu dragón 2",
+		"type": "serie",
+		"date": "2014-06-13T00:00:00Z",
+		"score": 7.8,
+		"image": {
+			"alt": "Un joven vikingo con armadura junto a un dragón negro con ojos verdes, rodeados de un paisaje verde y montañoso con otros dragones volando en el cielo."
+		}
+	},
+
+	"tt0388629": {
+		"title": "One Piece",
+		"ariaTitle": "One Piece",
+		"type": "serie",
+		"date": "1999-10-20T00:00:00Z",
+		"score": 9.0,
+		"image": {
+			"alt": "Un grupo de personajes coloridos, liderados por un joven con sombrero de paja y una chaqueta roja."
+		}
+	},
+
+	"tt0275137": {
+		"title": "Liga de la justicia",
+		"ariaTitle": "Liga de la justicia",
+		"type": "serie",
+		"date": "2001-11-17T00:00:00Z",
+		"score": 8.5,
+		"image": {
+			"alt": "Un grupo de superhéroes icónicos (Superman, Batman, Wonder Woman, Flash, Green Lantern, Hawkgirl y Martian Manhunter) en una pose dinámica y heroica con un fondo colorido."
+		}
+	},
+
+	"tt0168366": {
+		"title": "Pokémon",
+		"ariaTitle": "Pokémon",
+		"type": "serie",
+		"date": "1997-04-01T00:00:00Z",
+		"score": 7.6,
+		"image": {
+			"alt": "Un Pikachu amarillo con mejillas rojas y una expresión adorable, con el logo de Pokémon en la parte superior y un fondo azul claro."
+		}
+	},
+
+	"tt11680642": {
+		"title": "Panteón",
+		"ariaTitle": "Panteón",
+		"type": "serie",
+		"date": "2022-09-01T00:00:00Z",
+		"score": 8.5,
+		"image": {
+			"alt": "Una joven con cabello corto y oscuro frente a una figura luminosa y etérea con cabello anaranjado, ambas en un entorno digital."
+		}
+	},
+
+	"tt0397306": {
+		"title": "American Dad",
+		"ariaTitle": "American Dad",
+		"type": "serie",
+		"date": "2005-02-06T00:00:00Z",
+		"score": 7.4,
+		"image": {
+			"alt": "Una familia animada con un hombre en traje realizando un saludo militar, una mujer rubia con vestido rosa, un alienígena sosteniendo una taza, un pez naranja en una pecera y dos jóvenes de pie."
+		}
+	},
+
+	"tt2250192": {
+		"title": "Sword Art Online",
+		"ariaTitle": "Sword Art Online",
+		"type": "serie",
+		"date": "2012-07-07T00:00:00Z",
+		"score": 7.5,
+		"image": {
+			"alt": "Un joven con una espada negra, rodeado de personajes con armas y criaturas fantásticas."
+		}
+	},
+
+	"tt0149460": {
+		"title": "Futurama",
+		"ariaTitle": "Futurama",
+		"type": "serie",
+		"date": "1999-03-28T00:00:00Z",
+		"score": 8.5,
+		"image": {
+			"alt": "Un robot, un hombre pelirrojo, una mujer con cabello púrpura y otros personajes, junto a una nave espacial verde en un paisaje futurista."
+		}
+	},
+
+	"tt1710308": {
+		"title": "Un show más",
+		"ariaTitle": "Un show más",
+		"type": "serie",
+		"date": "2010-09-06T00:00:00Z",
+		"score": 8.5,
+		"image": {
+			"alt": "Un pájaro azul empujando una podadora mientras un mapache sostiene una jarra de café, ambos usando gafas de sol, en un fondo amarillo brillante con un parque infantil al fondo."
+		}
+	},
+
+	"tt6741278": {
+		"title": "Invincible",
+		"ariaTitle": "Invincible",
+		"type": "serie",
+		"date": "2021-03-25T00:00:00Z",
+		"score": 8.7,
+		"image": {
+			"alt": "Un grupo de personajes heroicos en una pose dinámica, con un fondo colorido y vibrante que transmite acción y emoción."
+		}
+	},
+
+	"tt0114709": {
+		"title": "Toy Story",
+		"ariaTitle": "Toy Story",
+		"type": "serie",
+		"date": "1995-11-22T00:00:00Z",
+		"score": 8.3,
+		"image": {
+			"alt": "Un astronauta con traje blanco y verde volando junto a un vaquero con sombrero marrón, rodeados de juguetes como un dinosaurio verde, un perro salchicha y soldados de plástico en un cuarto infantil."
+		}
+	},
+
+	"tt2560140": {
+		"title": "Attack on Titan",
+		"ariaTitle": "Attack on Titan",
+		"type": "serie",
+		"date": "2013-04-07T00:00:00Z",
+		"score": 9.1,
+		"image": {
+			"alt": "Un joven con una capa y una espada enfrentándose a un titán gigante en un entorno devastado, con muros altos y un cielo nublado de fondo."
+		}
+	},
+
+	"tt0409591": {
+		"title": "Naruto",
+		"ariaTitle": "Naruto",
+		"type": "serie",
+		"date": "2002-10-03T00:00:00Z",
+		"score": 9.1,
+		"image": {
+			"alt": "Un grupo de ninjas jóvenes, liderados por un chico rubio con una chaqueta naranja, acompañados por un hombre con máscara y cabello plateado sosteniendo un libro."
+		}
+	}
+}

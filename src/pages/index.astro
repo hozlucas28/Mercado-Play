@@ -11,9 +11,14 @@ import { mediaSlide } from '@/components/utils/media-slide.ts'
 import { COMPRESS_CONFIGURATION } from '@/constants.ts'
 import Layout from '@/layouts/index.astro'
 
+import animationData from './assets/animation/_data.json'
+import bingeWatchSeriesData from './assets/binge-watch-series/_data.json'
+import blockbusterMoviesData from './assets/blockbuster-movies/_data.json'
+import comedyData from './assets/comedy/_data.json'
 import continueWatchingData from './assets/continue-watching/_data.json'
 import heroData from './assets/hero/_data.json'
 import myListData from './assets/my-list/_data.json'
+import recentlyAddedData from './assets/recently-added/_data.json'
 
 import nodePath from 'node:path'
 
@@ -113,7 +118,7 @@ const myList: Media[] = await mediaSlides(
 	(data) => ({
 		...data,
 		anchor: { href: `/${data.id}` },
-		date: undefined,
+		date: new Date(data.date),
 	})
 )
 
@@ -128,6 +133,56 @@ const continueWatching: Media[] = await mediaSlides(
 			value: Math.floor(Math.random() * 76) + 15,
 			position: 'out',
 		},
+	})
+)
+
+const recentlyAdded: Media[] = await mediaSlides(
+	recentlyAddedData as unknown as MediaCollection,
+	import.meta.glob<{ default: ImageMetadata }>('./assets/recently-added/**/_*.(avif|webp|jpg)'),
+	(data) => ({
+		...data,
+		anchor: { href: `/${data.id}` },
+		date: new Date(data.date),
+	})
+)
+
+const blockbusterMovies: Media[] = await mediaSlides(
+	blockbusterMoviesData as unknown as MediaCollection,
+	import.meta.glob<{ default: ImageMetadata }>('./assets/blockbuster-movies/**/_*.(avif|webp|jpg)'),
+	(data) => ({
+		...data,
+		anchor: { href: `/${data.id}` },
+		date: new Date(data.date),
+	})
+)
+
+const bingeWatchSeries: Media[] = await mediaSlides(
+	bingeWatchSeriesData as unknown as MediaCollection,
+	import.meta.glob<{ default: ImageMetadata }>('./assets/binge-watch-series/**/_*.(avif|webp|jpg)'),
+	(data) => ({
+		...data,
+		anchor: { href: `/${data.id}` },
+		date: new Date(data.date),
+	})
+)
+
+const comedy: Media[] = await mediaSlides(
+	comedyData as unknown as MediaCollection,
+	import.meta.glob<{ default: ImageMetadata }>('./assets/comedy/**/_*.(avif|webp|jpg)'),
+	(data) => ({
+		...data,
+		anchor: { href: `/${data.id}` },
+		date: new Date(data.date),
+	})
+)
+
+const animation: Media[] = await mediaSlides(
+	animationData as unknown as MediaCollection,
+	import.meta.glob<{ default: ImageMetadata }>('./assets/animation/**/_*.(avif|webp|jpg)'),
+	(data) => ({
+		...data,
+		anchor: { href: `/${data.id}` },
+		date: new Date(data.date),
 	})
 )
 ---
@@ -194,6 +249,96 @@ const continueWatching: Media[] = await mediaSlides(
 				title: !!continueWatching.at(0)?.title,
 				date: !!continueWatching.at(0)?.date,
 				progress: continueWatching.at(0)?.progress?.position,
+			}}
+			slot='fallback'
+		/>
+	</MediaCarousel>
+
+	<!-- Recently added -->
+	<MediaCarousel
+		title='Agregadas recientemente'
+		slides={recentlyAdded}
+		client:only='react'
+	>
+		<MediaCarouselSkeleton
+			title='Agregadas recientemente'
+			slides={recentlyAdded.length}
+			media={{
+				title: !!recentlyAdded.at(0)?.title,
+				date: !!recentlyAdded.at(0)?.date,
+				progress: recentlyAdded.at(0)?.progress?.position,
+			}}
+			slot='fallback'
+		/>
+	</MediaCarousel>
+
+	<!-- Blockbuster movies -->
+	<MediaCarousel
+		title='Películas taquilleras'
+		slides={blockbusterMovies}
+		client:only='react'
+	>
+		<MediaCarouselSkeleton
+			title='Películas taquilleras'
+			slides={blockbusterMovies.length}
+			media={{
+				title: !!blockbusterMovies.at(0)?.title,
+				date: !!blockbusterMovies.at(0)?.date,
+				progress: blockbusterMovies.at(0)?.progress?.position,
+			}}
+			slot='fallback'
+		/>
+	</MediaCarousel>
+
+	<!-- Series to binge-watch -->
+	<MediaCarousel
+		title='Series para maratonear'
+		slides={bingeWatchSeries}
+		client:only='react'
+	>
+		<MediaCarouselSkeleton
+			title='Series para maratonear'
+			slides={bingeWatchSeries.length}
+			media={{
+				title: !!bingeWatchSeries.at(0)?.title,
+				date: !!bingeWatchSeries.at(0)?.date,
+				progress: bingeWatchSeries.at(0)?.progress?.position,
+			}}
+			slot='fallback'
+		/>
+	</MediaCarousel>
+
+	<!-- Comedy -->
+	<MediaCarousel
+		title='Comedia'
+		slides={comedy}
+		client:only='react'
+	>
+		<MediaCarouselSkeleton
+			title='Comedia'
+			slides={comedy.length}
+			media={{
+				title: !!comedy.at(0)?.title,
+				date: !!comedy.at(0)?.date,
+				progress: comedy.at(0)?.progress?.position,
+			}}
+			slot='fallback'
+		/>
+	</MediaCarousel>
+
+	<!-- Animation -->
+	<MediaCarousel
+		title='Animación'
+		slides={animation}
+		client:only='react'
+	>
+		<MediaCarouselSkeleton
+			title='Animación'
+			slides={animation.length}
+			media={{
+				title: !!animation.at(0)?.title,
+				date: !!animation.at(0)?.date,
+				progress: animation.at(0)?.progress?.position,
 			}}
 			slot='fallback'
 		/>

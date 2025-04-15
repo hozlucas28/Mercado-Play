@@ -1,0 +1,146 @@
+{
+	"$schema": "../../../schemas/media-collection.schema.json",
+
+	"tt3659388": {
+		"title": "Misión rescate",
+		"ariaTitle": "Misión rescate",
+		"type": "película",
+		"date": "2015-09-11T00:00:00Z",
+		"score": 8.0,
+		"image": {
+			"alt": "Un astronauta en un entorno marciano."
+		}
+	},
+
+	"tt1160419": {
+		"title": "Dune: Parte I",
+		"ariaTitle": "Dune: Parte I",
+		"type": "película",
+		"date": "2021-09-03T00:00:00Z",
+		"score": 8.0,
+		"image": {
+			"alt": "Un grupo de personas con vestimentas elegantes, pero futuristas, en un entorno desértico."
+		}
+	},
+
+	"tt1877830": {
+		"title": "Batman",
+		"ariaTitle": "Batman",
+		"type": "película",
+		"date": "2022-03-01T00:00:00Z",
+		"score": 7.8,
+		"image": {
+			"alt": "La silueta de Batman bajo la lluvia, con un fondo rojo intenso."
+		}
+	},
+
+	"tt4425200": {
+		"title": "John Wick 2",
+		"ariaTitle": "John Wick 2",
+		"type": "película",
+		"date": "2017-01-30T00:00:00Z",
+		"score": 7.4,
+		"image": {
+			"alt": "Un hombre de traje rodeado por múltiples armas apuntándole."
+		}
+	},
+
+	"tt0848228": {
+		"title": "Los Vengadores",
+		"ariaTitle": "Los Vengadores",
+		"type": "película",
+		"date": "2012-04-11T00:00:00Z",
+		"score": 8.0,
+		"image": {
+			"alt": "Un grupo de superhéroes luchando en una ciudad destruida."
+		}
+	},
+
+	"tt1745960": {
+		"title": "Top Gun: Maverick",
+		"ariaTitle": "Top Gun: Maverick",
+		"type": "película",
+		"date": "2022-05-18T00:00:00Z",
+		"score": 8.2,
+		"image": {
+			"alt": "Un piloto de pie frente a un avión de combate con la cabina abierta."
+		}
+	},
+
+	"tt9362722": {
+		"title": "A través del Spider-Verso",
+		"ariaTitle": "A través del Spider-Verso",
+		"type": "película",
+		"date": "2023-05-31T00:00:00Z",
+		"score": 8.5,
+		"image": {
+			"alt": "Multiples Spider-Man's de diferentes universos en un entorno colorido y dinámico."
+		}
+	},
+
+	"tt1840309": {
+		"title": "Divergente",
+		"ariaTitle": "Divergente",
+		"type": "película",
+		"date": "2014-03-18T00:00:00Z",
+		"score": 6.6,
+		"image": {
+			"alt": "Un joven y una joven de pie en lo alto de un edificio con una ciudad de fondo."
+		}
+	},
+
+	"tt0407304": {
+		"title": "Guerra de los mundos",
+		"ariaTitle": "Guerra de los mundos",
+		"type": "película",
+		"date": "2005-06-13T00:00:00Z",
+		"score": 6.5,
+		"image": {
+			"alt": "Un planeta Tierra envuelto en llamas con tentáculos alienígenas rodeándolo."
+		}
+	},
+
+	"tt1706620": {
+		"title": "Snowpiercer",
+		"ariaTitle": "Snowpiercer",
+		"type": "película",
+		"date": "2013-07-29T00:00:00Z",
+		"score": 7.1,
+		"image": {
+			"alt": "Un tren futurista avanzando a través de un paisaje helado."
+		}
+	},
+
+	"tt2908446": {
+		"title": "Insurgente",
+		"ariaTitle": "Insurgente",
+		"type": "película",
+		"date": "2015-03-11T00:00:00Z",
+		"score": 6.2,
+		"image": {
+			"alt": "Un joven y una joven apuntando con sus armas, cubriendo la espalda del otro y rodeados de vidrios rotos."
+		}
+	},
+
+	"tt0441881": {
+		"title": "Peligro inminente",
+		"ariaTitle": "Peligro inminente",
+		"type": "película",
+		"date": "2019-06-15T00:00:00Z",
+		"score": 6.8,
+		"image": {
+			"alt": "Un grupo de soldados estadounidenses en una colina bajo un cielo lleno de humo y helicópteros."
+		}
+	},
+
+	"tt1502397": {
+		"title": "Bad Boys para siempre",
+		"ariaTitle": "Bad Boys para siempre",
+		"type": "película",
+		"date": "2020-01-07T00:00:00Z",
+		"score": 6.5,
+		"image": {
+			"alt": "Dos policías armados con chalecos antibalas, un coche deportivo azul en movimiento y un helicóptero en el fondo."
+		}
+	}
+}

@@ -1,0 +1,124 @@
+{
+	"$schema": "../../../schemas/media-collection.schema.json",
+
+	"tt15671028": {
+		"title": "Hazme el favor",
+		"ariaTitle": "Hazme el favor",
+		"type": "película",
+		"date": "2023-06-15T00:00:00Z",
+		"score": 6.3,
+		"image": {
+			"alt": "Una chicha con un collar rojo apretándole las mejillas a un joven"
+		}
+	},
+
+	"tt1637725": {
+		"title": "Ted",
+		"ariaTitle": "Ted",
+		"type": "película",
+		"date": "2012-06-29T00:00:00Z",
+		"score": 6.9,
+		"image": {
+			"alt": "Un hombre sentado en un sofá junto a un oso de peluche con vida, sosteniendo una botella."
+		}
+	},
+
+	"tt1250777": {
+		"title": "Kick-Ass",
+		"ariaTitle": "Kick-Ass",
+		"type": "película",
+		"date": "2010-03-12T00:00:00Z",
+		"score": 7.6,
+		"image": {
+			"alt": "Cuatro personajes en trajes coloridos con efectos de pintura salpicada."
+		}
+	},
+
+	"tt26451138": {
+		"title": "División palermo",
+		"ariaTitle": "División palermo",
+		"type": "serie",
+		"date": "2023-02-17T00:00:00Z",
+		"score": 7.5,
+		"image": {
+			"alt": "Un hombre con una camisa azul y detalles naranjas, con confeti amarillo alrededor."
+		}
+	},
+
+	"tt1636826": {
+		"title": "Proyecto X",
+		"ariaTitle": "Proyecto X",
+		"type": "película",
+		"date": "2012-03-01T00:00:00Z",
+		"score": 6.7,
+		"image": {
+			"alt": "Un hombre acostado boca abajo en el césped rodeado de vasos rojos con alcohol."
+		}
+	},
+
+	"tt18482892": {
+		"title": "Machos alfa",
+		"ariaTitle": "Machos alfa",
+		"type": "serie",
+		"date": "2022-12-30T00:00:00Z",
+		"score": 7.6,
+		"image": {
+			"alt": "Cuatro hombres posando juntos frente a un fondo azul."
+		}
+	},
+
+	"tt4580372": {
+		"title": "Merlí",
+		"ariaTitle": "Merlí",
+		"type": "serie",
+		"date": "2015-09-14T00:00:00Z",
+		"score": 8.6,
+		"image": {
+			"alt": "Un grupo de estudiantes y un profesor sentados y de pie frente a un pizarrón con diagramas."
+		}
+	},
+
+	"tt13406094": {
+		"title": "The White Lotus",
+		"ariaTitle": "The White Lotus",
+		"type": "serie",
+		"date": "2021-07-11T00:00:00Z",
+		"score": 8.0,
+		"image": {
+			"alt": "Un grupo de personas caminando por la playa con pétalos de rosa en la arena, rodeados de palmeras y un cielo nublado."
+		}
+	},
+
+	"tt5884052": {
+		"title": "Detective pikachu",
+		"ariaTitle": "Detective pikachu",
+		"type": "película",
+		"date": "2019-05-02T00:00:00Z",
+		"score": 6.5,
+		"image": {
+			"alt": "Un Pikachu con sombrero de detective en una ciudad iluminada por luces de neón."
+		}
+	},
+
+	"tt1190634": {
+		"title": "The Boys",
+		"ariaTitle": "The Boys",
+		"type": "serie",
+		"date": "2019-07-16T00:00:00Z",
+		"score": 8.6,
+		"image": {
+			"alt": "Un hombre con cabello oscuro, una chaqueta negra y rayos lacer apunto de salir de sus ojos."
+		}
+	},
+
+	"tt2575988": {
+		"title": "Silicon Valley",
+		"ariaTitle": "Silicon Valley",
+		"type": "serie",
+		"date": "2014-04-06T00:00:00Z",
+		"score": 8.5,
+		"image": {
+			"alt": "Cinco programadores vestidos de negro con fondo blanco."
+		}
+	}
+}
