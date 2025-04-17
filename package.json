@@ -19,14 +19,14 @@
 		"**/*": "prettier --write --ignore-unknown"
 	},
 	"dependencies": {
-		"@astrojs/react": "4.2.1",
+		"@astrojs/react": "4.2.4",
 		"@astrojs/sitemap": "3.3.0",
 		"@fontsource-variable/geist": "5.2.5",
 		"@fontsource-variable/geist-mono": "5.2.5",
 		"@intentui/icons": "1.10.29",
 		"@nanostores/react": "0.8.4",
 		"@tailwindcss/vite": "4.0.14",
-		"astro": "5.5.3",
+		"astro": "5.7.2",
 		"clsx": "2.1.1",
 		"embla-carousel-react": "8.5.2",
 		"motion": "12.5.0",
