@@ -153,7 +153,10 @@ function Header({ avatar, currentPage, DesktopBrand, MobileBrand }: HeaderProps)
 				}}
 				intent='floating'
 				isOpen={underlays.sideNavbar}
-				onOpenChange={(isOpen) => underlaysStore.setKey('sideNavbar', isOpen)}
+				onOpenChange={(isOpen) => {
+					underlaysStore.setKey('sideNavbar', isOpen)
+					if (!isOpen && document.activeElement instanceof HTMLInputElement) underlaysStore.setKey('sideNavbar', true)
+				}}
 			>
 				<Navbar.Nav className='[animation:remove-border_linear_both] [animation-range:0_32px] [animation-timeline:scroll()] xl:animate-none'>
 					<Navbar.Section className='h-full min-h-fit'>
