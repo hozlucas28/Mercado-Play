@@ -296,11 +296,11 @@ function MediaCarousel({ title, slides, options }: MediaCarouselProps) {
 				>
 					<Carousel.Button
 						segment='previous'
-						aria-label='Slide siguiente'
+						aria-label='Slide anterior'
 					/>
 					<Carousel.Button
 						segment='next'
-						aria-label='Slide anterior'
+						aria-label='Slide siguiente'
 					/>
 				</Carousel.Handler>
 			</Carousel>
