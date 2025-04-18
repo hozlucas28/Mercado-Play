@@ -158,7 +158,7 @@ function Header({ avatar, currentPage, DesktopBrand, MobileBrand }: HeaderProps)
 					if (!isOpen && document.activeElement instanceof HTMLInputElement) underlaysStore.setKey('sideNavbar', true)
 				}}
 			>
-				<Navbar.Nav className='[animation:remove-border_linear_both] [animation-range:0_32px] [animation-timeline:scroll()] xl:animate-none'>
+				<Navbar.Nav className='[animation:remove-border-rtl_linear_both] [animation-range:0_32px] [animation-timeline:scroll()] xl:animate-none'>
 					<Navbar.Section className='h-full min-h-fit'>
 						{/* Desktop and mobile */}
 						<Navbar.Logo
@@ -277,7 +277,7 @@ function Header({ avatar, currentPage, DesktopBrand, MobileBrand }: HeaderProps)
 				</Navbar.Nav>
 
 				{/* Only for mobile */}
-				<Navbar.Compact className='[animation:remove-border_linear_both] [animation-range:0_32px] [animation-timeline:scroll()] xl:animate-none'>
+				<Navbar.Compact className='[animation:remove-border-rtl_linear_both] [animation-range:0_32px] [animation-timeline:scroll()] xl:animate-none'>
 					<Navbar.Logo
 						className='p-0'
 						{...navbarLogoProps}
