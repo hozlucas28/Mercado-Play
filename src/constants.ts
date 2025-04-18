@@ -3,6 +3,11 @@ const BRAND = {
 	description:
 		'Encontrá películas y series en Mercado Play, rediseñado por @hozlucas28. Explorá cientos de películas y series sin costo alguno.',
 	primaryColor: '#ffe501',
+
+	themeColors: {
+		dark: '#0e0e11',
+		light: '#fafafa',
+	},
 } as const
 
 const BREAKPOINTS = {

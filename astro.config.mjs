@@ -51,7 +51,7 @@ export default defineConfig({
 				name: BRAND.name,
 				short_name: BRAND.name,
 				description: BRAND.description,
-				theme_color: '#0e0e11',
+				theme_color: BRAND.themeColors.dark,
 				background_color: BRAND.primaryColor,
 				dir: 'ltr',
 				lang: 'es',
