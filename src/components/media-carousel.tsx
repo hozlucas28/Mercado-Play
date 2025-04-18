@@ -111,7 +111,7 @@ function Slide({ id, anchor, ariaTitle, type, image, score, title, date, progres
 
 					{progress && (
 						<figure
-							className='absolute inset-0 size-full place-content-center opacity-0 transition-opacity [grid-template-areas:"stack"] *:size-16 *:[grid-area:stack] group-hover:opacity-100 lg:grid'
+							className='absolute inset-0 hidden size-full place-content-center opacity-0 transition-opacity [grid-template-areas:"stack"] *:size-16 *:[grid-area:stack] group-hover:opacity-100 lg:grid'
 							aria-hidden
 						>
 							<IconCirclePlay className='dark:text-fg text-bg z-10' />
