@@ -145,7 +145,7 @@ function Header({ avatar, currentPage, DesktopBrand, MobileBrand }: HeaderProps)
 	return (
 		<>
 			<Navbar
-				className='fixed z-10 [animation:remove-padding_linear_both] [animation-range:0_32px] [animation-timeline:scroll()] *:transition-colors *:ease-in-out xl:animate-none'
+				className='fixed z-100 [animation:remove-padding_linear_both] [animation-range:0_32px] [animation-timeline:scroll()] *:transition-colors *:ease-in-out xl:animate-none'
 				style={{
 					paddingRight: Object.values(underlays).some((bool) => bool)
 						? `calc(var(--spacing) * 2.5 + ${scrollbarWidth}px)`
