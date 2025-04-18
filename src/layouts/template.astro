@@ -25,6 +25,7 @@ interface Props {
 				root: string
 				wrapper: string
 			}>
+			footer: string
 		}>
 	}>
 }
@@ -271,6 +272,8 @@ const { locale, title, description, keywords, pageURL, classes } = Astro.props
 			</div>
 		</main>
 
-		<slot name='footer' />
+		<footer class:list={['mx-auto w-full max-w-7xl 2xl:max-w-(--breakpoint-2xl)', classes?.body?.footer]}>
+			<slot name='footer' />
+		</footer>
 	</body>
 </html>

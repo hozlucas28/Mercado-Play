@@ -1,5 +1,6 @@
 ---
 import Brand from '@/components/brand.astro'
+import Footer from '@/components/footer.astro'
 import type { AvatarProps } from '@/components/header'
 import Header from '@/components/header'
 import HeaderSkeleton from '@/components/header-skeleton.astro'
@@ -30,8 +31,9 @@ const avatar: AvatarProps = {
 		body: {
 			main: {
 				wrapper:
-					'*:mb-5 [:is(&>astro-island)]:*:mb-4 sm:*:mb-6 sm:[:is(&>astro-island)]:*:mb-6 lg:*:mb-12 lg:[:is(&>astro-island)]:*:mb-12 ',
+					'*:mb-5 [:is(&>astro-island)]:*:mb-4 sm:*:mb-6 sm:[:is(&>astro-island)]:*:mb-6 lg:*:mb-12 lg:[:is(&>astro-island)]:*:mb-12',
 			},
+			footer: 'px-2.5 pb-2.5 mt-4 sm:mt-6 lg:mt-12',
 		},
 	}}
 >
@@ -59,4 +61,6 @@ const avatar: AvatarProps = {
 	</Header>
 
 	<slot />
+
+	<Footer slot='footer' />
 </Template>
