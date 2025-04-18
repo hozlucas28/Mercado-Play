@@ -237,11 +237,19 @@ const { locale, title, description, keywords, pageURL, classes } = Astro.props
 				document.documentElement.classList.add(THEME.default)
 			}
 
+			if (document.documentElement.classList.contains('dark')) {
+				document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0e0e11')
+			} else if (document.documentElement.classList.contains('light')) {
+				document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fafafa')
+			}
+
 			const observer = new MutationObserver(() => {
 				if (document.documentElement.classList.contains('dark')) {
 					localStorage.setItem(THEME.storageKey, 'dark')
+					document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0e0e11')
 				} else if (document.documentElement.classList.contains('light')) {
 					localStorage.setItem(THEME.storageKey, 'light')
+					document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fafafa')
 				}
 			})
 
