@@ -389,7 +389,7 @@ function Hero({ slides }: HeroProps) {
 													key={`${src} - Hero media (mobile)`}
 													src={src}
 													type={`video/${type}`}
-													media={`(max-width: ${BREAKPOINTS['md']}px)`}
+													media={`(max-width: ${BREAKPOINTS['sm'] - 1}px)`}
 												/>
 											))}
 											{Object.entries(slide.desktopVideos).map(([type, src]) => (

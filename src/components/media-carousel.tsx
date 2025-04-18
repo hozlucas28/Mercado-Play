@@ -58,14 +58,14 @@ function Slide({ id, anchor, ariaTitle, type, image, score, title, date, progres
 	const sourceProps = useMemo<Record<Exclude<PhotosExt, 'jpg'>, ComponentProps<'source'>>>(
 		() => ({
 			avif: {
-				sizes: `(max-width: ${BREAKPOINTS['md']}px) ${BREAKPOINTS['md']}w`,
-				srcSet: `${image.devices.mobile.avif.src} ${BREAKPOINTS['md']}w, ${image.devices.desktop.avif.src} ${BREAKPOINTS['lg']}w`,
+				sizes: `(max-width: ${BREAKPOINTS['sm'] - 1}px) ${BREAKPOINTS['sm'] - 1}w`,
+				srcSet: `${image.devices.mobile.avif.src} ${BREAKPOINTS['sm'] - 1}w, ${image.devices.desktop.avif.src} ${BREAKPOINTS['sm']}w`,
 				type: 'image/avif',
 			},
 
 			webp: {
-				sizes: `(max-width: ${BREAKPOINTS['md']}px) ${BREAKPOINTS['md']}w`,
-				srcSet: `${image.devices.mobile.webp.src} ${BREAKPOINTS['md']}w, ${image.devices.desktop.webp.src} ${BREAKPOINTS['lg']}w`,
+				sizes: `(max-width: ${BREAKPOINTS['sm'] - 1}px) ${BREAKPOINTS['sm'] - 1}w`,
+				srcSet: `${image.devices.mobile.webp.src} ${BREAKPOINTS['sm'] - 1}w, ${image.devices.desktop.webp.src} ${BREAKPOINTS['sm']}w`,
 				type: 'image/webp',
 			},
 		}),
@@ -76,8 +76,8 @@ function Slide({ id, anchor, ariaTitle, type, image, score, title, date, progres
 		() => ({
 			className: 'aspect-[592/841] w-full',
 			alt: image.alt,
-			sizes: `(max-width: ${BREAKPOINTS['md']}px) ${BREAKPOINTS['md']}w`,
-			srcSet: `${image.devices.mobile.jpg.src} ${BREAKPOINTS['md']}w,  ${image.devices.desktop.jpg.src} ${BREAKPOINTS['lg']}w`,
+			sizes: `(max-width: ${BREAKPOINTS['sm'] - 1}px) ${BREAKPOINTS['sm'] - 1}w`,
+			srcSet: `${image.devices.mobile.jpg.src} ${BREAKPOINTS['sm'] - 1}w,  ${image.devices.desktop.jpg.src} ${BREAKPOINTS['sm']}w`,
 			width: image.devices.mobile.jpg.width,
 			height: image.devices.mobile.jpg.height,
 			loading: image.prioritizeLoad ? 'eager' : 'lazy',
