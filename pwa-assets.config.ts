@@ -58,7 +58,7 @@ const appleSplashScreens = createAppleSplashScreens(
 /* ---------------------------------- Main ---------------------------------- */
 
 export default defineConfig({
-	images: ['public/icons/_favicon.svg'],
+	images: ['public/_favicon.svg'],
 
 	logLevel: 'info',
 
@@ -99,7 +99,7 @@ export default defineConfig({
 
 			padding: 0.5,
 
-			sizes: [512, 192, 64],
+			sizes: [512, 256, 128, 96, 48],
 
 			resizeOptions: {
 				background: BRAND.primaryColor,
@@ -110,7 +110,7 @@ export default defineConfig({
 			...minimal2023Preset.transparent,
 
 			padding: 0.2,
-			sizes: [512, 192, 64],
+			sizes: [512, 256, 128, 96, 48],
 
 			resizeOptions: {
 				background: BRAND.primaryColor,

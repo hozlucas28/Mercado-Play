@@ -166,7 +166,7 @@ async function compressWithBreakpoints(path: string): Promise<void> {
 
 async function main(): Promise<void> {
 	const imgPaths = fs.glob(
-		`./public/!(icons)/**/!(${rawPrefix})*[^${images.breakpointSep}]*[^(${Object.keys(BREAKPOINTS).join('|')})].+(${images.extsToCompress.join('|')})`
+		`./public/**/!(${rawPrefix})*[^${images.breakpointSep}]*[^(${Object.keys(BREAKPOINTS).join('|')})].+(${images.extsToCompress.join('|')})`
 	)
 
 	let i: number = 0

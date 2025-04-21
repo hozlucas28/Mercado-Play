@@ -4,7 +4,6 @@ on:
   push:
     paths:
       - 'public/**.png'
-      - '!public/icons/**'
       - '!public/**/__*'
       - '!public/**/*-2xl.png'
       - '!public/**/*-xl.png'
