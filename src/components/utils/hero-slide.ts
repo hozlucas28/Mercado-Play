@@ -34,7 +34,7 @@ function heroSlide({ data, videos, captions }: HeroSlideParams): Slide {
 		captions: [],
 	}
 
-	const videoRegex = `(?:${_breakpointSep})(?<device>${_outputDevices.join('|')})\.(?<type>${_outputFormats.join('|')})$`
+	const videoRegex = `(?:${_breakpointSep})(?<device>${_outputDevices.join('|')})(?:\.[^.]+)?\.(?<type>${_outputFormats.join('|')})$`
 
 	for (const src of videos) {
 		const matchResult = src.match(videoRegex)
@@ -47,7 +47,7 @@ function heroSlide({ data, videos, captions }: HeroSlideParams): Slide {
 		targetDevice[type] = src
 	}
 
-	const captionRegex = `(?:${_breakpointSep})(?<lang>${_captions.langs.join('|')})\.vtt$`
+	const captionRegex = `(?:${_breakpointSep})(?<lang>${_captions.langs.join('|')})(?:\.[^.]+)?\.vtt$`
 
 	for (const src of captions) {
 		const matchResult = src.match(captionRegex)

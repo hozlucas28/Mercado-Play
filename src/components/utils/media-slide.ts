@@ -35,7 +35,7 @@ function mediaSlide(data: MediaData, images: ImageMetadata[]): Media {
 		},
 	} as Media
 
-	const photoRegex = `(?:${_breakpointSep})(?<device>${_outputDevices.join('|')})\.(?<type>${_outputFormats.join('|')})`
+	const photoRegex = `(?:${_breakpointSep})(?<device>${_outputDevices.join('|')})(?:\.[^.]+)?\.(?<type>${_outputFormats.join('|')})`
 
 	for (const image of images) {
 		const matchResult = image.src.match(photoRegex)

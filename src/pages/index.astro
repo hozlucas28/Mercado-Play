@@ -40,7 +40,7 @@ const {
 
 async function mediaSlides(
 	data: MediaCollection,
-	images: Record<string, () => Promise<{ default: ImageMetadata }>>,
+	images: Record<string, { default: ImageMetadata }>,
 	dataConstructor: (data: { id: string } & MediaCollection['']) => Parameters<typeof mediaSlide>['0']
 ): Promise<Media[]> {
 	const slides: Media[] = []
@@ -53,7 +53,7 @@ async function mediaSlides(
 
 		for (const src in images) {
 			if (src.search(id) === -1) continue
-			const image: ImageMetadata = (await images[src]()).default
+			const image: ImageMetadata = images[src].default
 			_images.push(image)
 		}
 
@@ -68,7 +68,9 @@ async function mediaSlides(
 /* ---------------------------------- Logic --------------------------------- */
 
 const hero: Slide[] = []
-const heroMedia = import.meta.glob<{ default: string | ImageMetadata }>('./assets/hero/**/_*.(webp|webm|mp4|vtt)')
+const heroMedia = import.meta.glob<{ default: string | ImageMetadata }>('./assets/hero/**/_*.(webp|webm|mp4|vtt)', {
+	eager: true,
+})
 
 for (const id in heroData) {
 	const _id = id as keyof typeof heroData
@@ -83,7 +85,7 @@ for (const id in heroData) {
 		if (src.search(id) === -1) continue
 
 		const type: string = nodePath.extname(src)
-		const media = (await heroMedia[src]()).default
+		const media = heroMedia[src].default
 
 		if (type === '.webp') {
 			poster = (media as ImageMetadata).src
@@ -94,7 +96,6 @@ for (const id in heroData) {
 		}
 	}
 
-	// TODO: send params dynamically
 	const slide = heroSlide({
 		data: {
 			id,
@@ -114,7 +115,7 @@ for (const id in heroData) {
 // TODO: use IMDB API to fetch "My list" data from local storage.
 const myList: Media[] = await mediaSlides(
 	myListData as unknown as MediaCollection,
-	import.meta.glob<{ default: ImageMetadata }>('./assets/my-list/**/_*.(avif|webp|jpg)'),
+	import.meta.glob<{ default: ImageMetadata }>('./assets/my-list/**/_*.(avif|webp|jpg)', { eager: true }),
 	(data) => ({
 		...data,
 		anchor: { href: `/${data.id}` },
@@ -124,7 +125,7 @@ const myList: Media[] = await mediaSlides(
 
 const continueWatching: Media[] = await mediaSlides(
 	continueWatchingData as unknown as MediaCollection,
-	import.meta.glob<{ default: ImageMetadata }>('./assets/continue-watching/**/_*.(avif|webp|jpg)'),
+	import.meta.glob<{ default: ImageMetadata }>('./assets/continue-watching/**/_*.(avif|webp|jpg)', { eager: true }),
 	(data) => ({
 		...data,
 		anchor: { href: `/${data.id}` },
@@ -138,7 +139,7 @@ const continueWatching: Media[] = await mediaSlides(
 
 const recentlyAdded: Media[] = await mediaSlides(
 	recentlyAddedData as unknown as MediaCollection,
-	import.meta.glob<{ default: ImageMetadata }>('./assets/recently-added/**/_*.(avif|webp|jpg)'),
+	import.meta.glob<{ default: ImageMetadata }>('./assets/recently-added/**/_*.(avif|webp|jpg)', { eager: true }),
 	(data) => ({
 		...data,
 		anchor: { href: `/${data.id}` },
@@ -148,7 +149,7 @@ const recentlyAdded: Media[] = await mediaSlides(
 
 const blockbusterMovies: Media[] = await mediaSlides(
 	blockbusterMoviesData as unknown as MediaCollection,
-	import.meta.glob<{ default: ImageMetadata }>('./assets/blockbuster-movies/**/_*.(avif|webp|jpg)'),
+	import.meta.glob<{ default: ImageMetadata }>('./assets/blockbuster-movies/**/_*.(avif|webp|jpg)', { eager: true }),
 	(data) => ({
 		...data,
 		anchor: { href: `/${data.id}` },
@@ -158,7 +159,7 @@ const blockbusterMovies: Media[] = await mediaSlides(
 
 const bingeWatchSeries: Media[] = await mediaSlides(
 	bingeWatchSeriesData as unknown as MediaCollection,
-	import.meta.glob<{ default: ImageMetadata }>('./assets/binge-watch-series/**/_*.(avif|webp|jpg)'),
+	import.meta.glob<{ default: ImageMetadata }>('./assets/binge-watch-series/**/_*.(avif|webp|jpg)', { eager: true }),
 	(data) => ({
 		...data,
 		anchor: { href: `/${data.id}` },
@@ -168,7 +169,7 @@ const bingeWatchSeries: Media[] = await mediaSlides(
 
 const comedy: Media[] = await mediaSlides(
 	comedyData as unknown as MediaCollection,
-	import.meta.glob<{ default: ImageMetadata }>('./assets/comedy/**/_*.(avif|webp|jpg)'),
+	import.meta.glob<{ default: ImageMetadata }>('./assets/comedy/**/_*.(avif|webp|jpg)', { eager: true }),
 	(data) => ({
 		...data,
 		anchor: { href: `/${data.id}` },
@@ -178,7 +179,7 @@ const comedy: Media[] = await mediaSlides(
 
 const animation: Media[] = await mediaSlides(
 	animationData as unknown as MediaCollection,
-	import.meta.glob<{ default: ImageMetadata }>('./assets/animation/**/_*.(avif|webp|jpg)'),
+	import.meta.glob<{ default: ImageMetadata }>('./assets/animation/**/_*.(avif|webp|jpg)', { eager: true }),
 	(data) => ({
 		...data,
 		anchor: { href: `/${data.id}` },
