@@ -1,14 +1,15 @@
-import { useSwitchTheme } from '@/components/hooks/use-switch-theme'
+import DownloadPWA from '@/components/download-pwa.tsx'
+import { usePWA } from '@/components/hooks/use-pwa'
 import { underlaysStore } from '@/components/stores/underlays'
-import ThemeSwitcher from '@/components/theme-switcher'
 import Toast from '@/components/toast'
 import { BRAND, TOASTS } from '@/constants'
 import type { Page } from '@/types'
 import { scrollbarWidth as getScrollbarWidth } from '@/utils/scrollbar-width'
 import { uniqueLocalExec } from '@/utils/unique-local-exec'
 import { Avatar, Button, CommandMenu, Link, Menu, Navbar, SearchField, Separator } from 'ui'
+import { IconDeviceDesktopDown, IconDeviceTabletDown } from './icons'
 
-import { IconChevronLgDown, IconMoon, IconSearch, IconSun } from '@intentui/icons'
+import { IconChevronLgDown, IconSearch } from '@intentui/icons'
 import { useStore } from '@nanostores/react'
 import type { ComponentProps, ReactNode } from 'react'
 import { useEffect, useRef, useState } from 'react'
@@ -31,10 +32,9 @@ function Header({ avatar, currentPage, DesktopBrand, MobileBrand }: HeaderProps)
 	const [menu, setMenu] = useState(false)
 	const [commandMenu, setCommandMenu] = useState(false)
 
-	const $menu = useRef<HTMLButtonElement>(null)
-	const $commandMenu = useRef<HTMLDivElement>(null)
+	const [isInstalledPWA, installPWA] = usePWA()
 
-	const [theme, setTheme] = useSwitchTheme()
+	const $menu = useRef<HTMLButtonElement>(null)
 
 	const underlays = useStore(underlaysStore)
 
@@ -55,7 +55,7 @@ function Header({ avatar, currentPage, DesktopBrand, MobileBrand }: HeaderProps)
 	}
 
 	const separatorProps: ComponentProps<typeof Separator> = {
-		className: 'mx-2 h-6 max-[65.625rem]:lg:mx-0.5 transition-colors ease-in-out',
+		className: 'mx-2 h-6 max-[65.625rem]:lg:mx-0.5 transition-[border-color]',
 		orientation: 'vertical',
 	}
 
@@ -145,11 +145,9 @@ function Header({ avatar, currentPage, DesktopBrand, MobileBrand }: HeaderProps)
 	return (
 		<>
 			<Navbar
-				className='fixed z-100 [animation:remove-padding_linear_both] [animation-range:0_32px] [animation-timeline:scroll()] *:transition-colors *:ease-in-out xl:animate-none'
+				className='fixed z-20 [animation:remove-padding_linear_both] [animation-range:0_32px] [animation-timeline:scroll()] xl:animate-none'
 				style={{
-					paddingRight: Object.values(underlays).some((bool) => bool)
-						? `calc(var(--spacing) * 2.5 + ${scrollbarWidth}px)`
-						: '',
+					paddingRight: Object.values(underlays).some((bool) => bool) ? `calc(0.625rem + ${scrollbarWidth}px)` : '',
 				}}
 				intent='floating'
 				isOpen={underlays.sideNavbar}
@@ -170,7 +168,7 @@ function Header({ avatar, currentPage, DesktopBrand, MobileBrand }: HeaderProps)
 
 						{/* Only for mobile */}
 						<SearchField
-							className='mb-4 sm:min-md:hidden'
+							className='mb-4 transition-colors! duration-150! ease-in-out! *:transition-colors! *:duration-150! *:ease-in-out! sm:min-md:hidden'
 							{...searchFieldProps}
 						/>
 
@@ -208,7 +206,13 @@ function Header({ avatar, currentPage, DesktopBrand, MobileBrand }: HeaderProps)
 						</Navbar.Item>
 
 						{/* Only for mobile */}
-						<ThemeSwitcher className='mt-8 mb-1 size-[2.5rem] sm:mb-4 sm:min-md:hidden' />
+						<section className='mt-8 mb-1 flex w-full gap-2 sm:mb-4 sm:min-md:hidden'>
+							<DownloadPWA className='group h-[2.5rem] flex-1 text-sm font-normal'>
+								<span className='group-pressed:text-current text-current/60 transition-[color] hover:text-current/90'>
+									Instalar aplicación
+								</span>
+							</DownloadPWA>
+						</section>
 					</Navbar.Section>
 
 					{/* Only for desktop */}
@@ -227,49 +231,51 @@ function Header({ avatar, currentPage, DesktopBrand, MobileBrand }: HeaderProps)
 								aria-label='Más opciones'
 								ref={$menu}
 							>
-								<IconChevronLgDown className='group-pressed:rotate-180 decoration-200 transition-transform' />
+								<IconChevronLgDown
+									className='group-pressed:rotate-180 transition-[rotate]'
+									aria-hidden
+								/>
 							</Button>
 							<Menu.Content
-								className='hidden *:cursor-pointer md:max-lg:grid'
+								className='hidden md:max-lg:grid'
 								placement='bottom'
 								showArrow
 							>
 								<Menu.Item
+									className='cursor-pointer'
 									onAction={() => {
 										setCommandMenu(true)
 										underlaysStore.setKey('commandMenu', true)
 									}}
 								>
-									<IconSearch />
-									<Menu.Label ref={$commandMenu}>Buscar películas o series</Menu.Label>
+									<IconSearch aria-hidden />
+									<Menu.Label>Buscar películas o series</Menu.Label>
 								</Menu.Item>
-								<Menu.Item onAction={setTheme}>
-									<figure
-										className='relative *:absolute *:transition-all'
-										data-slot='icon'
-										aria-hidden
+								{!isInstalledPWA && (
+									<Menu.Item
+										className='cursor-pointer'
+										onAction={installPWA}
 									>
-										<IconSun
-											className={theme === 'dark' ? 'scale-0 -rotate-90 opacity-0' : 'scale-100 rotate-0 opacity-100'}
+										<IconDeviceTabletDown
+											className='lg:hidden'
+											aria-hidden
 										/>
-										<IconMoon
-											className={theme === 'dark' ? 'scale-100 rotate-0 opacity-100' : 'scale-0 rotate-90 opacity-0'}
+										<IconDeviceDesktopDown
+											className='hidden lg:block'
+											aria-hidden
 										/>
-									</figure>
-
-									<Menu.Label aria-label={`Cambiar a tema ${theme === 'light' ? 'oscuro' : 'claro'}`}>
-										Cambiar tema
-									</Menu.Label>
-								</Menu.Item>
+										<Menu.Label>Instalar aplicación</Menu.Label>
+									</Menu.Item>
+								)}
 							</Menu.Content>
 						</Menu>
 
 						{/* Only for breakpoints after "lg" */}
 						<SearchField
-							className='max-lg:hidden'
+							className='transition-colors duration-150 ease-in-out *:transition-colors *:duration-150 *:ease-in-out max-lg:hidden'
 							{...searchFieldProps}
 						/>
-						<ThemeSwitcher className='size-10 max-lg:hidden' />
+						<DownloadPWA className='size-10 max-lg:hidden' />
 
 						<Separator {...separatorProps} />
 						<Avatar {...avatarProps} />
@@ -285,7 +291,7 @@ function Header({ avatar, currentPage, DesktopBrand, MobileBrand }: HeaderProps)
 						{MobileBrand}
 					</Navbar.Logo>
 
-					<Navbar.Flex ref={$commandMenu}>
+					<Navbar.Flex>
 						<Navbar.Trigger />
 						<Separator {...separatorProps} />
 						<Avatar
@@ -296,7 +302,7 @@ function Header({ avatar, currentPage, DesktopBrand, MobileBrand }: HeaderProps)
 				</Navbar.Compact>
 
 				{/* Backdrop */}
-				<span className='bg-bg/40 dark:bg-bg/90 absolute inset-0 -z-10 mx-auto h-[calc(var(--navbar-height)+0.5rem)] w-full max-w-[calc(var(--container-7xl)+0.5rem)] [animation:fade-in_linear_both] rounded-xl blur-md [--navbar-height:3.5rem] [animation-range:0_32px] [animation-timeline:scroll()] md:h-[calc(var(--navbar-height)+1rem)] md:max-w-[calc(var(--container-7xl)+1rem)] 2xl:max-w-(--breakpoint-2xl)' />
+				<span className='bg-bg/40 dark:bg-bg/90 absolute inset-0 -z-10 mx-auto h-[calc(var(--navbar-height)+0.5rem)] w-full max-w-[calc(var(--container-7xl)+0.5rem)] [animation:fade-in_linear_both] rounded-xl blur-md transition-[background-color] [--navbar-height:3.5rem] [animation-range:0_32px] [animation-timeline:scroll()] md:h-[calc(var(--navbar-height)+1rem)] md:max-w-[calc(var(--container-7xl)+1rem)] 2xl:max-w-(--breakpoint-2xl)' />
 			</Navbar>
 
 			{/* Only for "md" breakpoint */}

@@ -4,7 +4,7 @@ import '@fontsource-variable/geist-mono'
 
 import '@/styles/globals.css'
 
-import { BRAND, THEME } from '@/constants'
+import { BRAND } from '@/constants'
 import type { Page, Locale } from '@/types'
 
 import { pwaInfo } from 'virtual:pwa-info'
@@ -34,7 +34,7 @@ const { locale, title, description, keywords, pageURL, classes } = Astro.props
 ---
 
 <html
-	class:list={['scroll-smooth', THEME.default, classes?.html]}
+	class:list={['scroll-smooth', classes?.html]}
 	dir='ltr'
 	lang={locale}
 >
@@ -223,41 +223,34 @@ const { locale, title, description, keywords, pageURL, classes } = Astro.props
 			const THEME = {
 				default: 'dark',
 				storageKey: 'ui-theme',
-				values: ['light', 'dark'],
+
+				values: {
+					dark: '#0e0e11',
+					light: '#fafafa',
+				},
 			}
 
+			const documentClassList = document.documentElement.classList
+
+			const themes = Object.keys(THEME.values)
 			const themePreference = localStorage.getItem(THEME.storageKey) ?? THEME.default
 
-			if (THEME.values.includes(themePreference)) {
-				document.documentElement.classList.remove(...THEME.values)
-				document.documentElement.classList.add(themePreference)
+			if (themes.includes(themePreference)) {
+				documentClassList.add(themePreference)
 			} else {
 				localStorage.removeItem(THEME.storageKey)
-
-				document.documentElement.classList.remove(...THEME.values)
-				document.documentElement.classList.add(THEME.default)
+				documentClassList.add(THEME.default)
 			}
 
-			if (document.documentElement.classList.contains('dark')) {
-				document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0e0e11')
-			} else if (document.documentElement.classList.contains('light')) {
-				document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fafafa')
+			if (documentClassList.contains('light')) {
+				document.head.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#fafafa')
+			} else if (documentClassList.contains('dark')) {
+				document.head.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#0e0e11')
 			}
+		</script>
 
-			const observer = new MutationObserver(() => {
-				if (document.documentElement.classList.contains('dark')) {
-					localStorage.setItem(THEME.storageKey, 'dark')
-					document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0e0e11')
-				} else if (document.documentElement.classList.contains('light')) {
-					localStorage.setItem(THEME.storageKey, 'light')
-					document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fafafa')
-				}
-			})
-
-			observer.observe(document.documentElement, {
-				attributes: true,
-				attributeFilter: ['class'],
-			})
+		<script>
+			import '@khmyznikov/pwa-install'
 		</script>
 	</head>
 
@@ -275,5 +268,12 @@ const { locale, title, description, keywords, pageURL, classes } = Astro.props
 		<footer class:list={['mx-auto w-full max-w-7xl 2xl:max-w-(--breakpoint-2xl)', classes?.body?.footer]}>
 			<slot name='footer' />
 		</footer>
+
+		<pwa-install
+			manual-apple='true'
+			manual-chrome='true'
+			disable-install-description='true'
+			manifest-url='/manifest.webmanifest'
+		></pwa-install>
 	</body>
 </html>
