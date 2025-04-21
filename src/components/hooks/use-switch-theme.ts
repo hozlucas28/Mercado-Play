@@ -1,37 +1,29 @@
-import { themeStore } from '@/components/stores/theme'
-import { THEME } from '@/constants'
-
+import { themeStore } from '@/components/stores/theme.ts'
+import { BRAND, THEME } from '@/constants.ts'
 import type { Theme } from '@/types'
-
 import { useStore } from '@nanostores/react'
-import { useEffect } from 'react'
 
 function useSwitchTheme(): [Theme, () => void] {
-	const currentTheme = useStore(themeStore)
-
-	useEffect(() => {
-		let themeFromStorage = (localStorage.getItem(THEME.storageKey) as Theme) ?? THEME.default
-
-		if (!THEME.values.includes(themeFromStorage)) {
-			themeFromStorage = THEME.default
-			localStorage.removeItem(THEME.storageKey)
-		}
-
-		themeStore.set(themeFromStorage)
-
-		window.document.documentElement.classList.remove(...THEME.values)
-		window.document.documentElement.classList.add(themeFromStorage)
-	}, [])
+	const theme = useStore(themeStore)
 
 	const switchTheme = () => {
-		const newTheme: Theme = currentTheme === 'light' ? 'dark' : 'light'
-		themeStore.set(newTheme)
+		const newTheme: Theme = theme === 'dark' ? 'light' : 'dark'
 
-		window.document.documentElement.classList.remove(...THEME.values)
-		window.document.documentElement.classList.add(newTheme)
+		const documentClassList = document.documentElement.classList
+
+		documentClassList.remove(theme)
+		documentClassList.add(newTheme)
+
+		const $head = document.head
+
+		$head.querySelector('meta[name="theme-color"]')?.setAttribute('content', BRAND.themeColors[newTheme])
+
+		localStorage.setItem(THEME.storageKey, newTheme)
+
+		themeStore.set(newTheme)
 	}
 
-	return [currentTheme, switchTheme]
+	return [theme, switchTheme]
 }
 
 export { useSwitchTheme }

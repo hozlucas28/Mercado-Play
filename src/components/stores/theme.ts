@@ -3,13 +3,8 @@ import type { Theme } from '@/types'
 
 import { atom } from 'nanostores'
 
-let themePreference: Theme = THEME.default
+const themePreference = (localStorage.getItem(THEME.storageKey) ?? THEME.default) as Theme
 
-if (typeof window !== 'undefined') {
-	const storedTheme = localStorage.getItem(THEME.storageKey) as Theme
-	THEME.values.includes(storedTheme) ? (themePreference = storedTheme) : localStorage.removeItem(THEME.storageKey)
-}
-
-const themeStore = atom<Theme>(themePreference)
+const themeStore = atom<Theme>(THEME.values.includes(themePreference) ? themePreference : THEME.default)
 
 export { themeStore }
