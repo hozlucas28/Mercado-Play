@@ -75,7 +75,7 @@
 	@keyframes fade-out {
 		100% {
 			display: none;
-			opacity: 100%;
+			opacity: 0%;
 		}
 	}
 
