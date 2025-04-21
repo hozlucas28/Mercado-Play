@@ -1,21 +1,25 @@
 ---
-import { IconBrandGithub, IconColorPalette, IconFolderBox, IconJudgeGavel, IconSparklesTwo } from '@intentui/icons'
 import Link from './link.astro'
 
-const currentDate: Date = new Date()
+import { IconBrandGithub, IconColorPalette, IconFolderBox, IconJudgeGavel, IconSparklesTwo } from '@intentui/icons'
 
+const currentDate: Date = new Date()
 const currentYear: number = currentDate.getFullYear()
 ---
 
 <div
-	class='bg-navbar [&_h5]:text-fg flex flex-wrap gap-6 rounded-xl border p-3.5 sm:grid sm:auto-rows-auto sm:grid-cols-2 sm:justify-between [&_:is(p,li)]:text-xs [&_:is(p,li)]:text-pretty [&_:is(p,li)]:sm:text-sm [&_h5]:font-sans [&_h5]:text-xs [&_h5]:font-medium [&_h5]:tracking-normal [&_h5]:text-balance [&_h5]:opacity-85 [&_h5]:sm:text-sm [&_li]:w-fit'
+	class='bg-navbar flex flex-wrap gap-6 rounded-xl border p-3.5 transition-[color,_background-color,_border-color] sm:grid sm:auto-rows-auto sm:grid-cols-2 sm:justify-between'
 >
 	<section class='space-y-3'>
 		<header class='flex items-center gap-2'>
 			<IconColorPalette aria-hidden='true' />
-			<h5>Rediseño de Mercado Play</h5>
+			<h5
+				class='text-fg font-sans text-xs font-medium tracking-normal text-balance opacity-85 transition-[color] sm:text-sm'
+			>
+				Rediseño de Mercado Play
+			</h5>
 		</header>
-		<p class='text-neutral-500'>
+		<p class='text-xs text-pretty text-neutral-500 sm:text-sm'>
 			Este rediseño propone una alternativa para monetizar el servicio de streaming <Link
 				intent='primary'
 				href='https://play.mercadolibre.com.ar/'
@@ -34,13 +38,18 @@ const currentYear: number = currentDate.getFullYear()
 	<section class='space-y-3 justify-self-center'>
 		<header class='flex items-center gap-2'>
 			<IconFolderBox aria-hidden='true' />
-			<h5 id='footer__project-material_header'>Material del proyecto</h5>
+			<h5
+				id='footer__project-material_header'
+				class='text-fg font-sans text-xs font-medium tracking-normal text-balance opacity-85 transition-[color] sm:text-sm'
+			>
+				Material del proyecto
+			</h5>
 		</header>
 		<ul
 			class='flex flex-col justify-between gap-2.5 lg:grid lg:auto-cols-min lg:auto-rows-min lg:grid-cols-2 lg:grid-rows-2 lg:gap-x-16 2xl:flex 2xl:flex-row'
 			aria-labelledby='footer__project-material_header'
 		>
-			<li>
+			<li class='w-fit text-xs text-pretty sm:text-sm'>
 				<Link
 					className='flex items-center gap-2'
 					intent='primary'
@@ -52,7 +61,7 @@ const currentYear: number = currentDate.getFullYear()
 					Análisis y motivación
 				</Link>
 			</li>
-			<li>
+			<li class='w-fit text-xs text-pretty sm:text-sm'>
 				<Link
 					className='flex items-center gap-2'
 					intent='primary'
@@ -64,7 +73,7 @@ const currentYear: number = currentDate.getFullYear()
 					Código fuente
 				</Link>
 			</li>
-			<li>
+			<li class='w-fit text-xs text-pretty sm:text-sm'>
 				<Link
 					className='flex items-center gap-2'
 					intent='primary'
@@ -79,7 +88,9 @@ const currentYear: number = currentDate.getFullYear()
 		</ul>
 	</section>
 	<section class='col-span-full w-full'>
-		<h5 class='text-neutral-500! sm:text-sm! md:text-base!'>
+		<h5
+			class='font-sans text-xs font-medium tracking-normal text-balance text-neutral-500 opacity-85 transition-[color] sm:text-sm md:text-base'
+		>
 			Copyright © 2025-{currentYear}
 			<Link
 				intent='primary'

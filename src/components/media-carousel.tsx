@@ -47,7 +47,7 @@ function Slide({ id, anchor, ariaTitle, type, image, score, title, date, progres
 	const progressBarProps = useMemo<ComponentProps<typeof ProgressBar>>(
 		() => ({
 			'className':
-				'absolute bottom-0 left-0 *:min-w-full w-full **:rounded-none *:mt-0 **:data-[slot="progress-content"]:bg-mercado-libre',
+				'absolute bottom-0 left-0 *:min-w-full w-full **:rounded-none *:mt-0 **:data-[slot="progress-content"]:bg-mercado-libre *:transition-[background-color]',
 			'valueLabel': ' ',
 			'aria-label': `${progress?.value}% de 100%`,
 			'value': progress?.value,
@@ -111,10 +111,10 @@ function Slide({ id, anchor, ariaTitle, type, image, score, title, date, progres
 
 					{progress && (
 						<figure
-							className='absolute inset-0 hidden size-full place-content-center opacity-0 transition-opacity [grid-template-areas:"stack"] *:size-16 *:[grid-area:stack] group-hover:opacity-100 lg:grid'
+							className='absolute inset-0 hidden size-full place-content-center opacity-0 transition-opacity [grid-template-areas:"stack"] group-hover:opacity-100 lg:grid'
 							aria-hidden
 						>
-							<IconCirclePlay className='dark:text-fg text-bg z-10' />
+							<IconCirclePlay className='dark:text-fg text-bg z-10 size-16 [grid-area:stack]' />
 							<span className='bg-fg dark:bg-bg blur-2xl' />
 						</figure>
 					)}
@@ -151,7 +151,7 @@ function Slide({ id, anchor, ariaTitle, type, image, score, title, date, progres
 					<header className='flex flex-col gap-1 sm:px-2 sm:pb-4'>
 						{title && (
 							<Heading
-								className='text-xs! font-medium text-balance opacity-85 sm:text-base! md:text-lg! lg:text-xl!'
+								className='text-xs! font-medium text-balance opacity-85 transition-[color] sm:text-base! md:text-lg! lg:text-xl!'
 								level={4}
 							>
 								{title}
@@ -235,13 +235,13 @@ function MediaCarousel({ title, slides, options }: MediaCarouselProps) {
 
 	return (
 		<section
-			className={clsx('flex flex-col gap-4', {
+			className={clsx('mb-4 flex flex-col gap-4 sm:mb-6 lg:mb-12', {
 				'content-visibility-auto': !options?.prioritizeRender,
 			})}
 		>
 			<header>
 				<Heading
-					className='text-sm! text-balance sm:text-lg! md:text-xl! lg:text-2xl!'
+					className='text-sm! text-balance transition-[color] sm:text-lg! md:text-xl! lg:text-2xl!'
 					level={3}
 				>
 					{title}

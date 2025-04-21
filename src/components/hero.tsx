@@ -276,7 +276,7 @@ function Hero({ slides }: HeroProps) {
 	return (
 		<>
 			<Carousel
-				className='select-none'
+				className='mb-4 select-none sm:mb-6 lg:mb-12'
 				opts={{ loop: true, slidesToScroll: 1 }}
 				setApi={setApi}
 				plugins={[autoPlay.current]}
@@ -299,7 +299,7 @@ function Hero({ slides }: HeroProps) {
 								data-id={slide.id}
 								onAction={() => setVideos.toggleMuted(slide.id)}
 							>
-								<article className='pointer-events-none relative aspect-video overflow-hidden rounded-lg border'>
+								<article className='pointer-events-none relative aspect-video overflow-hidden rounded-lg border transition-[border-color]'>
 									{/* Overlay */}
 									<div className='absolute inset-0 grid w-full grid-cols-[1fr_3rem] p-2 sm:p-3 lg:grid-cols-[1fr_6rem] lg:p-7 lg:pt-3.5 lg:pr-3.5'>
 										<div className='mt-auto'>
@@ -334,39 +334,41 @@ function Hero({ slides }: HeroProps) {
 													Ver ahora
 												</Link>
 												<Button
-													className='text-bg dark:text-fg pressed:bg-neutral-800 inset-ring-bg/15! dark:inset-ring-fg/15! pointer-events-auto relative size-7 rounded-full bg-neutral-700/95 p-1 shadow-none! *:absolute *:size-3! *:transition-all hover:bg-neutral-700 sm:size-8 lg:size-12 *:lg:size-5!'
+													className='text-bg dark:text-fg pressed:bg-neutral-800 inset-ring-bg/15! dark:inset-ring-fg/15! pointer-events-auto relative size-7 rounded-full bg-neutral-700/95 p-1 shadow-none! hover:bg-neutral-700 sm:size-8 lg:size-12'
 													intent='secondary'
 													aria-label={`${myList.includes(slide.id) ? 'Quitar' : 'Añadir'} "${slide.title}" ${myList.includes(slide.id) ? 'de' : 'a'} mi lista`}
 													onPress={() => handleSaveToList(slide)}
 												>
 													<IconCheck
-														className={
+														className={`absolute size-3 transition-[scale,_rotate,_opacity] lg:size-5 ${
 															myList.includes(slide.id)
 																? 'scale-100 rotate-0 opacity-100'
 																: 'scale-0 -rotate-90 opacity-0'
-														}
+														}`}
 													/>
 
 													<IconPlus
-														className={
+														className={`absolute size-3 transition-[scale,_rotate,_opacity] lg:size-5 ${
 															myList.includes(slide.id)
 																? 'scale-0 -rotate-90 opacity-0'
 																: 'scale-100 rotate-0 opacity-100'
-														}
+														}`}
 													/>
 												</Button>
 											</footer>
 										</div>
 										<figure
 											className={clsx(
-												'dark:text-fg/50 text-bg/50 dark:before:bg-bg before:bg-fg relative ml-auto size-6 transition-opacity delay-400 duration-600 ease-in-out *:absolute *:size-full *:transition-all before:absolute before:-top-1.5 before:-left-2 before:-z-[1] before:block before:size-[calc(100%_+_1rem)] before:blur-2xl md:size-7 lg:size-8',
+												'dark:text-fg/50 text-bg/50 dark:before:bg-bg before:bg-fg relative ml-auto size-6 transition-opacity delay-400 duration-600 ease-in-out before:absolute before:-top-1.5 before:-left-2 before:-z-[1] before:block before:size-[calc(100%_+_1rem)] before:blur-2xl md:size-7 lg:size-8',
 												playing[slide.id] && videos[slide.id].volumeIcon ? 'opacity-100' : 'opacity-0'
 											)}
 											aria-hidden
 										>
-											<IconMute className={videos[slide.id].muted ? 'scale-100 opacity-100' : 'scale-0 opacity-0'} />
+											<IconMute
+												className={`absolute size-full transition-[scale,opacity] ${videos[slide.id].muted ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}
+											/>
 											<IconVolumeFull
-												className={!videos[slide.id].muted ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}
+												className={`absolute size-full transition-[scale,opacity] ${!videos[slide.id].muted ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}
 											/>
 										</figure>
 									</div>
@@ -384,21 +386,25 @@ function Hero({ slides }: HeroProps) {
 											playsInline
 											onPlay={() => setVideos.setKey(slide.id, { volumeIcon: true })}
 										>
-											{Object.entries(slide.mobileVideos).map(([type, src]) => (
-												<source
-													key={`${src} - Hero media (mobile)`}
-													src={src}
-													type={`video/${type}`}
-													media={`(max-width: ${BREAKPOINTS['sm'] - 1}px)`}
-												/>
-											))}
-											{Object.entries(slide.desktopVideos).map(([type, src]) => (
-												<source
-													key={`${src} - Hero media (desktop)`}
-													src={src}
-													type={`video/${type}`}
-												/>
-											))}
+											{Object.entries(slide.mobileVideos)
+												.sort((a, b) => b[0].localeCompare(a[0]))
+												.map(([type, src]) => (
+													<source
+														key={`${src} - Hero media (mobile)`}
+														src={src}
+														type={`video/${type}`}
+														media={`(max-width: ${BREAKPOINTS['sm'] - 1}px)`}
+													/>
+												))}
+											{Object.entries(slide.desktopVideos)
+												.sort((a, b) => b[0].localeCompare(a[0]))
+												.map(([type, src]) => (
+													<source
+														key={`${src} - Hero media (desktop)`}
+														src={src}
+														type={`video/${type}`}
+													/>
+												))}
 											{slide.captions.map((props) => (
 												<track
 													key={`${props.src} - Caption (${props.srcLang})`}
@@ -431,7 +437,7 @@ function Hero({ slides }: HeroProps) {
 							<Button
 								key={`${_slide.title} - Select button`}
 								className={clsx(
-									'h-5 rounded-full p-0 transition-all focus:outline-hidden',
+									'h-5 rounded-full p-0 transition-[width] focus:outline-hidden',
 									currentSlide === _index ? 'w-10' : 'w-5'
 								)}
 								intent={currentSlide === _index ? 'secondary' : 'outline'}

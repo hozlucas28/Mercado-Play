@@ -219,7 +219,7 @@
 	}
 
 	body {
-		@apply transition-colors ease-in-out;
+		@apply transition-[color,_background-color];
 
 		color: var(--fg);
 		background-color: var(--bg);
