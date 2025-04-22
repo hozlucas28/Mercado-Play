@@ -37,14 +37,14 @@ SCRIPT_PATH=$(
 )
 
 # Clean temporal trash (prevents overwrite requests)
-rm -f "desktop-video.temp.mp4" "desktop-audio.temp.m4a" "mobile-video.temp.mp4" "mobile-audio.temp.m4a" "desktop.temp.mp4" "mobile.temp.mp4"
+rm -f "desktop-video.temp.mp4" "desktop-audio.temp.m4a" "mobile-video.temp.mp4" "mobile-audio.temp.m4a" "_desktop.temp.mp4" "_mobile.temp.mp4"
 
 # Download desktop and mobile versions of the video
 echo -e "\e[96m> Downloading desktop (1080p) version...\e[0m\n"
 
 "${SCRIPT_PATH}/bin/yt-dlp__windows.exe" -f "bv*[ext=mp4][height<=1080]" --download-sections "*0:00-2:00" -o "desktop-video.temp.mp4" "$VIDEO_URL"
 "${SCRIPT_PATH}/bin/yt-dlp__windows.exe" -f "ba" -o "desktop-audio.temp.m4a" "$VIDEO_URL"
-ffmpeg -i "desktop-video.temp.mp4" -i "desktop-audio.temp.m4a" -t 120 -c:v copy -c:a aac "desktop.temp.mp4"
+ffmpeg -i "desktop-video.temp.mp4" -i "desktop-audio.temp.m4a" -t 120 -c:v copy -c:a aac "_desktop.temp.mp4"
 
 rm -f "desktop-video.temp.mp4" "desktop-audio.temp.m4a"
 
@@ -77,7 +77,7 @@ trimCaptions "es"
 
 echo -e "\e[96m\n> If the captions were downloaded successfully, check if they need manual modifications.\n\e[0m"
 
-ffmpeg -i "mobile-video.temp.mp4" -i "mobile-audio.temp.m4a" -t 120 -c:v copy -c:a aac "mobile.temp.mp4"
+ffmpeg -i "mobile-video.temp.mp4" -i "mobile-audio.temp.m4a" -t 120 -c:v copy -c:a aac "_mobile.temp.mp4"
 
 rm -f "mobile-video.temp.mp4" "mobile-audio.temp.m4a"
 
@@ -115,31 +115,31 @@ optimizeVideo() {
 
 echo -e "\e[96m\n> Optimizing desktop (1080p) version...\n\e[0m"
 
-DESKTOP_OUTPUT_MP4="_${OUTPUT%.mp4}__desktop.mp4"
+DESKTOP_OUTPUT_MP4="${OUTPUT%.mp4}__desktop.mp4"
 
 rm -f "$DESKTOP_OUTPUT_MP4"
-optimizeVideo "desktop.temp.mp4" "$DESKTOP_OUTPUT_MP4"
+optimizeVideo "_desktop.temp.mp4" "$DESKTOP_OUTPUT_MP4"
 
 echo -e "\e[96m\n> Optimizing mobile (720p) version...\n\e[0m"
 
-MOBILE_OUTPUT_MP4="_${OUTPUT%.mp4}__mobile.mp4"
+MOBILE_OUTPUT_MP4="${OUTPUT%.mp4}__mobile.mp4"
 
 rm -f "$MOBILE_OUTPUT_MP4"
-optimizeVideo "mobile.temp.mp4" "$MOBILE_OUTPUT_MP4"
+optimizeVideo "_mobile.temp.mp4" "$MOBILE_OUTPUT_MP4"
 
-rm -f "desktop.temp.mp4" "mobile.temp.mp4"
+rm -f "_desktop.temp.mp4" "_mobile.temp.mp4"
 
 # Convert optimized videos to WebM
 echo -e "\e[96m\n> Converting desktop (1080p) version to WebM...\n\e[0m"
 
-DESKTOP_OUTPUT_WEBM="_${DESKTOP_OUTPUT_MP4%.mp4}.webm"
+DESKTOP_OUTPUT_WEBM="${DESKTOP_OUTPUT_MP4%.mp4}.webm"
 
 rm -f "$DESKTOP_OUTPUT_WEBM"
 ffmpeg -i "$DESKTOP_OUTPUT_MP4" -c:v libvpx-vp9 -crf 30 -b:v 0 -cpu-used 4 -row-mt 1 -c:a libopus -b:a 128k -ac 2 "$DESKTOP_OUTPUT_WEBM"
 
 echo -e "\e[96m\n> Converting mobile (720p) version to WebM...\n\e[0m"
 
-MOBILE_OUTPUT_WEBM="_${MOBILE_OUTPUT_MP4%.mp4}.webm"
+MOBILE_OUTPUT_WEBM="${MOBILE_OUTPUT_MP4%.mp4}.webm"
 
 rm -f "$MOBILE_OUTPUT_WEBM"
 ffmpeg -i "$MOBILE_OUTPUT_MP4" -c:v libvpx-vp9 -crf 30 -b:v 0 -cpu-used 4 -row-mt 1 -c:a libopus -b:a 128k -ac 2 "$MOBILE_OUTPUT_WEBM"
