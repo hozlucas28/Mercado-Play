@@ -115,7 +115,7 @@ function Slide({ id, anchor, ariaTitle, type, image, score, title, date, progres
 							aria-hidden
 						>
 							<IconCirclePlay className='dark:text-fg text-bg z-10 size-16 [grid-area:stack]' />
-							<span className='bg-fg dark:bg-bg blur-2xl' />
+							<span className='bg-fg dark:bg-bg blur-2xl [grid-area:stack]' />
 						</figure>
 					)}
 
