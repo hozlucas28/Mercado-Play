@@ -340,7 +340,7 @@ function Hero({ slides }: HeroProps) {
 													onPress={() => handleSaveToList(slide)}
 												>
 													<IconCheck
-														className={`absolute size-3 transition-[scale,_rotate,_opacity] lg:size-5 ${
+														className={`absolute size-3! transition-[scale,_rotate,_opacity] lg:size-5! ${
 															myList.includes(slide.id)
 																? 'scale-100 rotate-0 opacity-100'
 																: 'scale-0 -rotate-90 opacity-0'
@@ -348,7 +348,7 @@ function Hero({ slides }: HeroProps) {
 													/>
 
 													<IconPlus
-														className={`absolute size-3 transition-[scale,_rotate,_opacity] lg:size-5 ${
+														className={`absolute size-3! transition-[scale,_rotate,_opacity] lg:size-5! ${
 															myList.includes(slide.id)
 																? 'scale-0 -rotate-90 opacity-0'
 																: 'scale-100 rotate-0 opacity-100'
