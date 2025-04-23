@@ -3,21 +3,13 @@
 		"baseUrl": ".",
 		"jsx": "react-jsx",
 		"jsxImportSource": "react",
-		"moduleResolution": "Bundler",
 		"paths": {
 			"@/*": ["src/*"],
 			"ui": ["src/components/ui/index.ts"]
 		},
 		"sourceMap": true,
 		"strictNullChecks": true,
-		"types": [
-			"dom-chromium-installation-events",
-			"web-app-manifest",
-			"astro/client",
-			"vite-plugin-pwa/vanillajs",
-			"vite-plugin-pwa/info",
-			"vite-plugin-pwa/pwa-assets"
-		]
+		"types": ["astro/client", "vite-plugin-pwa/vanillajs", "vite-plugin-pwa/info", "vite-plugin-pwa/pwa-assets"]
 	},
 	"exclude": ["dist", "dev-dist", "src/components/ui"],
 	"extends": "astro/tsconfigs/strict",
