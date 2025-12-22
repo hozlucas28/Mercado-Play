@@ -144,7 +144,7 @@ Finally, after completing each step of the design process, it was successfully d
 
 ## License
 
-This repository is under [MIT License](./LICENSE), if you want to see what you are allowed to do with the content of this repository, please visit [choosealicense](https://choosealicense.com/licenses/) for more information.
+This repository is under [MIT license](./LICENSE), if you want to see what you are allowed to do with the content of this repository, please visit [choosealicense.com](https://choosealicense.com/licenses/) for more information.
 
 ## Contact
 
