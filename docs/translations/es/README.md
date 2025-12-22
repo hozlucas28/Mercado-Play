@@ -146,7 +146,7 @@ Finalmente, después de completar cada paso del proceso de diseño, se lo logro 
 
 ## Licencia
 
-Este repositorio está bajo la [Licencia MIT](./LICENSE). Si quieres saber qué puedes hacer con el contenido de este repositorio, visita [choosealicense](https://choosealicense.com/licenses/) para más información.
+Este repositorio está bajo la [licencia MIT](./LICENSE). Si quieres saber qué puedes hacer con el contenido de este repositorio, visita [choosealicense.com](https://choosealicense.com/licenses/) para más información.
 
 ## Contacto
 
