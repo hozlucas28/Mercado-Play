@@ -7,7 +7,7 @@ permissions: {}
 on:
   schedule:
     - cron: 0 0 1 1 *
-    
+
   workflow_dispatch:
 
 jobs:
@@ -45,7 +45,7 @@ jobs:
           labels: bot
           prTitle: Update license copyright year to {{currentYear}}
           branchName: github-action/update-license-year-to-{{currentYear}}
-          commitTitle: "docs: update license copyright year"
+          commitTitle: 'docs: update license copyright year'
           commitAuthorName: github-actions[bot]
           commitAuthorEmail: github-actions[bot]@users.noreply.github.com
 
