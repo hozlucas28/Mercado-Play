@@ -16,17 +16,19 @@
 </p>
 
 <p align="center">
-    <a href="./docs/translations/es/README.md">[ Spanish version ]</a>
+    <a href="./docs/translations/es/README.md">(spanish version)</a>
 </p>
 
 <p align="center">
-    <a href="#"> <!-- TODO -->
-        <img src="./docs/statics/preview.png" alt="Preview of Mercado Play redesign" width="800"> <!-- TODO -->
-    </a>
+    <a href="#" target="_blank"> <!-- TODO -->
+		<img src="./docs/statics/preview.png" alt="Preview of Mercado Play redesign" width="800"> <!-- TODO -->
+		<br />
+		Visit project
+	</a>
 </p>
 
 <p align="center">
-    (test the <a href="#">live redesign</a> or watch the <a href="#">demo video</a>) <!-- TODO -->
+    <a href="#">(demonstration video)</a> <!-- TODO -->
 </p>
 
 ## Summary
