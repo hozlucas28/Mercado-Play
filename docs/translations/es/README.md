@@ -16,17 +16,19 @@
 </p>
 
 <p align="center">
-    <a href="../../../README.md">[ Versión en inglés ]</a>
+    <a href="../../../README.md">(versión en inglés)</a>
 </p>
 
 <p align="center">
-    <a href="#"> <!-- TODO -->
-        <img src="../../statics/preview.png" alt="Vista previa del rediseño de Mercado Play" width="800"> <!-- TODO -->
-    </a>
+    <a href="#" target="_blank"> <!-- TODO -->
+		<img src="../../statics/preview.png" alt="Vista previa del rediseño de Mercado Play" width="800"> <!-- TODO -->
+		<br />
+		Visitar proyecto
+	</a>
 </p>
 
 <p align="center">
-    (prueba el <a href="#">rediseño en vivo</a> o ve el <a href="#">video demostrativo</a>) <!-- TODO -->
+    <a href="#">(video demostrativo)</a> <!-- TODO -->
 </p>
 
 ## Resumen
